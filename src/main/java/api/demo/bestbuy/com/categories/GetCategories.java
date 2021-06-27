@@ -17,11 +17,19 @@ public class GetCategories extends BaseAPI {
 		super("/categories", responseValidator);
 	}
 
+	/**
+	 * Execute Get /categories API.
+	 */
 	public void executeGetCategoriesAPI() {
-		responseWrapper = BDDConstants.restAssuredHelper.performGetRequest(endPoint);
+		responseWrapper = BDDConstants.getResassuredHelper().performGetRequest(endPoint);
 		new ResponseValidator().setResponseWrapper(responseWrapper);
 	}
 
+	/**
+	 * Verify the categrories list returned in response from DB.
+	 * @throws JsonMappingException
+	 * @throws JsonProcessingException
+	 */
 	public void verifyCategoriesFromDB() throws JsonMappingException, JsonProcessingException {
 		GetCategoryModal actualResponse = new ObjectMapper().readValue(responseWrapper.getResponse(),
 				GetCategoryModal.class);

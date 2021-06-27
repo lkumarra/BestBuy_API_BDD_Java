@@ -12,7 +12,6 @@ public class GetProductSteps {
 	GetProducts getProducts;
 	
 	public GetProductSteps(ResponseValidator responseValidator, ScenarioContext context) {
-		responseValidator = new ResponseValidator();
 		getProducts = new GetProducts(responseValidator);
 		context.setContext(BaseAPI.class, getProducts);
 	}

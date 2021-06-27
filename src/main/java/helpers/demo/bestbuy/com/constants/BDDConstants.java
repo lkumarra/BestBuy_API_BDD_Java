@@ -26,7 +26,28 @@ public class BDDConstants {
 		return p.getProperty(key);
 	}
 
-	public static String dataBaseConnString = getPropertiesFileValue("sqldbconnection");
-	public static String baseUri = getPropertiesFileValue("baseuri");
-	public static RestAssuredHelper restAssuredHelper = new RestAssuredHelper();
+	/**
+	 * Return the value of database string from properties file.
+	 * @return : DataBase string value.
+	 */
+	public static String getDataBaseConnectionString() {
+		return getPropertiesFileValue("sqldbconnection");
+	}
+
+	/**
+	 * Return the value of baseuri from properties file.
+	 * @return : Base Uri
+	 */
+	public static String getBaseUri() {
+		return getPropertiesFileValue("baseuri");
+	}
+	
+	/**
+	 * Return the object of RestAssuredHelper class.
+	 * @return : Object of RestAssuredHelper class
+	 */
+	public static RestAssuredHelper getResassuredHelper() {
+		return new RestAssuredHelper();
+	}
+	
 }

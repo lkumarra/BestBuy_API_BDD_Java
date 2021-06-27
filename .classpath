@@ -22,6 +22,7 @@
 	<classpathentry kind="src" path="src/main/java/helpers"/>
 	<classpathentry kind="src" path="src/main/java/modals"/>
 	<classpathentry kind="src" path="src/main/java/wrapper"/>
+	<classpathentry kind="src" path="src/main/java/data"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>

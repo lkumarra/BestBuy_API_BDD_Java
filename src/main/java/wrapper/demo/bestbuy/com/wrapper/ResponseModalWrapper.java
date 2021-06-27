@@ -1,5 +1,12 @@
 package demo.bestbuy.com.wrapper;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@EqualsAndHashCode
 public class ResponseModalWrapper {
 
 	private String name;
@@ -7,35 +14,4 @@ public class ResponseModalWrapper {
 	private int code;
 	private String errors;
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public int getCode() {
-		return code;
-	}
-
-	public void setCode(int code) {
-		this.code = code;
-	}
-
-	public String getErrors() {
-		return errors;
-	}
-
-	public void setErrors(String errors) {
-		this.errors = errors;
-	}
 }

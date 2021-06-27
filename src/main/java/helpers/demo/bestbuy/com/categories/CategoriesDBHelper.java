@@ -10,6 +10,11 @@ public class CategoriesDBHelper {
 
 	static String scriptPath = System.getProperty("user.dir") + "/src/main/resources/DBScripts/Categories/";
 
+	/**
+	 * Fetch the categories list from DB.
+	 * 
+	 * @return List of GetCategoryDatum Class.
+	 */
 	public static List<GetCategoryDatum> getCategoriesList() {
 		String script = DBHelpers.getDBScript(scriptPath + "Script.GetCategories.sql");
 		HashMap<String, List<Object>> hashMap = DBHelpers.executeScript(script);
@@ -29,6 +34,12 @@ public class CategoriesDBHelper {
 		return datumList;
 	}
 
+	/**
+	 * Fetch the subcategory on the basis of category Id.
+	 * 
+	 * @param categoryId : Category id to fetch subcategory
+	 * @return List of GetCategorySubCategory class
+	 */
 	private static List<GetCategorySubCategory> getSubcategoriesList(String categoryId) {
 		String script = DBHelpers.getDBScript(scriptPath + "Script.GetSubCategories.sql");
 		List<String> param = new ArrayList<>();
@@ -48,6 +59,12 @@ public class CategoriesDBHelper {
 		return subCategoryList;
 	}
 
+	/**
+	 * Fetch the category path on the basis of category Id.
+	 * 
+	 * @param categoryId : category id to fetch Category path.
+	 * @return List of GetCategoryCategoryPath class.
+	 */
 	private static List<GetCategoryCategoryPath> getCategoryPathList(String categoryId) {
 		String script = DBHelpers.getDBScript(scriptPath + "Script.GetCategoryPath.sql");
 		List<String> param = new ArrayList<String>();
@@ -67,6 +84,11 @@ public class CategoriesDBHelper {
 		return categoryPathList;
 	}
 
+	/**
+	 * Fetch the total count of category in Db.
+	 * 
+	 * @return : Total count of category in Db.
+	 */
 	public static int getTotalCategoryCount() {
 		String script = DBHelpers.getDBScript(scriptPath + "Script.GetTotalCategories.sql");
 		return DBHelpers.executeScript(script).get("total").size();

@@ -63,7 +63,7 @@ public class DBHelpers {
 		Map<String, List<Object>> dataTable = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection(BDDConstants.dataBaseConnString);
+			c = DriverManager.getConnection(BDDConstants.getDataBaseConnectionString());
 			c.setAutoCommit(false);
 			stmt = c.createStatement();
 			rs = stmt.executeQuery(script);
@@ -92,7 +92,7 @@ public class DBHelpers {
 		Map<String, List<Object>> dataTable = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection(BDDConstants.dataBaseConnString);
+			c = DriverManager.getConnection(BDDConstants.getDataBaseConnectionString());
 			c.setAutoCommit(false);
 			stmt = c.prepareStatement(script);
 			for (int i = 1; i <= list.size(); i++) {
@@ -124,7 +124,7 @@ public class DBHelpers {
 		Map<String, List<Object>> dataTable = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection(BDDConstants.dataBaseConnString);
+			c = DriverManager.getConnection(BDDConstants.getDataBaseConnectionString());
 			c.setAutoCommit(false);
 			stmt = c.prepareStatement(script);
 			for (int i = 1; i <= list.size(); i++) {

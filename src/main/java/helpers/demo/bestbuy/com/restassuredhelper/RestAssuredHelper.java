@@ -18,7 +18,7 @@ public class RestAssuredHelper {
 	 * @return RequestSpecification
 	 */
 	private RequestSpecification createRequestSpecification() {
-		RequestSpecification requestSpecification = new RequestSpecBuilder().setBaseUri(BDDConstants.baseUri)
+		RequestSpecification requestSpecification = new RequestSpecBuilder().setBaseUri(BDDConstants.getBaseUri())
 				.setContentType(ContentType.JSON).build();
 		return requestSpecification;
 	}
