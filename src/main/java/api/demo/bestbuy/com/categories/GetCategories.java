@@ -4,13 +4,17 @@ import org.testng.Assert;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import demo.bestbut.com.responsevalidator.ResponseValidator;
+import demo.bestbuy.com.apihelper.InstanceCreator;
 import demo.bestbuy.com.baseapi.BaseAPI;
-import demo.bestbuy.com.constants.BDDConstants;
 import demo.bestbuy.com.interfaces.IResponseValidator;
 
+/**
+ * This class contains method related to GET /categories API
+ * 
+ * @author Lavendra Kumar Rajput
+ *
+ * @Date 2 July 2021
+ */
 public class GetCategories extends BaseAPI {
 
 	public GetCategories(IResponseValidator responseValidator) {
@@ -21,18 +25,19 @@ public class GetCategories extends BaseAPI {
 	 * Execute Get /categories API.
 	 */
 	public void executeGetCategoriesAPI() {
-		responseWrapper = BDDConstants.getResassuredHelper().performGetRequest(endPoint);
-		new ResponseValidator().setResponseWrapper(responseWrapper);
+		responseWrapper = InstanceCreator.getRestAssuredHelperInstace().performGetRequest(endPoint);
+		InstanceCreator.getResponseValidatorInstace().setResponseWrapper(responseWrapper);
 	}
 
 	/**
 	 * Verify the categrories list returned in response from DB.
+	 * 
 	 * @throws JsonMappingException
 	 * @throws JsonProcessingException
 	 */
-	public void verifyCategoriesFromDB() throws JsonMappingException, JsonProcessingException {
-		GetCategoryModal actualResponse = new ObjectMapper().readValue(responseWrapper.getResponse(),
-				GetCategoryModal.class);
+	public void verifyCategoriesFromDB() {
+		GetCategoryModal actualResponse = InstanceCreator.getRestAssuredHelperInstace()
+				.getMappedResponse(responseWrapper.getResponse(), GetCategoryModal.class);
 		GetCategoryModal expectedResponse = new GetCategoryModal();
 		expectedResponse.setData(CategoriesDBHelper.getCategoriesList());
 		expectedResponse.setTotal(CategoriesDBHelper.getTotalCategoryCount());

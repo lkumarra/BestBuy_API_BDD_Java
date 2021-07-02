@@ -9,6 +9,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode
+/**
+ * This class contains getters and setters for Deserilization
+ * 
+ * @author Lavendra Kumar Rajput
+ *
+ * @Date 2 July 2021
+ */
 public class GetProductDatum {
 	public int id;
 	public String name;

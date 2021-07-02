@@ -19,6 +19,13 @@ import java.util.Map;
 
 import demo.bestbuy.com.constants.BDDConstants;
 
+/**
+ * This class contains the methods related to DB Connection
+ * 
+ * @author Lavendra Kumar Rajput
+ *
+ * @Date 2 July 2021
+ */
 public class DBHelpers {
 
 	/**
@@ -26,6 +33,7 @@ public class DBHelpers {
 	 * 
 	 * @param scriptPath : Path of script
 	 * @return String content of script
+	 * @author Lavendra rajput
 	 */
 	public static String getDBScript(String scriptPath) {
 		String LINE_SEPARATOR = System.getProperty("line.separator", "\n");
@@ -55,6 +63,7 @@ public class DBHelpers {
 	 * 
 	 * @param script : Script to Execute
 	 * @return HashMam with result
+	 * @author Lavendra rajput
 	 */
 	public static HashMap<String, List<Object>> executeScript(String script) {
 		Connection c = null;
@@ -84,6 +93,7 @@ public class DBHelpers {
 	 * @param script : Script to execute
 	 * @param list   : List of parameters
 	 * @return Hashmap with stored results
+	 * @author Lavendra rajput
 	 */
 	public static HashMap<String, List<Object>> executeScriptWithStringParam(String script, List<String> list) {
 		Connection c = null;
@@ -116,6 +126,7 @@ public class DBHelpers {
 	 * @param script : Script to execute
 	 * @param list   : List of Parameters
 	 * @return Hashmap with stored results
+	 * @author Lavendra rajput
 	 */
 	public static HashMap<String, List<Object>> executeScript(String script, List<Integer> list) {
 		Connection c = null;
@@ -148,6 +159,7 @@ public class DBHelpers {
 	 * @param rs ResultSet
 	 * @return Map<String, List<Object>> with results
 	 * @throws SQLException
+	 * @author Lavendra rajput
 	 */
 	private static Map<String, List<Object>> resultSetToArrayList(ResultSet rs) throws SQLException {
 		ResultSetMetaData md = rs.getMetaData();

@@ -2,13 +2,17 @@ package demo.bestbuy.com.products;
 
 import org.testng.Assert;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import demo.bestbut.com.responsevalidator.ResponseValidator;
+import demo.bestbuy.com.apihelper.InstanceCreator;
 import demo.bestbuy.com.baseapi.BaseAPI;
-import demo.bestbuy.com.constants.BDDConstants;
 import demo.bestbuy.com.interfaces.IResponseValidator;
 
+/**
+ * This class contains all the method related to GET /products API
+ * 
+ * @author Lavendra Kumar Rajput
+ *
+ * @Date
+ */
 public class GetProducts extends BaseAPI {
 
 	public GetProducts(IResponseValidator responseValidator) {
@@ -19,18 +23,17 @@ public class GetProducts extends BaseAPI {
 	 * Execute Get /products API.
 	 */
 	public void executeGetProuctsAPI() {
-		responseWrapper = BDDConstants.getResassuredHelper().performGetRequest(endPoint);
-		new ResponseValidator().setResponseWrapper(responseWrapper);
+		responseWrapper = InstanceCreator.getRestAssuredHelperInstace().performGetRequest(endPoint);
+		InstanceCreator.getResponseValidatorInstace().setResponseWrapper(responseWrapper);
 	}
 
 	/**
 	 * Verify the product list returned in response from DB.
 	 * 
-	 * @throws Exception
 	 */
-	public void verifyResponseReturedFromDB() throws Exception {
-		GetProductModal actualResponse = new ObjectMapper().readValue(responseWrapper.getResponse(),
-				GetProductModal.class);
+	public void verifyResponseReturedFromDB() {
+		GetProductModal actualResponse = InstanceCreator.getRestAssuredHelperInstace()
+				.getMappedResponse(responseWrapper.getResponse(), GetProductModal.class);
 		GetProductModal expectedResponse = new GetProductModal();
 		expectedResponse.setData(ProductDBHelper.getProductsList());
 		expectedResponse.setTotal(ProductDBHelper.getTotalProducts());

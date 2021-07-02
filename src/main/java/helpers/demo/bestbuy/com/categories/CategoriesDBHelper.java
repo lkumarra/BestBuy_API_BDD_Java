@@ -6,6 +6,13 @@ import java.util.List;
 
 import demo.bestbuy.com.dbhelpers.DBHelpers;
 
+/**
+ * This class contains the DB Methods of /categories API.
+ * 
+ * @author Lavendra Kumar Rajput
+ *
+ * @Date 2 July 2021
+ */
 public class CategoriesDBHelper {
 
 	static String scriptPath = System.getProperty("user.dir") + "/src/main/resources/DBScripts/Categories/";
@@ -13,7 +20,8 @@ public class CategoriesDBHelper {
 	/**
 	 * Fetch the categories list from DB.
 	 * 
-	 * @return List of GetCategoryDatum Class.
+	 * @return List of {@link GetCategoryDatum}
+	 * @author Lavendra rajput
 	 */
 	public static List<GetCategoryDatum> getCategoriesList() {
 		String script = DBHelpers.getDBScript(scriptPath + "Script.GetCategories.sql");
@@ -38,7 +46,8 @@ public class CategoriesDBHelper {
 	 * Fetch the subcategory on the basis of category Id.
 	 * 
 	 * @param categoryId : Category id to fetch subcategory
-	 * @return List of GetCategorySubCategory class
+	 * @return List of {@link GetCategorySubCategory}
+	 * @author Lavendra rajput
 	 */
 	private static List<GetCategorySubCategory> getSubcategoriesList(String categoryId) {
 		String script = DBHelpers.getDBScript(scriptPath + "Script.GetSubCategories.sql");
@@ -63,7 +72,8 @@ public class CategoriesDBHelper {
 	 * Fetch the category path on the basis of category Id.
 	 * 
 	 * @param categoryId : category id to fetch Category path.
-	 * @return List of GetCategoryCategoryPath class.
+	 * @return List of {@link GetCategoryCategoryPath}
+	 * @author Lavendra rajput
 	 */
 	private static List<GetCategoryCategoryPath> getCategoryPathList(String categoryId) {
 		String script = DBHelpers.getDBScript(scriptPath + "Script.GetCategoryPath.sql");
@@ -88,6 +98,7 @@ public class CategoriesDBHelper {
 	 * Fetch the total count of category in Db.
 	 * 
 	 * @return : Total count of category in Db.
+	 * @author Lavendra rajput
 	 */
 	public static int getTotalCategoryCount() {
 		String script = DBHelpers.getDBScript(scriptPath + "Script.GetTotalCategories.sql");

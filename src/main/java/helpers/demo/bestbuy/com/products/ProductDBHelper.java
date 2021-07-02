@@ -6,6 +6,13 @@ import java.util.List;
 
 import demo.bestbuy.com.dbhelpers.DBHelpers;
 
+/**
+ * This class contains the DB methods related to /products API.
+ * 
+ * @author Lavendra Kumar Rajput
+ *
+ * @Date 2 July 2021
+ */
 public class ProductDBHelper {
 
 	static String scriptPath = System.getProperty("user.dir") + "/src/main/resources/DBScripts/Products/";
@@ -13,7 +20,8 @@ public class ProductDBHelper {
 	/**
 	 * Fetch the product list fromn DB.
 	 * 
-	 * @return List of GetProductDatum class.
+	 * @return List of {@link GetProductDatum}
+	 * @author Lavendra rajput
 	 */
 	public static List<GetProductDatum> getProductsList() {
 		String script = DBHelpers.getDBScript(scriptPath + "Script.GetProduct.sql");
@@ -46,7 +54,8 @@ public class ProductDBHelper {
 	 * Fetch the product category from DB on the basis of productId
 	 * 
 	 * @param productId : Product Id to fectch product category.
-	 * @return List of GetProductCategory class.
+	 * @return List of {@link GetProductCategory}
+	 * @author Lavendra rajput
 	 */
 	public static List<GetProductCategory> getFilterdCategories(int productId) {
 		String script = DBHelpers.getDBScript(scriptPath + "Script.GetCategoriesFilterd.sql");
@@ -71,6 +80,7 @@ public class ProductDBHelper {
 	 * Fetch the total product count from DB.
 	 * 
 	 * @return Total count of product
+	 * @author Lavendra rajput
 	 */
 	public static Integer getTotalProducts() {
 		String script = DBHelpers.getDBScript(scriptPath + "Script.GetTotalProductCount.sql");
@@ -82,7 +92,8 @@ public class ProductDBHelper {
 	 * Get the product from DB via product Id.
 	 * 
 	 * @param id : Product Id to get product
-	 * @return Object of GetProductDatum class
+	 * @return {@link GetProductDatum}
+	 * @author Lavendra rajput
 	 */
 	public static GetProductDatum getProductViaId(int id) {
 		String script = DBHelpers.getDBScript(scriptPath + "Script.GetProductViaId.sql");

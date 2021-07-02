@@ -6,6 +6,13 @@ import demo.bestbuy.com.interfaces.IResponseValidator;
 import demo.bestbuy.com.wrapper.ResponseModalWrapper;
 import demo.bestbuy.com.wrapper.ResponseWrapper;
 
+/**
+ * This class contains the methods related to response validation
+ * 
+ * @author Lavendra Kumar Rajput
+ *
+ * @Date
+ */
 public class ResponseValidator implements IResponseValidator {
 
 	private static ResponseWrapper responseWrapper;
@@ -20,6 +27,7 @@ public class ResponseValidator implements IResponseValidator {
 
 	/**
 	 * Verify the Response returned
+	 * @author Lavendra rajput
 	 */
 	public void verifyResponse(ResponseModalWrapper responseModalWrapper) {
 		if (getResponseWrapper().getStatusCode() != responseModalWrapper.getCode()) {

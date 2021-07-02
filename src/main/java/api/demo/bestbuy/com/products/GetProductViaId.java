@@ -4,13 +4,17 @@ import org.testng.Assert;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import demo.bestbut.com.responsevalidator.ResponseValidator;
+import demo.bestbuy.com.apihelper.InstanceCreator;
 import demo.bestbuy.com.baseapi.BaseAPI;
-import demo.bestbuy.com.constants.BDDConstants;
 import demo.bestbuy.com.interfaces.IResponseValidator;
 
+/**
+ * This class contains all the function related to GET /products/{id} API
+ * 
+ * @author Lavendra Kumar Rajput
+ *
+ * @Date 2 July 2021
+ */
 public class GetProductViaId extends BaseAPI {
 
 	private int id;
@@ -26,8 +30,8 @@ public class GetProductViaId extends BaseAPI {
 	 */
 	public void extecuteGetProductViaIdAPI(int id) {
 		this.id = id;
-		responseWrapper = BDDConstants.getResassuredHelper().performGetRequest(endPoint + "/" + id);
-		new ResponseValidator().setResponseWrapper(responseWrapper);
+		responseWrapper = InstanceCreator.getRestAssuredHelperInstace().performGetRequest(endPoint + "/" + id);
+		InstanceCreator.getResponseValidatorInstace().setResponseWrapper(responseWrapper);
 	}
 
 	/**
@@ -36,9 +40,9 @@ public class GetProductViaId extends BaseAPI {
 	 * @throws JsonMappingException
 	 * @throws JsonProcessingException
 	 */
-	public void verifyProductListFromDb() throws JsonMappingException, JsonProcessingException {
-		GetProductDatum actualResponse = new ObjectMapper().readValue(responseWrapper.getResponse(),
-				GetProductDatum.class);
+	public void verifyProductListFromDb() {
+		GetProductDatum actualResponse = InstanceCreator.getRestAssuredHelperInstace()
+				.getMappedResponse(responseWrapper.getResponse(), GetProductDatum.class);
 		GetProductDatum expectedResponse = ProductDBHelper.getProductViaId(id);
 		if (!actualResponse.equals(expectedResponse)) {
 			Assert.fail("Actual response is not equal to expected response");

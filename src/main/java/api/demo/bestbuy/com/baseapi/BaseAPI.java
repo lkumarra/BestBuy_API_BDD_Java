@@ -4,6 +4,13 @@ import demo.bestbuy.com.interfaces.IResponseValidator;
 import demo.bestbuy.com.wrapper.ResponseModalWrapper;
 import demo.bestbuy.com.wrapper.ResponseWrapper;
 
+/**
+ * This is BASE class of all API Sub classed
+ * 
+ * @author Lavendra Kumar Rajput
+ *
+ * @Date
+ */
 public class BaseAPI {
 
 	protected ResponseWrapper responseWrapper;

@@ -5,8 +5,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-import demo.bestbuy.com.restassuredhelper.RestAssuredHelper;
-
+/**
+ * This class contains the BDD Constants
+ * 
+ * @author Lavendra Kumar Rajput
+ *
+ * @Date 2 July 2021
+ */
 public class BDDConstants {
 
 	private static String getPropertiesFileValue(String key) {
@@ -28,7 +33,9 @@ public class BDDConstants {
 
 	/**
 	 * Return the value of database string from properties file.
+	 * 
 	 * @return : DataBase string value.
+	 * @author Lavendra rajput
 	 */
 	public static String getDataBaseConnectionString() {
 		return getPropertiesFileValue("sqldbconnection");
@@ -36,18 +43,12 @@ public class BDDConstants {
 
 	/**
 	 * Return the value of baseuri from properties file.
+	 * 
 	 * @return : Base Uri
+	 * @author Lavendra rajput
 	 */
 	public static String getBaseUri() {
 		return getPropertiesFileValue("baseuri");
 	}
-	
-	/**
-	 * Return the object of RestAssuredHelper class.
-	 * @return : Object of RestAssuredHelper class
-	 */
-	public static RestAssuredHelper getResassuredHelper() {
-		return new RestAssuredHelper();
-	}
-	
+
 }
