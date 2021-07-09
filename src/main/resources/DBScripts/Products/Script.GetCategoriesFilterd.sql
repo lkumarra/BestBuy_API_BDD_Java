@@ -1,5 +1,5 @@
-SELECT products.id as productid, 
-categories.id, 
+SELECT  
+categories.id,
 categories.name, 
 CAST(categories.updatedAt as VARCHAR) as updatedAt, 
 CAST(categories.createdAt as VARCHAR) as createdAt 

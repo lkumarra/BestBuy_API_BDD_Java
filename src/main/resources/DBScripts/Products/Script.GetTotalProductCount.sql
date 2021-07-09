@@ -1,3 +1,4 @@
-SELECT
+Select DISTINCT
 products.id
-from products
+from
+products;

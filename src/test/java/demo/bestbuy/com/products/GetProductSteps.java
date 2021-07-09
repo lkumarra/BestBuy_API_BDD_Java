@@ -16,9 +16,9 @@ import io.cucumber.java.en.When;
  */
 public class GetProductSteps {
 
-	GetProducts getProducts;
+	private GetProducts getProducts;
 
-	public GetProductSteps(ResponseValidator responseValidator, ScenarioContext context) {
+	public GetProductSteps(ResponseValidator responseValidator, ScenarioContext<BaseAPI> context) {
 		getProducts = InstanceCreator.getProdcutsInstance(responseValidator);
 		context.setContext(BaseAPI.class, getProducts);
 	}
@@ -29,7 +29,7 @@ public class GetProductSteps {
 	}
 
 	@Then("Verify the products list from Db")
-	public void verify_the_products_list_from_Db() {
+	public void verify_the_products_list_from_Db(){
 		getProducts.verifyResponseReturedFromDB();
 	}
 }

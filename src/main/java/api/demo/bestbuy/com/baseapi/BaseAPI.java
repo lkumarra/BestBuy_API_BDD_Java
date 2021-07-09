@@ -5,7 +5,7 @@ import demo.bestbuy.com.wrapper.ResponseModalWrapper;
 import demo.bestbuy.com.wrapper.ResponseWrapper;
 
 /**
- * This is BASE class of all API Sub classed
+ * This is BASE class of all API Sub classes
  * 
  * @author Lavendra Kumar Rajput
  *

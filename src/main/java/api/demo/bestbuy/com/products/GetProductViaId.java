@@ -20,7 +20,7 @@ public class GetProductViaId extends BaseAPI {
 	private int id;
 
 	public GetProductViaId(IResponseValidator responseValidator) {
-		super("/products", responseValidator);
+		super("/products/%s", responseValidator);
 	}
 
 	/**
@@ -28,9 +28,9 @@ public class GetProductViaId extends BaseAPI {
 	 * 
 	 * @param id : Id to get product
 	 */
-	public void extecuteGetProductViaIdAPI(int id) {
+	protected void extecuteGetProductViaIdAPI(int id) {
 		this.id = id;
-		responseWrapper = InstanceCreator.getRestAssuredHelperInstace().performGetRequest(endPoint + "/" + id);
+		responseWrapper = InstanceCreator.getRestAssuredHelperInstace().performGetRequest(String.format(endPoint, id));
 		InstanceCreator.getResponseValidatorInstace().setResponseWrapper(responseWrapper);
 	}
 
@@ -40,7 +40,7 @@ public class GetProductViaId extends BaseAPI {
 	 * @throws JsonMappingException
 	 * @throws JsonProcessingException
 	 */
-	public void verifyProductListFromDb() {
+	protected void verifyProductListFromDb() {
 		GetProductDatum actualResponse = InstanceCreator.getRestAssuredHelperInstace()
 				.getMappedResponse(responseWrapper.getResponse(), GetProductDatum.class);
 		GetProductDatum expectedResponse = ProductDBHelper.getProductViaId(id);

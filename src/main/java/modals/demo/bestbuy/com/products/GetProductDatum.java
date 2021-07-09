@@ -17,18 +17,18 @@ import lombok.Setter;
  * @Date 2 July 2021
  */
 public class GetProductDatum {
-	public int id;
-	public String name;
-	public String type;
-	public double price;
-	public String upc;
-	public int shipping;
-	public String description;
-	public String manufacturer;
-	public String model;
-	public String url;
-	public String image;
-	public String createdAt;
-	public String updatedAt;
-	public List<GetProductCategory> categories;
+	private int id;
+	private String name;
+	private String type;
+	private double price;
+	private String upc;
+	private int shipping;
+	private String description;
+	private String manufacturer;
+	private String model;
+	private String url;
+	private String image;
+	private String createdAt;
+	private String updatedAt;
+	private List<GetProductCategory> categories;
 }

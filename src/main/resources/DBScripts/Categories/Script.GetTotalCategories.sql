@@ -1,1 +1,1 @@
-select categories.id as total from categories
+SELECT categories.id FROM categories

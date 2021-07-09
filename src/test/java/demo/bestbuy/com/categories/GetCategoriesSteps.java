@@ -1,12 +1,11 @@
 package demo.bestbuy.com.categories;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 
 import demo.bestbut.com.responsevalidator.ResponseValidator;
 import demo.bestbuy.com.apihelper.InstanceCreator;
 import demo.bestbuy.com.baseapi.BaseAPI;
 import demo.bestbuy.com.scenariocontext.ScenarioContext;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -19,9 +18,9 @@ import io.cucumber.java.en.When;
  */
 public class GetCategoriesSteps {
 
-	GetCategories getCategories;
+	private GetCategories getCategories;
 
-	public GetCategoriesSteps(ResponseValidator responseValidator, ScenarioContext context) {
+	public GetCategoriesSteps(ResponseValidator responseValidator, ScenarioContext<BaseAPI> context) {
 		getCategories = InstanceCreator.getCategoriesInstance(responseValidator);
 		context.setContext(BaseAPI.class, getCategories);
 	}
@@ -32,7 +31,7 @@ public class GetCategoriesSteps {
 	}
 
 	@Then("Verify the categories list from Db")
-	public void verify_the_categories_list_from_Db() throws JsonMappingException, JsonProcessingException {
+	public void verify_the_categories_list_from_Db() {
 		getCategories.verifyCategoriesFromDB();
 	}
 }

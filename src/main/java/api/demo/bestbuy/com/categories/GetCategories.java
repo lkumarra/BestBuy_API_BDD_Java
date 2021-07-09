@@ -2,8 +2,7 @@ package demo.bestbuy.com.categories;
 
 import org.testng.Assert;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+
 import demo.bestbuy.com.apihelper.InstanceCreator;
 import demo.bestbuy.com.baseapi.BaseAPI;
 import demo.bestbuy.com.interfaces.IResponseValidator;
@@ -24,7 +23,7 @@ public class GetCategories extends BaseAPI {
 	/**
 	 * Execute Get /categories API.
 	 */
-	public void executeGetCategoriesAPI() {
+	protected void executeGetCategoriesAPI() {
 		responseWrapper = InstanceCreator.getRestAssuredHelperInstace().performGetRequest(endPoint);
 		InstanceCreator.getResponseValidatorInstace().setResponseWrapper(responseWrapper);
 	}
@@ -32,10 +31,10 @@ public class GetCategories extends BaseAPI {
 	/**
 	 * Verify the categrories list returned in response from DB.
 	 * 
-	 * @throws JsonMappingException
-	 * @throws JsonProcessingException
+	 * 
+	 * 
 	 */
-	public void verifyCategoriesFromDB() {
+	protected void verifyCategoriesFromDB() {
 		GetCategoryModal actualResponse = InstanceCreator.getRestAssuredHelperInstace()
 				.getMappedResponse(responseWrapper.getResponse(), GetCategoryModal.class);
 		GetCategoryModal expectedResponse = new GetCategoryModal();

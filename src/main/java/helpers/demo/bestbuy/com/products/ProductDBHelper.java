@@ -1,9 +1,10 @@
 package demo.bestbuy.com.products;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
 
+import demo.bestbuy.com.apihelper.InstanceCreator;
 import demo.bestbuy.com.dbhelpers.DBHelpers;
 
 /**
@@ -15,7 +16,7 @@ import demo.bestbuy.com.dbhelpers.DBHelpers;
  */
 public class ProductDBHelper {
 
-	static String scriptPath = System.getProperty("user.dir") + "/src/main/resources/DBScripts/Products/";
+	private static String scriptPath = System.getProperty("user.dir") + "/src/main/resources/DBScripts/Products/";
 
 	/**
 	 * Fetch the product list fromn DB.
@@ -25,29 +26,16 @@ public class ProductDBHelper {
 	 */
 	public static List<GetProductDatum> getProductsList() {
 		String script = DBHelpers.getDBScript(scriptPath + "Script.GetProduct.sql");
-		HashMap<String, List<Object>> hashMap = DBHelpers.executeScript(script);
-		List<GetProductDatum> datumList = new ArrayList<>();
-		for (int i = 0; i < hashMap.get("id").size(); i++) {
-			GetProductDatum datum = new GetProductDatum();
-			datum.setId((Integer) hashMap.get("id").get(i));
-			datum.setName((String) hashMap.get("name").get(i));
-			datum.setType((String) hashMap.get("type").get(i));
-			datum.setPrice((Double) hashMap.get("price").get(i));
-			datum.setUpc((String) hashMap.get("upc").get(i));
-			datum.setShipping((Integer) hashMap.get("shipping").get(i));
-			datum.setDescription((String) hashMap.get("description").get(i));
-			datum.setManufacturer((String) hashMap.get("manufacturer").get(i));
-			datum.setModel((String) hashMap.get("model").get(i));
-			datum.setUrl((String) hashMap.get("url").get(i));
-			datum.setImage((String) hashMap.get("image").get(i));
-			datum.setCreatedAt(
-					(String) hashMap.get("createdAt").get(i).toString().replace(" +00:00", "Z").replace(" ", "T"));
-			datum.setUpdatedAt(
-					(String) hashMap.get("updatedAt").get(i).toString().replace(" +00:00", "Z").replace(" ", "T"));
-			datum.setCategories(getFilterdCategories((Integer) hashMap.get("id").get(i)));
-			datumList.add(datum);
-		}
-		return datumList;
+		String json = DBHelpers.executeScript(script);
+		GetProductDatum[] getProductDatums = InstanceCreator.getRestAssuredHelperInstace().getMappedResponse(json,
+				GetProductDatum[].class);
+		List<GetProductDatum> getPDatums = Arrays.asList(getProductDatums);
+		getPDatums.forEach(x -> {
+			x.setCategories(getFilterdCategories(x.getId()));
+			x.setCreatedAt(x.getCreatedAt().replace(" +00:00", "Z").replace(" ", "T"));
+			x.setUpdatedAt(x.getUpdatedAt().replace(" +00:00", "Z").replace(" ", "T"));
+		});
+		return getPDatums;
 	}
 
 	/**
@@ -61,18 +49,14 @@ public class ProductDBHelper {
 		String script = DBHelpers.getDBScript(scriptPath + "Script.GetCategoriesFilterd.sql");
 		List<Integer> list = new ArrayList<Integer>();
 		list.add(productId);
-		HashMap<String, List<Object>> hashMap = DBHelpers.executeScript(script, list);
-		List<GetProductCategory> categoryList = new ArrayList<>();
-		for (int i = 0; i < hashMap.get("id").size(); i++) {
-			GetProductCategory category = new GetProductCategory();
-			category.setId((String) hashMap.get("id").get(i));
-			category.setName((String) hashMap.get("name").get(i));
-			category.setCreatedAt(
-					(String) hashMap.get("createdAt").get(i).toString().replace(" +00:00", "Z").replace(" ", "T"));
-			category.setUpdatedAt(
-					(String) hashMap.get("updatedAt").get(i).toString().replace(" +00:00", "Z").replace(" ", "T"));
-			categoryList.add(category);
-		}
+		String json = DBHelpers.executeScript(script, list);
+		GetProductCategory[] getProductCategories = InstanceCreator.getRestAssuredHelperInstace()
+				.getMappedResponse(json, GetProductCategory[].class);
+		List<GetProductCategory> categoryList = Arrays.asList(getProductCategories);
+		categoryList.forEach(x -> {
+			x.setCreatedAt(x.getCreatedAt().replace(" +00:00", "Z").replace(" ", "T"));
+			x.setUpdatedAt(x.getUpdatedAt().replace(" +00:00", "Z").replace(" ", "T"));
+		});
 		return categoryList;
 	}
 
@@ -84,8 +68,10 @@ public class ProductDBHelper {
 	 */
 	public static Integer getTotalProducts() {
 		String script = DBHelpers.getDBScript(scriptPath + "Script.GetTotalProductCount.sql");
-		HashMap<String, List<Object>> hashMap = DBHelpers.executeScript(script);
-		return hashMap.get("id").size();
+		String json = DBHelpers.executeScript(script);
+		GetProductDatum[] getProductDatums = InstanceCreator.getRestAssuredHelperInstace().getMappedResponse(json,
+				GetProductDatum[].class);
+		return getProductDatums.length;
 	}
 
 	/**
@@ -99,28 +85,15 @@ public class ProductDBHelper {
 		String script = DBHelpers.getDBScript(scriptPath + "Script.GetProductViaId.sql");
 		List<Integer> param = new ArrayList<Integer>();
 		param.add(id);
-		HashMap<String, List<Object>> hashMap = DBHelpers.executeScript(script, param);
-		List<GetProductDatum> datumList = new ArrayList<>();
-		for (int i = 0; i < hashMap.get("id").size(); i++) {
-			GetProductDatum datum = new GetProductDatum();
-			datum.setId((Integer) hashMap.get("id").get(i));
-			datum.setName((String) hashMap.get("name").get(i));
-			datum.setType((String) hashMap.get("type").get(i));
-			datum.setPrice((Double) hashMap.get("price").get(i));
-			datum.setUpc((String) hashMap.get("upc").get(i));
-			datum.setShipping((Integer) hashMap.get("shipping").get(i));
-			datum.setDescription((String) hashMap.get("description").get(i));
-			datum.setManufacturer((String) hashMap.get("manufacturer").get(i));
-			datum.setModel((String) hashMap.get("model").get(i));
-			datum.setUrl((String) hashMap.get("url").get(i));
-			datum.setImage((String) hashMap.get("image").get(i));
-			datum.setCreatedAt(
-					(String) hashMap.get("createdAt").get(i).toString().replace(" +00:00", "Z").replace(" ", "T"));
-			datum.setUpdatedAt(
-					(String) hashMap.get("updatedAt").get(i).toString().replace(" +00:00", "Z").replace(" ", "T"));
-			datum.setCategories(getFilterdCategories((Integer) hashMap.get("id").get(i)));
-			datumList.add(datum);
-		}
-		return datumList.get(0);
+		String json = DBHelpers.executeScript(script,param);
+		GetProductDatum[] getProductDatums = InstanceCreator.getRestAssuredHelperInstace().getMappedResponse(json,
+				GetProductDatum[].class);
+		List<GetProductDatum> getPDatums = Arrays.asList(getProductDatums);
+		getPDatums.forEach(x -> {
+			x.setCategories(getFilterdCategories(x.getId()));
+			x.setCreatedAt(x.getCreatedAt().replace(" +00:00", "Z").replace(" ", "T"));
+			x.setUpdatedAt(x.getUpdatedAt().replace(" +00:00", "Z").replace(" ", "T"));
+		});
+		return getPDatums.get(0);
 	}
 }

@@ -4,6 +4,8 @@ import demo.bestbuy.com.apihelper.InstanceCreator;
 import demo.bestbuy.com.baseapi.BaseAPI;
 import demo.bestbuy.com.scenariocontext.ScenarioContext;
 import demo.bestbuy.com.wrapper.ResponseModalWrapper;
+import demo.bestbuy.com.wrapper.StatusCodeWrapper;
+import demo.bestbuy.com.wrapper.StatusCodeWrapper.StatusCodeEnum;
 import io.cucumber.java.en.Then;
 
 /**
@@ -15,23 +17,27 @@ import io.cucumber.java.en.Then;
  */
 public class VerifyResponseSteps {
 
-	BaseAPI baseAPi;
+	private BaseAPI baseAPi;
 
-	public VerifyResponseSteps(ScenarioContext context) {
-		baseAPi = (BaseAPI) context.getContext(BaseAPI.class);
+	public VerifyResponseSteps(ScenarioContext<BaseAPI> context) {
+		baseAPi = context.getContext(BaseAPI.class);
 	}
 
-	@Then("Response should be returned with status code {int}")
-	public void products_list_returned_with_status_code(int statusCode) {
+	@Then("Response should be returned with status code {string}")
+	public void products_list_returned_with_status_code(String statusCodeEnumString) throws Exception {
 		ResponseModalWrapper responseModalWrapper = InstanceCreator.getResponseModalWrapperInstance();
+		StatusCodeEnum statusCodeEnum = Enum.valueOf(StatusCodeEnum.class, statusCodeEnumString);
+		int statusCode = StatusCodeWrapper.getStatusCodeViaEnum(statusCodeEnum);
 		responseModalWrapper.setCode(statusCode);
 		baseAPi.VerifyResponse(responseModalWrapper);
 	}
 
-	@Then("Response should not be returned with status code {int}, name as {string} and message as {string}")
-	public void product_should_be_returned_with_status_code_name_as_and_message_as(int statusCode, String name,
-			String message) {
+	@Then("Response should not be returned with status code {string}, name as {string} and message as {string}")
+	public void product_should_be_returned_with_status_code_name_as_and_message_as(String statusCodeEnumString,
+			String name, String message) throws Exception {
 		ResponseModalWrapper responseModalWrapper = InstanceCreator.getResponseModalWrapperInstance();
+		StatusCodeEnum statusCodeEnum = Enum.valueOf(StatusCodeEnum.class, statusCodeEnumString);
+		int statusCode = StatusCodeWrapper.getStatusCodeViaEnum(statusCodeEnum);
 		responseModalWrapper.setCode(statusCode);
 		responseModalWrapper.setName(name);
 		responseModalWrapper.setMessage(message);

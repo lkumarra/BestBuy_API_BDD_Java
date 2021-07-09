@@ -2,6 +2,7 @@ package demo.bestbuy.com.products;
 
 import org.testng.Assert;
 
+
 import demo.bestbuy.com.apihelper.InstanceCreator;
 import demo.bestbuy.com.baseapi.BaseAPI;
 import demo.bestbuy.com.interfaces.IResponseValidator;
@@ -22,16 +23,16 @@ public class GetProducts extends BaseAPI {
 	/**
 	 * Execute Get /products API.
 	 */
-	public void executeGetProuctsAPI() {
+	protected void executeGetProuctsAPI() {
 		responseWrapper = InstanceCreator.getRestAssuredHelperInstace().performGetRequest(endPoint);
 		InstanceCreator.getResponseValidatorInstace().setResponseWrapper(responseWrapper);
 	}
 
 	/**
-	 * Verify the product list returned in response from DB.
+	 * Verify the product list returned in response from DB. 
 	 * 
 	 */
-	public void verifyResponseReturedFromDB() {
+	protected void verifyResponseReturedFromDB() {
 		GetProductModal actualResponse = InstanceCreator.getRestAssuredHelperInstace()
 				.getMappedResponse(responseWrapper.getResponse(), GetProductModal.class);
 		GetProductModal expectedResponse = new GetProductModal();

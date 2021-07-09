@@ -2,10 +2,15 @@ package demo.bestbuy.com.apihelper;
 
 import demo.bestbut.com.responsevalidator.ResponseValidator;
 import demo.bestbuy.com.categories.GetCategories;
+import demo.bestbuy.com.categories.GetCategoriesViaId;
+import demo.bestbuy.com.interfaces.IResponseValidator;
 import demo.bestbuy.com.products.GetProductViaId;
 import demo.bestbuy.com.products.GetProducts;
 import demo.bestbuy.com.restassuredhelper.RestAssuredHelper;
+import demo.bestbuy.com.services.GetServices;
+import demo.bestbuy.com.services.GetServicesViaId;
 import demo.bestbuy.com.wrapper.ResponseModalWrapper;
+import demo.bestbuy.com.wrapper.ResponseWrapper;
 
 /**
  * This class is used to create the Instance of classes
@@ -22,15 +27,18 @@ public class InstanceCreator {
 	private static GetProductViaId getProductViaId = null;
 	private static RestAssuredHelper restAssuredHelper = null;
 	private static ResponseValidator responseValidator = null;
-
+	private static GetCategoriesViaId getCategoriesViaId = null;
+	private static GetServices getServices = null;
+	private static GetServicesViaId getServicesViaId = null;
+	
 	/**
-	 * Create the instance of GetCategories class
+	 * Create the instance of {@link GetCategories}
 	 * 
 	 * @param responseValidator {@link ResponseValidator}
 	 * @return {@link GetCategories}
 	 * @author Lavendra rajput
 	 */
-	public static GetCategories getCategoriesInstance(ResponseValidator responseValidator) {
+	public static GetCategories getCategoriesInstance(IResponseValidator responseValidator) {
 		if (getCategories == null) {
 			getCategories = new GetCategories(responseValidator);
 		}
@@ -38,13 +46,13 @@ public class InstanceCreator {
 	}
 
 	/**
-	 * Create the instance of GetProducts class
+	 * Create the instance of {@link GetProducts}
 	 * 
 	 * @param responseValidator {@link ResponseValidator}
 	 * @return {@link GetProducts}
 	 * @author Lavendra rajput
 	 */
-	public static GetProducts getProdcutsInstance(ResponseValidator responseValidator) {
+	public static GetProducts getProdcutsInstance(IResponseValidator responseValidator) {
 		if (getProducts == null) {
 			getProducts = new GetProducts(responseValidator);
 		}
@@ -52,7 +60,7 @@ public class InstanceCreator {
 	}
 
 	/**
-	 * Create the Instance of ResponseModalWrapper class
+	 * Create the Instance of {@link ResponseWrapper}
 	 * 
 	 * @return {@link ResponseModalWrapper}
 	 * @author Lavendra rajput
@@ -65,13 +73,13 @@ public class InstanceCreator {
 	}
 
 	/**
-	 * Create the Instance of GetProductViaId class
+	 * Create the Instance of {@link GetProductViaId}
 	 * 
 	 * @param responseValidator : {@link ResponseValidator}
 	 * @return {@link GetProductViaId}
 	 * @author Lavendra rajput
 	 */
-	public static GetProductViaId getProductViaIdInstance(ResponseValidator responseValidator) {
+	public static GetProductViaId getProductViaIdInstance(IResponseValidator responseValidator) {
 		if (getProductViaId == null) {
 			getProductViaId = new GetProductViaId(responseValidator);
 		}
@@ -79,7 +87,7 @@ public class InstanceCreator {
 	}
 
 	/**
-	 * Create the instace of RestAssuredHelper class
+	 * Create the instace of {@link RestAssuredHelper}
 	 * 
 	 * @return {@link RestAssuredHelper}
 	 * @author Lavendra rajput
@@ -92,7 +100,7 @@ public class InstanceCreator {
 	}
 
 	/**
-	 * Create the instance of ResponseValidator Class
+	 * Create the instance of {@link ResponseValidator}
 	 * 
 	 * @return {@link ResponseValidator}
 	 * @author Lavendra rajput
@@ -102,5 +110,41 @@ public class InstanceCreator {
 			responseValidator = new ResponseValidator();
 		}
 		return responseValidator;
+	}
+	
+	/**
+	 * Create the instance of {@link GetCategoriesViaId}
+	 * @param responseValidator {@link ResponseValidator}
+	 * @return {@link GetCategoriesViaId}
+	 */
+	public static GetCategoriesViaId getCategoriesViaIdInstance(IResponseValidator responseValidator) {
+		if(getCategoriesViaId == null) {
+			getCategoriesViaId = new GetCategoriesViaId(responseValidator);
+		}
+		return getCategoriesViaId;
+	}
+	
+	/**
+	 * Return the instance of {@link GetServices}
+	 * @param responseValidator {@link IResponseValidator}
+	 * @return {@link GetServices}
+	 */
+	public static GetServices getSevicesInstance(IResponseValidator responseValidator) {
+		if(getServices == null) {
+			getServices = new GetServices(responseValidator);
+		}
+		return getServices;
+	}
+	
+	/**
+	 * Return the instance of {@link GetServicesViaId}
+	 * @param responseValidator {@link ResponseValidator}
+	 * @return {@link GetServicesViaId}
+	 */
+	public static GetServicesViaId getServicesViaIdInstance(IResponseValidator responseValidator) {
+		if(getServicesViaId == null) {
+			getServicesViaId = new GetServicesViaId(responseValidator);
+		}
+		return getServicesViaId;
 	}
 }
