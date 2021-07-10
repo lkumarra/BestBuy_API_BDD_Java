@@ -1,12 +1,14 @@
 package demo.bestbuy.com.products;
 
-import org.testng.Assert;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+
+import demo.bestbuy.com.apihelper.AssertHelper;
 import demo.bestbuy.com.apihelper.InstanceCreator;
 import demo.bestbuy.com.baseapi.BaseAPI;
 import demo.bestbuy.com.interfaces.IResponseValidator;
+import demo.bestbuy.com.products.ProductModal.GetProductDatum;
 
 /**
  * This class contains all the function related to GET /products/{id} API
@@ -45,7 +47,7 @@ public class GetProductViaId extends BaseAPI {
 				.getMappedResponse(responseWrapper.getResponse(), GetProductDatum.class);
 		GetProductDatum expectedResponse = ProductDBHelper.getProductViaId(id);
 		if (!actualResponse.equals(expectedResponse)) {
-			Assert.fail("Actual response is not equal to expected response");
+			AssertHelper.AssertFail(actualResponse, expectedResponse);
 		}
 	}
 }

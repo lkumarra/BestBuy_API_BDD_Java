@@ -1,9 +1,10 @@
 package demo.bestbuy.com.categories;
 
-import org.testng.Assert;
 
+import demo.bestbuy.com.apihelper.AssertHelper;
 import demo.bestbuy.com.apihelper.InstanceCreator;
 import demo.bestbuy.com.baseapi.BaseAPI;
+import demo.bestbuy.com.categories.CategoriesModal.GetCategoryDatum;
 import demo.bestbuy.com.interfaces.IResponseValidator;
 
 public class GetCategoriesViaId extends BaseAPI {
@@ -26,7 +27,7 @@ public class GetCategoriesViaId extends BaseAPI {
 				.getMappedResponse(responseWrapper.getResponse(), GetCategoryDatum.class);
 		GetCategoryDatum expectedResponse = CategoriesDBHelper.getCategoriesViaId(categoryId);
 		if (!actualResponse.equals(expectedResponse)) {
-			Assert.fail("Actual and expected response are not equal");
+			AssertHelper.AssertFail(actualResponse, expectedResponse);
 		}
 	}
 

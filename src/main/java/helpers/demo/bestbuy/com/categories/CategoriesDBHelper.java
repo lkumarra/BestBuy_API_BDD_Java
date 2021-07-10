@@ -1,10 +1,16 @@
 package demo.bestbuy.com.categories;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
-import demo.bestbuy.com.apihelper.InstanceCreator;
+import demo.bestbut.com.dbKeys.DBkeys.CategoriesTableKeys;
+import demo.bestbut.com.dbKeys.DBkeys.CategoryPathTableKeys;
+import demo.bestbut.com.dbKeys.DBkeys.SubCategoriesTableKeys;
+import demo.bestbuy.com.apihelper.StringHelper;
+import demo.bestbuy.com.categories.CategoriesModal.GetCategoryCategoryPath;
+import demo.bestbuy.com.categories.CategoriesModal.GetCategoryDatum;
+import demo.bestbuy.com.categories.CategoriesModal.GetCategorySubCategory;
 import demo.bestbuy.com.dbhelpers.DBHelpers;
 
 /**
@@ -26,17 +32,19 @@ public class CategoriesDBHelper {
 	 */
 	public static List<GetCategoryDatum> getCategoriesList() {
 		String script = DBHelpers.getDBScript(scriptPath + "Script.GetCategories.sql");
-		String json = DBHelpers.executeScript(script);
-		GetCategoryDatum[] getCategoryDatums = InstanceCreator.getRestAssuredHelperInstace().getMappedResponse(json,
-				GetCategoryDatum[].class);
-		List<GetCategoryDatum> datumList = Arrays.asList(getCategoryDatums);
-		datumList.forEach(x -> {
-			x.setSubCategories(getSubcategoriesList(x.getId()));
-			x.setCategoryPath(getCategoryPathList(x.getId()));
-			x.setCreatedAt(x.getCreatedAt().replace(" +00:00", "Z").replace(" ", "T"));
-			x.setUpdatedAt(x.getUpdatedAt().replace(" +00:00", "Z").replace(" ", "T"));
+		List<HashMap<String, String>> dataTable = DBHelpers.executeScript(script);
+		List<GetCategoryDatum> categoriesList = new ArrayList<GetCategoryDatum>();
+		dataTable.forEach(x -> {
+			GetCategoryDatum categories = new GetCategoryDatum();
+			categories.setId(x.get(CategoriesTableKeys.ID));
+			categories.setName(x.get(CategoriesTableKeys.NAME));
+			categories.setCreatedAt(new StringHelper(x.get(CategoriesTableKeys.CREATEDAT)).getModifiedDateString());
+			categories.setUpdatedAt(new StringHelper(x.get(CategoriesTableKeys.UPDATEDAT)).getModifiedDateString());
+			categories.setSubCategories(getSubcategoriesList(x.get(CategoriesTableKeys.ID)));
+			categories.setCategoryPath(getCategoryPathList(x.get(CategoriesTableKeys.ID)));
+			categoriesList.add(categories);
 		});
-		return datumList;
+		return categoriesList;
 	}
 
 	/**
@@ -50,15 +58,17 @@ public class CategoriesDBHelper {
 		String script = DBHelpers.getDBScript(scriptPath + "Script.GetSubCategories.sql");
 		List<String> param = new ArrayList<>();
 		param.add(categoryId);
-		String json = DBHelpers.executeScriptWithStringParam(script, param);
-		GetCategorySubCategory[] getCSubCategories = InstanceCreator.getRestAssuredHelperInstace()
-				.getMappedResponse(json, GetCategorySubCategory[].class);
-		List<GetCategorySubCategory> getCategorySubCategories = Arrays.asList(getCSubCategories);
-		getCategorySubCategories.forEach(x -> {
-			x.setCreatedAt(x.getCreatedAt().replace(" +00:00", "Z").replace(" ", "T"));
-			x.setUpdatedAt(x.getUpdatedAt().replace(" +00:00", "Z").replace(" ", "T"));
+		List<HashMap<String, String>> dataTable = DBHelpers.executeScriptWithStringParam(script, param);
+		List<GetCategorySubCategory> subCategoryList = new ArrayList<GetCategorySubCategory>();
+		dataTable.forEach(x -> {
+			GetCategorySubCategory subCategory = new GetCategorySubCategory();
+			subCategory.setId(x.get(SubCategoriesTableKeys.ID));
+			subCategory.setName(x.get(SubCategoriesTableKeys.NAME));
+			subCategory.setCreatedAt(new StringHelper(x.get(CategoriesTableKeys.CREATEDAT)).getModifiedDateString());
+			subCategory.setUpdatedAt(new StringHelper(x.get(CategoriesTableKeys.UPDATEDAT)).getModifiedDateString());
+			subCategoryList.add(subCategory);
 		});
-		return getCategorySubCategories;
+		return subCategoryList;
 	}
 
 	/**
@@ -72,15 +82,17 @@ public class CategoriesDBHelper {
 		String script = DBHelpers.getDBScript(scriptPath + "Script.GetCategoryPath.sql");
 		List<String> param = new ArrayList<String>();
 		param.add(categoryId);
-		String json = DBHelpers.executeScriptWithStringParam(script, param);
-		GetCategoryCategoryPath[] getCSubCategories = InstanceCreator.getRestAssuredHelperInstace()
-				.getMappedResponse(json, GetCategoryCategoryPath[].class);
-		List<GetCategoryCategoryPath> getCategoryCategoryPaths = Arrays.asList(getCSubCategories);
-		getCategoryCategoryPaths.forEach(x -> {
-			x.setCreatedAt(x.getCreatedAt().replace(" +00:00", "Z").replace(" ", "T"));
-			x.setUpdatedAt(x.getUpdatedAt().replace(" +00:00", "Z").replace(" ", "T"));
+		List<HashMap<String, String>> dataTable = DBHelpers.executeScriptWithStringParam(script, param);
+		List<GetCategoryCategoryPath> categoryPathList = new ArrayList<GetCategoryCategoryPath>();
+		dataTable.forEach(x -> {
+			GetCategoryCategoryPath categoryPath = new GetCategoryCategoryPath();
+			categoryPath.setId(x.get(CategoryPathTableKeys.ID));
+			categoryPath.setName(x.get(CategoryPathTableKeys.NAME));
+			categoryPath.setCreatedAt(new StringHelper(x.get(CategoriesTableKeys.CREATEDAT)).getModifiedDateString());
+			categoryPath.setUpdatedAt(new StringHelper(x.get(CategoriesTableKeys.UPDATEDAT)).getModifiedDateString());
+			categoryPathList.add(categoryPath);
 		});
-		return getCategoryCategoryPaths;
+		return categoryPathList;
 	}
 
 	/**
@@ -91,10 +103,8 @@ public class CategoriesDBHelper {
 	 */
 	public static int getTotalCategoryCount() {
 		String script = DBHelpers.getDBScript(scriptPath + "Script.GetTotalCategories.sql");
-		String json = DBHelpers.executeScript(script);
-		GetCategoryDatum[] getCategoryDatums = InstanceCreator.getRestAssuredHelperInstace().getMappedResponse(json,
-				GetCategoryDatum[].class);
-		return getCategoryDatums.length;
+		List<HashMap<String, String>> dataTable = DBHelpers.executeScript(script);
+		return dataTable.size();
 	}
 
 	/**
@@ -107,16 +117,18 @@ public class CategoriesDBHelper {
 		String script = DBHelpers.getDBScript(scriptPath + "Script.GetCategoriesViaId.sql");
 		List<String> param = new ArrayList<String>();
 		param.add(categoryId);
-		String json = DBHelpers.executeScriptWithStringParam(script,param);
-		GetCategoryDatum[] getCategoryDatums = InstanceCreator.getRestAssuredHelperInstace().getMappedResponse(json,
-				GetCategoryDatum[].class);
-		List<GetCategoryDatum> datumList = Arrays.asList(getCategoryDatums);
-		datumList.forEach(x -> {
-			x.setSubCategories(getSubcategoriesList(x.getId()));
-			x.setCategoryPath(getCategoryPathList(x.getId()));
-			x.setCreatedAt(x.getCreatedAt().replace(" +00:00", "Z").replace(" ", "T"));
-			x.setUpdatedAt(x.getUpdatedAt().replace(" +00:00", "Z").replace(" ", "T"));
+		List<HashMap<String, String>> dataTable = DBHelpers.executeScriptWithStringParam(script, param);
+		List<GetCategoryDatum> categoriesList = new ArrayList<GetCategoryDatum>();
+		dataTable.forEach(x -> {
+			GetCategoryDatum categories = new GetCategoryDatum();
+			categories.setId(x.get(CategoriesTableKeys.ID));
+			categories.setName(x.get(CategoriesTableKeys.NAME));
+			categories.setCreatedAt(new StringHelper(x.get(CategoriesTableKeys.CREATEDAT)).getModifiedDateString());
+			categories.setUpdatedAt(new StringHelper(x.get(CategoriesTableKeys.UPDATEDAT)).getModifiedDateString());
+			categories.setSubCategories(getSubcategoriesList(x.get(CategoriesTableKeys.ID)));
+			categories.setCategoryPath(getCategoryPathList(x.get(CategoriesTableKeys.ID)));
+			categoriesList.add(categories);
 		});
-		return datumList.get(0);
+		return categoriesList.get(0);
 	}
 }

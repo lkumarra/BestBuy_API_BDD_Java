@@ -4,6 +4,7 @@ import demo.bestbut.com.responsevalidator.ResponseValidator;
 import demo.bestbuy.com.categories.GetCategories;
 import demo.bestbuy.com.categories.GetCategoriesViaId;
 import demo.bestbuy.com.interfaces.IResponseValidator;
+import demo.bestbuy.com.products.AddProducts;
 import demo.bestbuy.com.products.GetProductViaId;
 import demo.bestbuy.com.products.GetProducts;
 import demo.bestbuy.com.restassuredhelper.RestAssuredHelper;
@@ -30,6 +31,7 @@ public class InstanceCreator {
 	private static GetCategoriesViaId getCategoriesViaId = null;
 	private static GetServices getServices = null;
 	private static GetServicesViaId getServicesViaId = null;
+	private static AddProducts addProducts = null;
 	
 	/**
 	 * Create the instance of {@link GetCategories}
@@ -146,5 +148,17 @@ public class InstanceCreator {
 			getServicesViaId = new GetServicesViaId(responseValidator);
 		}
 		return getServicesViaId;
+	}
+	
+	/**
+	 * Return the instance of {@link AddProducts}
+	 * @param responseValidator {@link ResponseValidator}
+	 * @return {@link AddProducts}
+	 */
+	public static AddProducts getAddProductsInstance(IResponseValidator responseValidator) {
+		if(addProducts == null) {
+			addProducts = new AddProducts(responseValidator);
+		}
+		return addProducts;
 	}
 }

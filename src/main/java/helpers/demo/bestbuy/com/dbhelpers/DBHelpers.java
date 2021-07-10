@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -65,18 +67,18 @@ public class DBHelpers {
 	 * @return HashMam with result
 	 * @author Lavendra rajput
 	 */
-	public static String executeScript(String script) {
+	public static List<HashMap<String, String>> executeScript(String script) {
 		Connection c = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		String json = null;
+		List<HashMap<String, String>> dataTable = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
 			c = DriverManager.getConnection(BDDConstants.getDataBaseConnectionString());
 			c.setAutoCommit(false);
 			stmt = c.createStatement();
 			rs = stmt.executeQuery(script);
-			json = convertResultSetToJson(rs);
+			dataTable = convertResultSetToList(rs);
 			rs.close();
 			stmt.close();
 			c.close();
@@ -84,7 +86,7 @@ public class DBHelpers {
 			e.printStackTrace();
 			System.exit(0);
 		}
-		return json;
+		return dataTable;
 	}
 
 	/**
@@ -95,11 +97,11 @@ public class DBHelpers {
 	 * @return Hashmap with stored results
 	 * @author Lavendra rajput
 	 */
-	public static String executeScriptWithStringParam(String script, List<String> list) {
+	public static List<HashMap<String, String>>executeScriptWithStringParam(String script, List<String> list) {
 		Connection c = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String json = null;
+		List<HashMap<String, String>> dataTable = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
 			c = DriverManager.getConnection(BDDConstants.getDataBaseConnectionString());
@@ -109,7 +111,7 @@ public class DBHelpers {
 				stmt.setString(i, list.get(i - 1));
 			}
 			rs = stmt.executeQuery();
-			json = convertResultSetToJson(rs);
+			dataTable = convertResultSetToList(rs);
 			rs.close();
 			stmt.close();
 			c.close();
@@ -117,7 +119,7 @@ public class DBHelpers {
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
 		}
-		return json;
+		return dataTable;
 	}
 
 	/**
@@ -128,11 +130,11 @@ public class DBHelpers {
 	 * @return Hashmap with stored results
 	 * @author Lavendra rajput
 	 */
-	public static String executeScript(String script, List<Integer> list) {
+	public static List<HashMap<String, String>> executeScript(String script, List<Integer> list) {
 		Connection c = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String json = null;
+		List<HashMap<String, String>> dataTable = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
 			c = DriverManager.getConnection(BDDConstants.getDataBaseConnectionString());
@@ -142,7 +144,7 @@ public class DBHelpers {
 				stmt.setInt(i, list.get(i - 1));
 			}
 			rs = stmt.executeQuery();
-			json = convertResultSetToJson(rs);
+			dataTable = convertResultSetToList(rs);
 			rs.close();
 			stmt.close();
 			c.close();
@@ -150,16 +152,31 @@ public class DBHelpers {
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
 		}
-		return json;
+		return dataTable;
 	}
 
+	public static void executeNonQuery(String script) {
+		Connection c = null;
+		Statement stmt = null;
+		try {
+			Class.forName("org.sqlite.JDBC");
+			c = DriverManager.getConnection(BDDConstants.getDataBaseConnectionString());
+			stmt = c.createStatement();
+			stmt.executeUpdate(script);
+			stmt.close();
+			c.close();
+		} catch (Exception e) {
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			System.exit(0);
+		}
+	}
 	/**
 	 * Convert ResultSet into JSON
 	 * @param resultSet
 	 * @return JSON String
 	 * @throws SQLException
 	 */
-	private static String convertResultSetToJson(ResultSet resultSet) throws SQLException {
+	public static String convertResultSetToJson(ResultSet resultSet) throws SQLException {
 		ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
 		int columns = resultSetMetaData.getColumnCount();
 		JSONArray jsonArray = new JSONArray();
@@ -172,5 +189,20 @@ public class DBHelpers {
 			jsonArray.put(jsonObject);
 		}
 		return jsonArray.toString();
+	}
+	
+	private static List<HashMap<String, String>> convertResultSetToList(ResultSet resultSet) throws SQLException{
+		ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
+		int columns = resultSetMetaData.getColumnCount();
+		List<HashMap<String, String>> dataTable = new ArrayList<HashMap<String,String>>();
+		while (resultSet.next()) {
+			HashMap<String, String> hashMap = new HashMap<String, String>();
+			for (int i = 1; i <= columns; i++) {
+				String columnName = resultSetMetaData.getColumnName(i);
+				hashMap.put(columnName, resultSet.getObject(columnName).toString());
+			}
+			dataTable.add(hashMap);
+		}
+		return dataTable;
 	}
 }

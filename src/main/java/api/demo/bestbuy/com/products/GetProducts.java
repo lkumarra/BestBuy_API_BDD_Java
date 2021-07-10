@@ -1,11 +1,11 @@
 package demo.bestbuy.com.products;
 
-import org.testng.Assert;
 
-
+import demo.bestbuy.com.apihelper.AssertHelper;
 import demo.bestbuy.com.apihelper.InstanceCreator;
 import demo.bestbuy.com.baseapi.BaseAPI;
 import demo.bestbuy.com.interfaces.IResponseValidator;
+import demo.bestbuy.com.products.ProductModal.GetProductModal;
 
 /**
  * This class contains all the method related to GET /products API
@@ -29,7 +29,7 @@ public class GetProducts extends BaseAPI {
 	}
 
 	/**
-	 * Verify the product list returned in response from DB. 
+	 * Verify the product list returned in response from DB.
 	 * 
 	 */
 	protected void verifyResponseReturedFromDB() {
@@ -41,7 +41,7 @@ public class GetProducts extends BaseAPI {
 		expectedResponse.setLimit(10);
 		expectedResponse.setSkip(0);
 		if (!expectedResponse.equals(actualResponse)) {
-			Assert.fail("Actual and expeted response are not equal");
+			AssertHelper.AssertFail(actualResponse, expectedResponse);
 		}
 	}
 }

@@ -1,6 +1,7 @@
 package demo.bestbuy.com.hooks;
 
 import demo.bestbuy.com.apihelper.APIHelper;
+import demo.bestbuy.com.products.ProductDBHelper;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
@@ -21,5 +22,10 @@ public class Hooks {
 	@After
 	public void stopServer() {
 		APIHelper.startApiServer();
+	}
+	
+	@Before(value = "@PostProducts")
+	public void deleteAddedProduct() {
+		ProductDBHelper.deleteAddedProduct();
 	}
 }

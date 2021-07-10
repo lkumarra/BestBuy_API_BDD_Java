@@ -44,4 +44,16 @@ public class VerifyResponseSteps {
 		baseAPi.VerifyResponse(responseModalWrapper);
 	}
 
+	@Then("Response should not be returned with name as {string},message as {string}, status code {string} and errors as {string}")
+	public void response_should_not_be_returned_with_name_as_message_as_status_code_and_errors_as(String name,
+			String message, String statusCodeEnumString, String errors) throws Exception {
+		ResponseModalWrapper responseModalWrapper = InstanceCreator.getResponseModalWrapperInstance();
+		StatusCodeEnum statusCodeEnum = Enum.valueOf(StatusCodeEnum.class, statusCodeEnumString);
+		int statusCode = StatusCodeWrapper.getStatusCodeViaEnum(statusCodeEnum);
+		responseModalWrapper.setCode(statusCode);
+		responseModalWrapper.setName(name);
+		responseModalWrapper.setMessage(message);
+		responseModalWrapper.setErrors(errors);
+		baseAPi.VerifyResponse(responseModalWrapper);
+	}
 }

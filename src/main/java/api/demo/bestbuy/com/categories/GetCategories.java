@@ -1,10 +1,11 @@
 package demo.bestbuy.com.categories;
 
-import org.testng.Assert;
 
 
+import demo.bestbuy.com.apihelper.AssertHelper;
 import demo.bestbuy.com.apihelper.InstanceCreator;
 import demo.bestbuy.com.baseapi.BaseAPI;
+import demo.bestbuy.com.categories.CategoriesModal.GetCategoryModal;
 import demo.bestbuy.com.interfaces.IResponseValidator;
 
 /**
@@ -43,7 +44,7 @@ public class GetCategories extends BaseAPI {
 		expectedResponse.setLimit(10);
 		expectedResponse.setSkip(0);
 		if (!expectedResponse.equals(actualResponse)) {
-			Assert.fail("Actual and excpected response are not same");
+			AssertHelper.AssertFail(actualResponse, expectedResponse);
 		}
 	}
 }

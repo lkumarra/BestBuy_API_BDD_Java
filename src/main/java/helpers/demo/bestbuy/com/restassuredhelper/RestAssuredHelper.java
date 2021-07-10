@@ -117,4 +117,15 @@ public class RestAssuredHelper {
 		}
 		return null;
 	}
+
+	public String serializedObject(Object object) {
+		ObjectMapper mapper = new ObjectMapper();
+		String serializedObject = null;
+		try {
+			serializedObject = mapper.writeValueAsString(object);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return serializedObject;
+	}
 }

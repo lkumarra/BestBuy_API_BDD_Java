@@ -27,6 +27,7 @@ public class ResponseValidator implements IResponseValidator {
 
 	/**
 	 * Verify the Response returned
+	 * 
 	 * @author Lavendra rajput
 	 */
 	public void verifyResponse(ResponseModalWrapper responseModalWrapper) {
@@ -50,16 +51,17 @@ public class ResponseValidator implements IResponseValidator {
 						+ JsonParserHelper.getParsedValueFromJson(getResponseWrapper().getResponse(), "message")
 						+ " Expected message is " + responseModalWrapper.getMessage());
 			}
-			if (!JsonParserHelper.getParsedValueFromJson(getResponseWrapper().getResponse(), "errors[0]")
+			if (!JsonParserHelper.getParsedValueFromJson(getResponseWrapper().getResponse(), "errors")
 					.equals(responseModalWrapper.getErrors())) {
 				Assert.fail("Actaul error is "
-						+ JsonParserHelper.getParsedValueFromJson(getResponseWrapper().getResponse(), "errors[0]")
+						+ JsonParserHelper.getParsedValueFromJson(getResponseWrapper().getResponse(), "errors")
 						+ " Expected error is " + responseModalWrapper.getErrors());
 			}
 
 		}
 		if (getResponseWrapper().getResponse().contains("name")
-				&& getResponseWrapper().getResponse().contains("message")) {
+				&& getResponseWrapper().getResponse().contains("message")
+				&& getResponseWrapper().getResponse().contains("errors")) {
 			if (!JsonParserHelper.getParsedValueFromJson(getResponseWrapper().getResponse(), "name")
 					.equals(responseModalWrapper.getName())) {
 				Assert.fail("Actaul name is "

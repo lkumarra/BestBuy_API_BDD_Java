@@ -1,11 +1,12 @@
 package demo.bestbuy.com.services;
 
-import org.testng.Assert;
 
 import demo.bestbut.com.services.ServicesDBHelper;
+import demo.bestbuy.com.apihelper.AssertHelper;
 import demo.bestbuy.com.apihelper.InstanceCreator;
 import demo.bestbuy.com.baseapi.BaseAPI;
 import demo.bestbuy.com.interfaces.IResponseValidator;
+import demo.bestbuy.com.services.ServicesModal.Datum;
 
 public class GetServicesViaId extends BaseAPI {
 
@@ -26,7 +27,7 @@ public class GetServicesViaId extends BaseAPI {
 				.getMappedResponse(responseWrapper.getResponse(), Datum.class);
 		Datum expectedResponse = ServicesDBHelper.getServicesFromDB(_id);
 		if(!actualResponse.equals(expectedResponse)) {
-			Assert.fail("Actual and expected response are not equal");
+			AssertHelper.AssertFail(actualResponse, expectedResponse);
 		}
 	}
 }
