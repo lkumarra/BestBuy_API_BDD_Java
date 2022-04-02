@@ -38,7 +38,7 @@ public class AddProducts extends BaseAPI {
 		_postProduct.setImage(image);
 		String serializedObject = InstanceCreator.getRestAssuredHelperInstace().serializedObject(_postProduct);
 		responseWrapper = InstanceCreator.getRestAssuredHelperInstace().performPostRequest(endPoint, serializedObject);
-		InstanceCreator.getResponseValidatorInstace().setResponseWrapper(responseWrapper);
+		InstanceCreator.getResponseValidatorInstace(responseValidator).setResponseWrapper(responseWrapper);
 		_executionTime = DateFormat.getDateInstance().format(new Date());
 	}
 

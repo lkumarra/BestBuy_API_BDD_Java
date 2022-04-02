@@ -10,7 +10,6 @@ import demo.bestbuy.com.interfaces.IResponseValidator;
 public class GetCategoriesViaId extends BaseAPI {
 
 	private String categoryId;
-
 	public GetCategoriesViaId(IResponseValidator responseValidator) {
 		super("/categories/%s", responseValidator);
 	}
@@ -19,7 +18,7 @@ public class GetCategoriesViaId extends BaseAPI {
 		this.categoryId = categoryId;
 		responseWrapper = InstanceCreator.getRestAssuredHelperInstace()
 				.performGetRequest(String.format(endPoint, categoryId));
-		InstanceCreator.getResponseValidatorInstace().setResponseWrapper(responseWrapper);
+		InstanceCreator.getResponseValidatorInstace(responseValidator).setResponseWrapper(responseWrapper);
 	}
 
 	protected void verifyGetCatgoriesViaIdFromDB() {

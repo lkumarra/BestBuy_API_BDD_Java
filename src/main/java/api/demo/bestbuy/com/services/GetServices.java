@@ -16,7 +16,7 @@ public class GetServices extends BaseAPI {
 
 	public void executeGetServicesAPI() {
 		responseWrapper = InstanceCreator.getRestAssuredHelperInstace().performGetRequest(endPoint);
-		InstanceCreator.getResponseValidatorInstace().setResponseWrapper(responseWrapper);
+		InstanceCreator.getResponseValidatorInstace(responseValidator).setResponseWrapper(responseWrapper);
 	}
 
 	public void verifyResponseFromDB() {

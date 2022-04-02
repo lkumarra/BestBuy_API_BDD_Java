@@ -17,6 +17,7 @@ import demo.bestbuy.com.interfaces.IResponseValidator;
  */
 public class GetCategories extends BaseAPI {
 
+	
 	public GetCategories(IResponseValidator responseValidator) {
 		super("/categories", responseValidator);
 	}
@@ -26,7 +27,7 @@ public class GetCategories extends BaseAPI {
 	 */
 	protected void executeGetCategoriesAPI() {
 		responseWrapper = InstanceCreator.getRestAssuredHelperInstace().performGetRequest(endPoint);
-		InstanceCreator.getResponseValidatorInstace().setResponseWrapper(responseWrapper);
+		InstanceCreator.getResponseValidatorInstace(responseValidator).setResponseWrapper(responseWrapper);
 	}
 
 	/**

@@ -17,8 +17,12 @@ public class StringHelper {
 	public String getModifiedDateString() {
 		return _stringToReplace.replace(" +00:00", "Z").replace(" ", "T");
 	}
+	
+	public String getModifiedDateString(String dateToModify) {
+		return dateToModify.replace(" +00:00", "Z").replace(" ", "T");
+	}
 
-	public static String requestedParsedString(String inputString) {
+	public static String getRequestedParsedString(String inputString) {
 		switch (inputString) {
 		case "NULL":
 			return null;

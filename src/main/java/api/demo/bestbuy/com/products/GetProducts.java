@@ -16,6 +16,7 @@ import demo.bestbuy.com.products.ProductModal.GetProductModal;
  */
 public class GetProducts extends BaseAPI {
 
+	
 	public GetProducts(IResponseValidator responseValidator) {
 		super("/products", responseValidator);
 	}
@@ -25,7 +26,7 @@ public class GetProducts extends BaseAPI {
 	 */
 	protected void executeGetProuctsAPI() {
 		responseWrapper = InstanceCreator.getRestAssuredHelperInstace().performGetRequest(endPoint);
-		InstanceCreator.getResponseValidatorInstace().setResponseWrapper(responseWrapper);
+		InstanceCreator.getResponseValidatorInstace(responseValidator).setResponseWrapper(responseWrapper);
 	}
 
 	/**

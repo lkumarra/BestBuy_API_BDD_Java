@@ -17,20 +17,20 @@ import io.cucumber.java.en.When;
  */
 public class GetCategoriesSteps {
 
-	private GetCategories getCategories;
+	private GetCategories _getCategories;
 
 	public GetCategoriesSteps(ResponseValidator responseValidator, ScenarioContext<BaseAPI> context) {
-		getCategories = InstanceCreator.getCategoriesInstance(responseValidator);
-		context.setContext(BaseAPI.class, getCategories);
+		_getCategories = InstanceCreator.getCategoriesInstance(responseValidator);
+		context.setContext(BaseAPI.class, _getCategories);
 	}
 
 	@When("I get all categories")
 	public void i_get_all_categories() {
-		getCategories.executeGetCategoriesAPI();
+		_getCategories.executeGetCategoriesAPI();
 	}
 
 	@Then("Verify the categories list from Db")
 	public void verify_the_categories_list_from_Db() {
-		getCategories.verifyCategoriesFromDB();
+		_getCategories.verifyCategoriesFromDB();
 	}
 }

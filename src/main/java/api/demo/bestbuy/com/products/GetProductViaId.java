@@ -33,7 +33,7 @@ public class GetProductViaId extends BaseAPI {
 	protected void extecuteGetProductViaIdAPI(int id) {
 		this.id = id;
 		responseWrapper = InstanceCreator.getRestAssuredHelperInstace().performGetRequest(String.format(endPoint, id));
-		InstanceCreator.getResponseValidatorInstace().setResponseWrapper(responseWrapper);
+		InstanceCreator.getResponseValidatorInstace(responseValidator).setResponseWrapper(responseWrapper);
 	}
 
 	/**
