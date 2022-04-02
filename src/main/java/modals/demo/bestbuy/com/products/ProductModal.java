@@ -19,10 +19,10 @@ public class ProductModal {
 	 * @Date 2 July 2021
 	 */
 	public static class GetProductModal {
-		public int total;
-		public int limit;
-		public int skip;
-		public List<GetProductDatum> data;
+		private int total;
+		private int limit;
+		private int skip;
+		private List<GetProductDatum> data;
 	}
 
 	@Getter
@@ -63,9 +63,9 @@ public class ProductModal {
 	 * @Date 2 July 2021
 	 */
 	public static class GetProductCategory {
-		public String id;
-		public String name;
-		public String createdAt;
-		public String updatedAt;
+		private String id;
+		private String name;
+		private String createdAt;
+		private String updatedAt;
 	}
 }

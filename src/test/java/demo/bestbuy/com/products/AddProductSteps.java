@@ -22,14 +22,14 @@ public class AddProductSteps {
 	public void i_create_a_product_with_name_as_type_as_price_as_shipping_as_upc_as_description_as_manufacturer_as_model_as_url_as_image_as(
 			String name, String type, int price, int shipping, String upc, String description, String manufacturer,
 			String model, String url, String image) {
-		name = StringHelper.requestedParsedString(name);
-		type = StringHelper.requestedParsedString(type);
-		upc = StringHelper.requestedParsedString(upc);
-		description = StringHelper.requestedParsedString(description);
-		manufacturer = StringHelper.requestedParsedString(manufacturer);
-		model = StringHelper.requestedParsedString(model);
-		url = StringHelper.requestedParsedString(url);
-		image = StringHelper.requestedParsedString(image);
+		name = StringHelper.getRequestedParsedString(name);
+		type = StringHelper.getRequestedParsedString(type);
+		upc = StringHelper.getRequestedParsedString(upc);
+		description = StringHelper.getRequestedParsedString(description);
+		manufacturer = StringHelper.getRequestedParsedString(manufacturer);
+		model = StringHelper.getRequestedParsedString(model);
+		url = StringHelper.getRequestedParsedString(url);
+		image = StringHelper.getRequestedParsedString(image);
 		_aAddProducts.executePostProductAPI(name, type, price, upc, shipping, description, manufacturer, model, url, image);
 	}
 

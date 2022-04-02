@@ -19,7 +19,7 @@ public class GetServicesViaId extends BaseAPI {
 	protected void executeGetServicesViaIdAPI(int id) {
 		_id = id;
 		responseWrapper = InstanceCreator.getRestAssuredHelperInstace().performGetRequest(String.format(endPoint, id));
-		InstanceCreator.getResponseValidatorInstace().setResponseWrapper(responseWrapper);
+		InstanceCreator.getResponseValidatorInstace(responseValidator).setResponseWrapper(responseWrapper);
 	}
 
 	protected void getServicesViaIdResponseFromDB() {
