@@ -1,4 +1,4 @@
-package demo.bestbut.com.responsevalidator;
+package demo.bestbuy.com.responsevalidator;
 
 import org.testng.Assert;
 

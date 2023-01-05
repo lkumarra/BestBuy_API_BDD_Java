@@ -1,12 +1,12 @@
 package demo.bestbuy.com.apihelper;
 
-import demo.bestbut.com.responsevalidator.ResponseValidator;
 import demo.bestbuy.com.categories.GetCategories;
 import demo.bestbuy.com.categories.GetCategoriesViaId;
 import demo.bestbuy.com.interfaces.IResponseValidator;
 import demo.bestbuy.com.products.AddProducts;
 import demo.bestbuy.com.products.GetProductViaId;
 import demo.bestbuy.com.products.GetProducts;
+import demo.bestbuy.com.responsevalidator.ResponseValidator;
 import demo.bestbuy.com.restassuredhelper.RestAssuredHelper;
 import demo.bestbuy.com.services.GetServices;
 import demo.bestbuy.com.services.GetServicesViaId;
