@@ -1,4 +1,4 @@
-package demo.bestbut.com.services;
+package demo.bestbuy.com.services;
 
 import java.util.ArrayList;
 import java.util.HashMap;

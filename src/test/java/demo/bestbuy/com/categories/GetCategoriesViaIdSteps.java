@@ -1,10 +1,10 @@
 package demo.bestbuy.com.categories;
 
-import demo.bestbut.com.responsevalidator.ResponseValidator;
 import demo.bestbuy.com.apihelper.InstanceCreator;
 import demo.bestbuy.com.baseapi.BaseAPI;
 import demo.bestbuy.com.categoriesData.CategoriesData;
 import demo.bestbuy.com.categoriesData.CategoriesData.CategoriesDataEnum;
+import demo.bestbuy.com.responsevalidator.ResponseValidator;
 import demo.bestbuy.com.scenariocontext.ScenarioContext;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
