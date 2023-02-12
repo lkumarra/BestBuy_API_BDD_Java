@@ -11,7 +11,7 @@ Feature: Get Categories Via ID
     Then Response should be returned with status code 'OK'
     And Verify the category from Db
 
- @GetCategories @NegativeScenario
+  @GetCategories @NegativeScenario
   Scenario: Try to get categories via Invalid product id.
     Given I am a valid user
     When I try get categories with product 'Invalid'
