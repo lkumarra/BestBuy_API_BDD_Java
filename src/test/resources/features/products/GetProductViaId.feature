@@ -4,14 +4,14 @@ Feature: Get Product via Id
   I want to told to verify products
   API :- GET /products/{id}
 
-  @GetProducts @PositiveScenario
+  @GetProducts @PositiveScenarios
   Scenario: Get product via Id
     Given I am a valid user
     When I get product with product 'DuracellCopperTechBattery'
     Then Response should be returned with status code 'OK'
     And Verify the product from Db
 
-  @GetProducts @NegativeScenario
+  @GetProducts @NegativeScenarios
   Scenario: Try to get product via Invalid product id.
     Given I am a valid user
     When I try get product with product 'Invalid'

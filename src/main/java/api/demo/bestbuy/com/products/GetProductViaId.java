@@ -1,6 +1,9 @@
 package demo.bestbuy.com.products;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
@@ -19,6 +22,7 @@ import demo.bestbuy.com.products.ProductModal.GetProductDatum;
  */
 public class GetProductViaId extends BaseAPI {
 
+	private final Logger logger = LoggerFactory.getLogger(GetProductViaId.class);
 	private int id;
 
 	public GetProductViaId(IResponseValidator responseValidator) {
@@ -33,6 +37,8 @@ public class GetProductViaId extends BaseAPI {
 	protected void extecuteGetProductViaIdAPI(int id) {
 		this.id = id;
 		responseWrapper = InstanceCreator.getRestAssuredHelperInstace().performGetRequest(String.format(endPoint, id));
+		logger.warn("Response for endpoint : {} with metod : {} is : {} ", String.format(endPoint, id), "GET",
+				responseWrapper.getResponse());
 		InstanceCreator.getResponseValidatorInstace(responseValidator).setResponseWrapper(responseWrapper);
 	}
 
@@ -45,7 +51,11 @@ public class GetProductViaId extends BaseAPI {
 	protected void verifyProductListFromDb() {
 		GetProductDatum actualResponse = InstanceCreator.getRestAssuredHelperInstace()
 				.getMappedResponse(responseWrapper.getResponse(), GetProductDatum.class);
+		logger.warn("Response from API is : {}",
+				InstanceCreator.getRestAssuredHelperInstace().serializedObject(actualResponse));
 		GetProductDatum expectedResponse = ProductDBHelper.getProductViaId(id);
+		logger.warn("Data from Db is : {}",
+				InstanceCreator.getRestAssuredHelperInstace().serializedObject(expectedResponse));
 		if (!actualResponse.equals(expectedResponse)) {
 			AssertHelper.AssertFail(actualResponse, expectedResponse);
 		}

@@ -3,8 +3,11 @@ package demo.bestbuy.com.products;
 import java.text.DateFormat;
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import demo.bestbuy.com.apihelper.AssertHelper;
-import demo.bestbuy.com.apihelper.InstanceCreator;
+import static demo.bestbuy.com.apihelper.InstanceCreator.*;
 import demo.bestbuy.com.apihelper.StringHelper;
 import demo.bestbuy.com.baseapi.BaseAPI;
 import demo.bestbuy.com.interfaces.IResponseValidator;
@@ -13,6 +16,8 @@ import demo.bestbuy.com.products.ProductModal.GetProductDatum;
 import demo.bestbuy.com.wrapper.ResponseModalWrapper;
 
 public class AddProducts extends BaseAPI {
+
+	private Logger logger = LoggerFactory.getLogger(BaseAPI.class);
 
 	private PostProduct _postProduct;
 	private String _executionTime;
@@ -36,9 +41,11 @@ public class AddProducts extends BaseAPI {
 		_postProduct.setModel(model);
 		_postProduct.setUrl(url);
 		_postProduct.setImage(image);
-		String serializedObject = InstanceCreator.getRestAssuredHelperInstace().serializedObject(_postProduct);
-		responseWrapper = InstanceCreator.getRestAssuredHelperInstace().performPostRequest(endPoint, serializedObject);
-		InstanceCreator.getResponseValidatorInstace(responseValidator).setResponseWrapper(responseWrapper);
+		String serializedObject = getRestAssuredHelperInstace().serializedObject(_postProduct);
+		responseWrapper = getRestAssuredHelperInstace().performPostRequest(endPoint, serializedObject);
+		logger.warn("Response for endpoint : {} with request : {} with method : {} is : {} ", endPoint,
+				serializedObject, "POST", responseWrapper.getResponse());
+		getResponseValidatorInstace(responseValidator).setResponseWrapper(responseWrapper);
 		_executionTime = DateFormat.getDateInstance().format(new Date());
 	}
 
@@ -59,7 +66,7 @@ public class AddProducts extends BaseAPI {
 			expected.setImage(_postProduct.getImage());
 			expected.setCreatedAt(_executionTime);
 			expected.setUpdatedAt(_executionTime);
-			actual = InstanceCreator.getRestAssuredHelperInstace().getMappedResponse(responseWrapper.getResponse(),
+			actual = getRestAssuredHelperInstace().getMappedResponse(responseWrapper.getResponse(),
 					GetProductDatum.class);
 			actual.setCreatedAt(StringHelper.getParsedDate(actual.getCreatedAt()));
 			actual.setUpdatedAt(StringHelper.getParsedDate(actual.getUpdatedAt()));

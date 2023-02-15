@@ -4,14 +4,14 @@ Feature: PostProducts
   I want to told to verify products
   API :- POST /products
 
-  @GetProducts @PositiveScenatio
+  @GetProducts @PositiveScenarios
   Scenario: Post a products
     Given I am a valid user
     When I create a product with name as 'Added Product', type as 'Added Type', price as 10000, shipping as 200, upc as 'AddedUPC',description as 'Added Description',manufacturer as 'Added Manufacturer', model as 'Added Model',url as 'Added Url' image as 'Added Image'
     Then Response should be returned with status code 'CREATED'
     And Verify product created in Db.
 
-  @GetProducts @NegativeScenario
+  @GetProducts @NegativeScenarios
   Scenario Outline: Post a products with inavalid data
     Given I am a valid user
     When I try create a product with name as '<Name>', type as '<type>', price as <price>, shipping as <shipping>, upc as '<upc>',description as '<description>',manufacturer as '<manufacturer>', model as '<model>', url as '<url>' image as '<image>'

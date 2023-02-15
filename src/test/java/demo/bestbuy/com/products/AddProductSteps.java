@@ -21,7 +21,7 @@ public class AddProductSteps {
 	@When("I create a product with name as {string}, type as {string}, price as {int}, shipping as {int}, upc as {string},description as {string},manufacturer as {string}, model as {string},url as {string} image as {string}")
 	public void i_create_a_product_with_name_as_type_as_price_as_shipping_as_upc_as_description_as_manufacturer_as_model_as_url_as_image_as(
 			String name, String type, int price, int shipping, String upc, String description, String manufacturer,
-			String model, String url, String image) {
+			String model, String url, String image) throws InterruptedException {
 		name = StringHelper.getRequestedParsedString(name);
 		type = StringHelper.getRequestedParsedString(type);
 		upc = StringHelper.getRequestedParsedString(upc);
@@ -30,6 +30,7 @@ public class AddProductSteps {
 		model = StringHelper.getRequestedParsedString(model);
 		url = StringHelper.getRequestedParsedString(url);
 		image = StringHelper.getRequestedParsedString(image);
+		Thread.sleep(100);
 		_aAddProducts.executePostProductAPI(name, type, price, upc, shipping, description, manufacturer, model, url, image);
 	}
 

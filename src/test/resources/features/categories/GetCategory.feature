@@ -4,7 +4,7 @@ Feature: GetCategories
   I want to told to verify products
   API :- GET /categories
 
-  @GetCategories
+  @GetCategories @PositiveScenarios
   Scenario: Get All Categories
     Given I am a valid user
     When I get all categories

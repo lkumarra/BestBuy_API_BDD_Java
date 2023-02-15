@@ -4,7 +4,7 @@ Feature: GetProducts
   I want to told to verify products
   API :- GET /products
 
-  @GetProducts
+  @GetProducts @PositiveScenarios
   Scenario: Get All Products
     Given I am a valid user
     When I get all products

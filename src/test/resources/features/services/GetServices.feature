@@ -4,7 +4,7 @@ Feature: GetServices
 	I want to told to verify services
 	API :- GET /services
 
-@GetProducts
+@GetProducts @PositiveScenarios
 Scenario: Get All Services
 	Given I am a valid user
 	When I get all services
