@@ -46,4 +46,26 @@ public class DBkeys {
 		public static final String UPDATEDAT = "updatedAt";
 	}
 
+	public class StoresTableKeys {
+		public static final String STORESID = "storeId";
+		public static final String SERVICESID = "serviceId";
+		public static final String STORESNAME = "storesName";
+		public static final String TYPE = "type";
+		public static final String ADDRESS = "address";
+		public static final String ADDRESS2 = "address2";
+		public static final String HOURS = "hours";
+		public static final String CITY = "city";
+		public static final String STATE = "state";
+		public static final String ZIP = "zip";
+		public static final String LAT = "lat";
+		public static final String LNG = "lng";
+		public static final String STORESCREATEDAT = "storesCreatedAt";
+		public static final String STORESUPDATEDAT = "storesUpdatedAt";
+		public static final String SERVICESNAME = "servicesName";
+		public static final String SERVICEUPDATEDAT = "serviceUpdatedAt";
+		public static final String SERVICESCREATEDAT = "serviceCreatedAt";
+		public static final String STORESSERVICECREATEDAT = "storeServiceCreatedAt";
+		public static final String STORESSERVICEUPDATEDAT = "storeServiceUpdatedAt";
+	}
+
 }

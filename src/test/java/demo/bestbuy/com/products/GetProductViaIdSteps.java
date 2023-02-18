@@ -1,8 +1,5 @@
 package demo.bestbuy.com.products;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import demo.bestbuy.com.apihelper.InstanceCreator;
 import demo.bestbuy.com.baseapi.BaseAPI;
 import demo.bestbuy.com.productData.ProductData;
@@ -21,7 +18,7 @@ import io.cucumber.java.en.When;
  */
 public class GetProductViaIdSteps {
 
-	private final Logger logger = LoggerFactory.getLogger(GetProducts.class);
+	
 	private GetProductViaId getProductViaId;
 
 	public GetProductViaIdSteps(ResponseValidator responseValidator, ScenarioContext<BaseAPI> context) {
