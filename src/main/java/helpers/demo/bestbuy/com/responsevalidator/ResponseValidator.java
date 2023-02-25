@@ -32,7 +32,7 @@ public class ResponseValidator implements IResponseValidator {
 	 */
 	public void verifyResponse(ResponseModalWrapper responseModalWrapper) {
 		if (getResponseWrapper().getStatusCode() != responseModalWrapper.getCode()) {
-			Assert.fail("Expected status code is " + responseModalWrapper.getCode() + " But acual Status code is "
+			Assert.fail("Expected status code is " + responseModalWrapper.getCode() + " But actual Status code is "
 					+ getResponseWrapper().getStatusCode());
 		}
 		if (getResponseWrapper().getResponse().contains("name")
