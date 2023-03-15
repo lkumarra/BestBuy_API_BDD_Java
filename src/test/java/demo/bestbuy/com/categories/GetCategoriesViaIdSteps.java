@@ -9,13 +9,13 @@ import demo.bestbuy.com.helpers.scenariocontext.ScenarioContext;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class GetCategoriesViaIdSteps {
+public final class GetCategoriesViaIdSteps {
 
-	private GetCategoriesViaId _getCategoriesViaId;
+	private GetCategoriesViaId getCategoriesViaId;
 
 	public GetCategoriesViaIdSteps(ResponseValidator responseValidator, ScenarioContext<BaseAPI> scenarioContext) {
-		_getCategoriesViaId = InstanceCreator.getCategoriesViaIdInstance(responseValidator);
-		scenarioContext.setContext(BaseAPI.class, _getCategoriesViaId);
+		getCategoriesViaId = InstanceCreator.getCategoriesViaIdInstance(responseValidator);
+		scenarioContext.setContext(BaseAPI.class, getCategoriesViaId);
 	}
 
 	@When("I get category with id a {string}")
@@ -23,11 +23,11 @@ public class GetCategoriesViaIdSteps {
 	public void i_get_category_with_id_a(String categoryId) {
 		CategoriesDataEnum categoriesDataEnum = Enum.valueOf(CategoriesDataEnum.class, categoryId);
 		String categoriesId = CategoriesData.getEnumString(categoriesDataEnum);
-		_getCategoriesViaId.executeGetCategoriesViaIdAPI(categoriesId);
+		getCategoriesViaId.executeGetCategoriesViaIdAPI(categoriesId);
 	}
 
 	@Then("Verify the category from Db")
 	public void verify_the_category_from_Db() {
-		_getCategoriesViaId.verifyGetCatgoriesViaIdFromDB();
+		getCategoriesViaId.verifyGetCategoriesViaIdFromDB();
 	}
 }

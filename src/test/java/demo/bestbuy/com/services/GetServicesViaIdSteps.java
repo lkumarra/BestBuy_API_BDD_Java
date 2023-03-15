@@ -9,7 +9,7 @@ import demo.bestbuy.com.helpers.scenariocontext.ScenarioContext;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class GetServicesViaIdSteps {
+public final class GetServicesViaIdSteps {
 
 	private GetServicesViaId _getServicesViaId;
 

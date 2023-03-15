@@ -15,7 +15,7 @@ import io.cucumber.java.en.Then;
  *
  * @Date 2 Jul 2021
  */
-public class VerifyResponseSteps {
+public final class VerifyResponseSteps {
 
 	private BaseAPI baseAPi;
 

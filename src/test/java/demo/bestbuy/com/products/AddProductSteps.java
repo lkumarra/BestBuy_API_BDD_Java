@@ -8,13 +8,13 @@ import demo.bestbuy.com.helpers.scenariocontext.ScenarioContext;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class AddProductSteps {
+public final class AddProductSteps {
 	
-	private AddProducts _aAddProducts;
+	private AddProducts addProducts;
 	
 	public AddProductSteps(ResponseValidator responseValidator, ScenarioContext<BaseAPI> scenarioContext) {
-		_aAddProducts = InstanceCreator.getAddProductsInstance(responseValidator);
-		scenarioContext.setContext(BaseAPI.class, _aAddProducts);
+		addProducts = InstanceCreator.getAddProductsInstance(responseValidator);
+		scenarioContext.setContext(BaseAPI.class, addProducts);
 	}
 
 	@When("I try create a product with name as {string}, type as {string}, price as {int}, shipping as {int}, upc as {string},description as {string},manufacturer as {string}, model as {string}, url as {string} image as {string}")
@@ -31,12 +31,12 @@ public class AddProductSteps {
 		url = StringHelper.getRequestedParsedString(url);
 		image = StringHelper.getRequestedParsedString(image);
 		Thread.sleep(100);
-		_aAddProducts.executePostProductAPI(name, type, price, upc, shipping, description, manufacturer, model, url, image);
+		addProducts.executePostProductAPI(name, type, price, upc, shipping, description, manufacturer, model, url, image);
 	}
 
 	@Then("Verify product created in Db.")
 	public void verify_product_created_in_Db() {
-		_aAddProducts.verifyAddedProductFromDB();
+		addProducts.verifyAddedProductFromDB();
 	}
 
 }

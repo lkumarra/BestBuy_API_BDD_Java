@@ -2,7 +2,7 @@ package demo.bestbuy.com.categories;
 
 
 import demo.bestbuy.com.baseapi.BaseAPI;
-import demo.bestbuy.com.helpers.apihelper.InstanceCreator;
+import static demo.bestbuy.com.helpers.apihelper.InstanceCreator.*;
 import demo.bestbuy.com.helpers.responsevalidator.ResponseValidator;
 import demo.bestbuy.com.helpers.scenariocontext.ScenarioContext;
 import io.cucumber.java.en.Then;
@@ -17,20 +17,20 @@ import io.cucumber.java.en.When;
  */
 public class GetCategoriesSteps {
 
-	private GetCategories _getCategories;
+	private GetCategories getCategories;
 
 	public GetCategoriesSteps(ResponseValidator responseValidator, ScenarioContext<BaseAPI> context) {
-		_getCategories = InstanceCreator.getCategoriesInstance(responseValidator);
-		context.setContext(BaseAPI.class, _getCategories);
+		getCategories = getCategoriesInstance(responseValidator);
+		context.setContext(BaseAPI.class, getCategories);
 	}
 
 	@When("I get all categories")
 	public void i_get_all_categories() {
-		_getCategories.executeGetCategoriesAPI();
+		getCategories.executeGetCategoriesAPI();
 	}
 
 	@Then("Verify the categories list from Db")
 	public void verify_the_categories_list_from_Db() {
-		_getCategories.verifyCategoriesFromDB();
+		getCategories.verifyCategoriesFromDB();
 	}
 }

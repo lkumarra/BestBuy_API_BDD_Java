@@ -9,7 +9,7 @@ import io.cucumber.java.en.Given;
  *
  * @Date 2 July 2021
  */
-public class CommonSteps {
+public final class CommonSteps {
 
 	@Given("I am a valid user")
 	public void i_am_a_valid_user() {

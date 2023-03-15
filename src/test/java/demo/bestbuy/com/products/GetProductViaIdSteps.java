@@ -16,7 +16,7 @@ import io.cucumber.java.en.When;
  *
  * @Date 2 July 2021
  */
-public class GetProductViaIdSteps {
+public final class GetProductViaIdSteps {
 
 	
 	private GetProductViaId getProductViaId;
@@ -31,7 +31,7 @@ public class GetProductViaIdSteps {
 	public void i_get_product_with_product(String productName) {
 		ProductDataEnum dataEnum = Enum.valueOf(ProductDataEnum.class, productName);
 		int productId = ProductData.getProductIdViaProductName(dataEnum);
-		getProductViaId.extecuteGetProductViaIdAPI(productId);
+		getProductViaId.executeGetProductViaIdAPI(productId);
 	}
 
 	@Then("Verify the product from Db")
