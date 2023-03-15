@@ -1,7 +1,7 @@
 package demo.bestbuy.com.hooks;
 
-import demo.bestbuy.com.apihelper.APIHelper;
-import demo.bestbuy.com.products.ProductDBHelper;
+import demo.bestbuy.com.helpers.apihelper.APIHelper;
+import demo.bestbuy.com.helpers.products.ProductDBHelper;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 

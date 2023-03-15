@@ -1,8 +1,8 @@
 package demo.bestbuy.com.commonsteps;
 
-import demo.bestbuy.com.apihelper.InstanceCreator;
 import demo.bestbuy.com.baseapi.BaseAPI;
-import demo.bestbuy.com.scenariocontext.ScenarioContext;
+import demo.bestbuy.com.helpers.apihelper.InstanceCreator;
+import demo.bestbuy.com.helpers.scenariocontext.ScenarioContext;
 import demo.bestbuy.com.wrapper.ResponseModalWrapper;
 import demo.bestbuy.com.wrapper.StatusCodeWrapper;
 import demo.bestbuy.com.wrapper.StatusCodeWrapper.StatusCodeEnum;
