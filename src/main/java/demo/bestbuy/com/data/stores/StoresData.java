@@ -21,7 +21,7 @@ public final class StoresData {
 		case NONEXISTING:
 			return 99999;
 		default:
-			return 4;
+			return -1;
 		}
 	}
 

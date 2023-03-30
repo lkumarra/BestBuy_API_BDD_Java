@@ -8,9 +8,9 @@ import io.cucumber.java.en.When;
 
 public final class GetStoresSteps {
 
-	private GetStores getStores;
+	private final GetStores getStores;
 	public GetStoresSteps(ResponseValidator responseValidator, ScenarioContext<BaseAPI> scenarioContext) {
-		getStores = new GetStores(responseValidator);
+		getStores = GetStores.newGetStores(responseValidator);
 		scenarioContext.setContext(BaseAPI.class, getStores);
 	}
 	@When("I get all stores")

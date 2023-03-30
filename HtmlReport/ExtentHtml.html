@@ -1,0 +1,2371 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='UTF-8' /> 
+	<meta name='description' content='' />
+	<meta name='robots' content='noodp, noydir' />
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+	<meta id="timeStampFormat" name="timeStampFormat" content='MMM d, yyyy hh:mm:ss a'/>
+	
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css' />
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <link href='http://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@ff53917fbbdb5ef820abbbe4d199a6942dc771ff/v3html/css/extent.css' type='text/css' rel='stylesheet' />
+	
+	<title></title>
+
+	<style type='text/css'>
+		/* json-tree */
+		.jstBracket,.jstComma,.jstValue{white-space:pre-wrap}.jstValue{font-size:10px;font-weight:400;font-family:"Lucida Console",Monaco,monospace}.jstProperty{color:#666;word-wrap:break-word}.jstBool{color:#2525CC}.jstNum{color:#D036D0}.jstNull{color:gray}.jstStr{color:#2DB669}.jstFold:after{content:' -';cursor:pointer}.jstExpand{white-space:normal}.jstExpand:after{content:' +';cursor:pointer}.jstFolded{white-space:normal!important}.jstHiddenBlock{display:none}
+			
+	</style>
+	
+	<script type="text/javascript">
+		/*! json-tree - v0.2.2 - 2017-09-25, MIT LICENSE */
+		var JSONTree=function(){var n={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#x27;","/":"&#x2F;"},t=0,r=0;this.create=function(n,t){return r+=1,N(u(n,0,!1),{class:"jstValue"})};var e=function(t){return t.replace(/[&<>'"]/g,function(t){return n[t]})},s=function(){return r+"_"+t++},u=function(n,t,r){if(null===n)return f(r?t:0);switch(typeof n){case"boolean":return l(n,r?t:0);case"number":return i(n,r?t:0);case"string":return o(n,r?t:0);default:return n instanceof Array?a(n,t,r):c(n,t,r)}},c=function(n,t,r){var e=s(),u=Object.keys(n).map(function(r){return j(r,n[r],t+1,!0)}).join(m()),c=[g("{",r?t:0,e),N(u,{id:e}),p("}",t)].join("\n");return N(c,{})},a=function(n,t,r){var e=s(),c=n.map(function(n){return u(n,t+1,!0)}).join(m());return[g("[",r?t:0,e),N(c,{id:e}),p("]",t)].join("\n")},o=function(n,t){var r=e(JSON.stringify(n));return N(v(r,t),{class:"jstStr"})},i=function(n,t){return N(v(n,t),{class:"jstNum"})},l=function(n,t){return N(v(n,t),{class:"jstBool"})},f=function(n){return N(v("null",n),{class:"jstNull"})},j=function(n,t,r){var s=v(e(JSON.stringify(n))+": ",r),c=N(u(t,r,!1),{});return N(s+c,{class:"jstProperty"})},m=function(){return N(",\n",{class:"jstComma"})},N=function(n,t){return d("span",t,n)},d=function(n,t,r){return"<"+n+Object.keys(t).map(function(n){return" "+n+'="'+t[n]+'"'}).join("")+">"+r+"</"+n+">"},g=function(n,t,r){return N(v(n,t),{class:"jstBracket"})+N("",{class:"jstFold",onclick:"JSONTree.toggle('"+r+"')"})};this.toggle=function(n){var t=document.getElementById(n),r=t.parentNode,e=t.previousElementSibling;""===t.className?(t.className="jstHiddenBlock",r.className="jstFolded",e.className="jstExpand"):(t.className="",r.className="",e.className="jstFold")};var p=function(n,t){return N(v(n,t),{})},v=function(n,t){return Array(2*t+1).join(" ")+n};return this}();
+	</script>
+</head>
+	<body class='extent standard default hide-overflow bdd-report'>
+		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
+			<span><i class='material-icons'>desktop_windows</i></span>
+		</div>
+<nav>
+	<div class="nav-wrapper">
+        <a href="#!" class="brand-logo black"><img src="http://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@ff53917fbbdb5ef820abbbe4d199a6942dc771ff/commons/img/logo.png"></a>
+		<!-- slideout menu -->
+		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
+			<li class='waves-effect'><a href='#!' view='category-view' onclick="configureView(1)"><i class='material-icons'>label_outline</i></a></li>
+			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></a></li>
+		</ul>
+		<!-- report name -->
+		<span class='report-name'></span>
+		<!-- report headline -->
+		<span class='report-headline'></span>
+		<!-- nav-right -->
+		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
+			<a href='#!'>
+			<span class='label blue darken-3 suite-start-time'>Mar 30, 2023 03:08:25 PM</span>
+			</a>
+		</ul>
+	</div>
+</nav>		<!-- container -->
+		<div class='container'>
+<div id='test-view' class='view'>
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- test toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+				<i class='material-icons'>warning</i> Status
+				</a>
+				<ul id='tests-toggle' class='dropdown-content'>
+										<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+					<li class='divider'></li>
+					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
+				</ul>
+			</div>
+			<!-- test toggle -->
+			<!-- category toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button category-toggle' data-activates='category-toggle' data-constrainwidth='false' data-beloworigin='true' data-hover='true' href='#'>
+				<i class='material-icons'>local_offer</i> Category
+				</a>
+				<ul id='category-toggle' class='dropdown-content'>
+					<li><a href='#'>@PositiveScenario</a></li>
+					<li><a href='#'>@GetStores</a></li>
+					<li><a href='#'>@GetProducts</a></li>
+					<li><a href='#'>@Stores</a></li>
+					<li><a href='#'>@GetCategories</a></li>
+					<li><a href='#'>@PositiveScenarios</a></li>
+					<li><a href='#'>@PostiveScenarios</a></li>
+					<li><a href='#'>@NegativeScenarios</a></li>
+					<li><a href='#'>@Products</a></li>
+					<li><a href='#'>@PostProducts</a></li>
+					<li><a href='#'>@Categories</a></li>
+					<li><a href='#'>@Services</a></li>
+					<li><a href='#'>@NegativeScenario</a></li>
+					<li class='divider'></li>
+					<li class='clear'><a href='#!' clear='true'>Clear Filters</a></li>
+				</ul>
+			</div>
+			<!-- category toggle -->
+			<!-- clear filters -->
+			<div class='chip transparent hide'>
+				<a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+				<i class='material-icons'>close</i> Clear
+				</a>
+			</div>
+			<!-- clear filters -->
+			<!-- enable dashboard -->
+			<div id='toggle-test-view-charts' class='chip transparent'>
+				<a class='pink-text' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+				<i class='material-icons'>track_changes</i> Dashboard
+				</a>
+			</div>
+			<!-- enable dashboard -->
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+				<i class='material-icons'>search</i> Search
+				</a>
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+<div id='test-view-charts' class='subview-full'>
+    <div id='charts-row' class='row nm-v nm-h'>
+        <div class='col s12 m4 l4 np-h'>
+            <div class='card-panel nm-v'>
+                <div class='left panel-name'>Features</div>
+                <div class='chart-box' style="max-height:94px;">
+                    <canvas id='parent-analysis' width='90' height='70'></canvas>
+                </div>
+                <div class='block text-small'>
+                    <span class='tooltipped' data-position='top' data-tooltip='$100%'>
+                    <span class='strong'>7</span> features passed</span>
+                </div>
+                <div class='block text-small'>
+                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
+                    0</span> features failed, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
+                    0</span> skipped
+                </div>
+            </div>
+        </div>
+        <div class='col s12 m4 l4 np-h'>
+            <div class='card-panel nm-v'>
+                <div class='left panel-name'>Scenarios</div>
+                <div class='chart-box' style="max-height:94px;">
+                    <canvas id='child-analysis' width='90' height='70'></canvas>
+                </div>
+                <div class='block text-small'>
+                    <span class='tooltipped' data-position='top' data-tooltip='100%'>
+                    <span class='strong'>29</span> scenarios passed</span>
+                </div>
+                <div class='block text-small'>
+                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
+                    0</span> scenarios failed, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
+                    0</span> skipped, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
+                    0</span> others
+                </div>
+            </div>
+        </div>
+        <div class='col s12 m4 l4 np-h'>
+            <div class='card-panel nm-v'>
+                <div class='left panel-name'>Steps</div>
+                <div class='chart-box' style="max-height:94px;">
+                    <canvas id='grandchild-analysis' width='90' height='70'></canvas>
+                </div>
+                <div class='block text-small'>
+                    <span class='tooltipped' data-position='top' data-tooltip='100%'>
+                    <span class='strong'>96</span> steps passed</span>
+                </div>
+                <div class='block text-small'>
+                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
+                    0</span> steps failed, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
+                    0</span> skipped, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
+                    0</span> others
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="timeline-chart" class="row nm-v nm-h">
+        <div class="col s12 m12 l12 np-h">
+            <div class="card-panel">
+                <div class='left panel-name'>Timeline (seconds)</div>
+                <div class="chart-box" style="width:98%;max-height:145px;">
+                    <canvas id="timeline" height="120"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>	
+	<div class='subview-left left'>
+		<div class='view-summary'>
+			<ul id='test-collection' class='test-collection'>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='1'>
+					<div class='test-heading'>
+						<span class='test-name'>Get Categories Via ID</span>
+						<span class='test-time'>Mar 30, 2023 03:08:26 PM</span>
+						<span class='test-status right pass'>Pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class="sr-filters bdd-filters">
+	<a class="btn-floating waves-effect waves-light pass green" title="pass"><i class='material-icons'>check_circle</i></a>
+	<a class="btn-floating waves-effect waves-light fail red" title="fail"><i class='material-icons'>cancel</i></a>
+	<a class="btn-floating waves-effect waves-light skip blue" title="skip"><i class='material-icons'>redo</i></a>
+	<a class="btn-floating waves-effect waves-light clear grey" title="clear"><i class='material-icons'>clear</i></a>
+</div>
+	<div class='test-desc'>  In Order to get products
+  I want to told to verify get categories via Id
+  API :- GET /categories/{id}</div>
+
+<div class='scenario node' test-id='2' status='pass'>
+
+	<span class='duration right label'>00 00 02.689</span>
+	<div class="bdd-test">
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Get category via Id</div>
+	</div>
+	
+	
+		<div class='category-list'>
+				<span class='category label'>@Categories</span>
+				<span class='category label'>@GetCategories</span>
+				<span class='category label'>@PositiveScenarios</span>
+		</div>
+	
+	<ul class='steps'>
+		<li test-id='3' class='node given Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</div>
+
+
+		</li>
+		<li test-id='4' class='node when Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.categories.GetCategoriesViaIdSteps.i_get_category_with_id_a(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I get category with id a 'DVD_Games'</div>
+
+
+		</li>
+		<li test-id='5' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.VerifyResponseSteps.products_list_returned_with_status_code(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should be returned with status code 'OK'</div>
+
+
+		</li>
+		<li test-id='6' class='node and Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.categories.GetCategoriesViaIdSteps.verify_the_category_from_Db())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And Verify the category from Db</div>
+
+
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='7' status='pass'>
+
+	<span class='duration right label'>00 00 00.052</span>
+	<div class="bdd-test">
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Try to get categories via Invalid product id.</div>
+	</div>
+	
+	
+		<div class='category-list'>
+				<span class='category label'>@Categories</span>
+				<span class='category label'>@GetCategories</span>
+				<span class='category label'>@NegativeScenarios</span>
+		</div>
+	
+	<ul class='steps'>
+		<li test-id='8' class='node given Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</div>
+
+
+		</li>
+		<li test-id='9' class='node when Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.categories.GetCategoriesViaIdSteps.i_get_category_with_id_a(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I try get categories with product 'Invalid'</div>
+
+
+		</li>
+		<li test-id='10' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.VerifyResponseSteps.product_should_be_returned_with_status_code_name_as_and_message_as(java.lang.String,java.lang.String,java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should not be returned with status code 'NOTFOUND', name as 'NotFound' and message as "No record found for id 'aaaaaaaaaaaa'"</div>
+
+
+		</li>
+	</ul>
+</div>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='11'>
+					<div class='test-heading'>
+						<span class='test-name'>GetCategories</span>
+						<span class='test-time'>Mar 30, 2023 03:08:29 PM</span>
+						<span class='test-status right pass'>Pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class="sr-filters bdd-filters">
+	<a class="btn-floating waves-effect waves-light pass green" title="pass"><i class='material-icons'>check_circle</i></a>
+	<a class="btn-floating waves-effect waves-light fail red" title="fail"><i class='material-icons'>cancel</i></a>
+	<a class="btn-floating waves-effect waves-light skip blue" title="skip"><i class='material-icons'>redo</i></a>
+	<a class="btn-floating waves-effect waves-light clear grey" title="clear"><i class='material-icons'>clear</i></a>
+</div>
+	<div class='test-desc'>  In Order to get products
+  I want to told to verify products
+  API :- GET /categories</div>
+
+<div class='scenario node' test-id='12' status='pass'>
+
+	<span class='duration right label'>00 00 00.540</span>
+	<div class="bdd-test">
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Get All Categories</div>
+	</div>
+	
+	
+		<div class='category-list'>
+				<span class='category label'>@Categories</span>
+				<span class='category label'>@GetCategories</span>
+				<span class='category label'>@PositiveScenarios</span>
+		</div>
+	
+	<ul class='steps'>
+		<li test-id='13' class='node given Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</div>
+
+
+		</li>
+		<li test-id='14' class='node when Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.categories.GetCategoriesSteps.i_get_all_categories())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I get all categories</div>
+
+
+		</li>
+		<li test-id='15' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.VerifyResponseSteps.products_list_returned_with_status_code(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should be returned with status code 'OK'</div>
+
+
+		</li>
+		<li test-id='16' class='node and Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.categories.GetCategoriesSteps.verify_the_categories_list_from_Db())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And Verify the categories list from Db</div>
+
+
+		</li>
+	</ul>
+</div>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='17'>
+					<div class='test-heading'>
+						<span class='test-name'>PostProducts</span>
+						<span class='test-time'>Mar 30, 2023 03:08:29 PM</span>
+						<span class='test-status right pass'>Pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class="sr-filters bdd-filters">
+	<a class="btn-floating waves-effect waves-light pass green" title="pass"><i class='material-icons'>check_circle</i></a>
+	<a class="btn-floating waves-effect waves-light fail red" title="fail"><i class='material-icons'>cancel</i></a>
+	<a class="btn-floating waves-effect waves-light skip blue" title="skip"><i class='material-icons'>redo</i></a>
+	<a class="btn-floating waves-effect waves-light clear grey" title="clear"><i class='material-icons'>clear</i></a>
+</div>
+	<div class='test-desc'>  In Order to post products
+  I want to told to verify products
+  API :- POST /products</div>
+
+<div class='scenario node' test-id='18' status='pass'>
+
+	<span class='duration right label'>00 00 00.197</span>
+	<div class="bdd-test">
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Post a products</div>
+	</div>
+	
+	
+		<div class='category-list'>
+				<span class='category label'>@PositiveScenarios</span>
+				<span class='category label'>@PostProducts</span>
+				<span class='category label'>@GetProducts</span>
+				<span class='category label'>@Products</span>
+		</div>
+	
+	<ul class='steps'>
+		<li test-id='19' class='node given Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</div>
+
+
+		</li>
+		<li test-id='20' class='node when Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.products.AddProductSteps.i_create_a_product_with_name_as_type_as_price_as_shipping_as_upc_as_description_as_manufacturer_as_model_as_url_as_image_as(java.lang.String,java.lang.String,int,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I create a product with name as 'Added Product', type as 'Added Type', price as 10000, shipping as 200, upc as 'AddedUPC',description as 'Added Description',manufacturer as 'Added Manufacturer', model as 'Added Model',url as 'Added Url' image as 'Added Image'</div>
+
+
+		</li>
+		<li test-id='21' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.VerifyResponseSteps.products_list_returned_with_status_code(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should be returned with status code 'CREATED'</div>
+
+
+		</li>
+		<li test-id='22' class='node and Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.products.AddProductSteps.verify_product_created_in_Db())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And Verify product created in Db.</div>
+
+
+		</li>
+	</ul>
+</div>
+<div class='scenario outline node' test-id='23' status='pass'>
+
+	<span class='duration right label'>00 00 03.066</span>
+	<div class="bdd-test">
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario Outline: Post a products with inavalid data</div>
+	</div>
+	
+		<div class='node-desc'><br><br><table class='markup-table table '><tr><td>Scenario</td><td>Name</td><td>type</td><td>price</td><td>shipping</td><td>upc</td><td>description</td><td>manufacturer</td><td>model</td><td>url</td><td>image</td><td>errorName</td><td>message</td><td>errors</td></tr><tr><td>Try to create product with name as null</td><td>NULL</td><td>AddedType1</td><td>1</td><td>1</td><td>AddedUpc1</td><td>AddedDescription</td><td>AddedManufacturer</td><td>AddedModel</td><td>AddedUrl</td><td>AddedImage</td><td>BadRequest</td><td>Invalid Parameters</td><td>'name' should be string</td></tr><tr><td>Try to create product with name as empty</td><td>EMPTY</td><td>AddedType2</td><td>2</td><td>2</td><td>AddedUpc1</td><td>AddedDescription</td><td>AddedManufacturer</td><td>AddedModel</td><td>AddedUrl</td><td>AddedImage</td><td>BadRequest</td><td>Invalid Parameters</td><td>'name' should NOT be shorter than 1 characters</td></tr><tr><td>Try to create product with type as null</td><td>AddedName3</td><td>NULL</td><td>4</td><td>4</td><td>AddedUpc1</td><td>AddedDescription</td><td>AddedManufacturer</td><td>AddedModel</td><td>AddedUrl</td><td>AddedImage</td><td>BadRequest</td><td>Invalid Parameters</td><td>'type' should be string</td></tr><tr><td>Try to create product with type as empty</td><td>AddedName4</td><td>EMPTY</td><td>5</td><td>5</td><td>AddedUpc1</td><td>AddedDescription</td><td>AddedManufacturer</td><td>AddedModel</td><td>AddedUrl</td><td>AddedImage</td><td>BadRequest</td><td>Invalid Parameters</td><td>'type' should NOT be shorter than 1 characters</td></tr><tr><td>Try to create product with upc as null</td><td>AddedName12</td><td>AddedType12</td><td>13</td><td>13</td><td>NULL</td><td>AddedDescription</td><td>AddedManufacturer</td><td>AddedModel</td><td>AddedUrl</td><td>AddedImage</td><td>BadRequest</td><td>Invalid Parameters</td><td>'upc' should be string</td></tr><tr><td>Try to create product with upc as empty</td><td>AddedName13</td><td>AddedType13</td><td>14</td><td>14</td><td>EMPTY</td><td>AddedDescription</td><td>AddedManufacturer</td><td>AddedModel</td><td>AddedUrl</td><td>AddedImage</td><td>BadRequest</td><td>Invalid Parameters</td><td>'upc' should NOT be shorter than 1 characters</td></tr><tr><td>Try to create product with description as null</td><td>AddedName15</td><td>AddedType15</td><td>16</td><td>16</td><td>AddedUpc1</td><td>NULL</td><td>AddedManufacturer</td><td>AddedModel</td><td>AddedUrl</td><td>AddedImage</td><td>BadRequest</td><td>Invalid Parameters</td><td>'description' should be string</td></tr><tr><td>Try to create product with description as empty</td><td>AddedName16</td><td>AddedType16</td><td>17</td><td>17</td><td>AddedUpc1</td><td>EMPTY</td><td>AddedManufacturer</td><td>AddedModel</td><td>AddedUrl</td><td>AddedImage</td><td>BadRequest</td><td>Invalid Parameters</td><td>'description' should NOT be shorter than 1 characters</td></tr><tr><td>Try to create product with manufacturer as null</td><td>AddedName18</td><td>AddedType18</td><td>19</td><td>19</td><td>AddedUpc1</td><td>AddedDescription</td><td>NULL</td><td>AddedModel</td><td>AddedUrl</td><td>AddedImage</td><td>BadRequest</td><td>Invalid Parameters</td><td>'manufacturer' should be string</td></tr><tr><td>Try to create product with manufacturer as empty</td><td>AddedName19</td><td>AddedType19</td><td>20</td><td>20</td><td>AddedUpc1</td><td>AddedDescription</td><td>EMPTY</td><td>AddedModel</td><td>AddedUrl</td><td>AddedImage</td><td>BadRequest</td><td>Invalid Parameters</td><td>'manufacturer' should NOT be shorter than 1 characters</td></tr><tr><td>Try to create product with model as null</td><td>AddedName21</td><td>AddedType21</td><td>22</td><td>22</td><td>AddedUpc1</td><td>AddedDescription</td><td>AddedManufacturer</td><td>NULL</td><td>AddedUrl</td><td>AddedImage</td><td>BadRequest</td><td>Invalid Parameters</td><td>'model' should be string</td></tr><tr><td>Try to create product with model as empty</td><td>AddedName22</td><td>AddedType22</td><td>23</td><td>23</td><td>AddedUpc1</td><td>AddedDescription</td><td>AddedManufacturer</td><td>EMPTY</td><td>AddedUrl</td><td>AddedImage</td><td>BadRequest</td><td>Invalid Parameters</td><td>'model' should NOT be shorter than 1 characters</td></tr><tr><td>Try to create product with url as null</td><td>AddedName24</td><td>AddedType24</td><td>25</td><td>25</td><td>AddedUpc1</td><td>AddedDescription</td><td>AddedManufacturer</td><td>AddedModel</td><td>NULL</td><td>AddedImage</td><td>BadRequest</td><td>Invalid Parameters</td><td>'url' should be string</td></tr><tr><td>Try to create product with url as empty</td><td>AddedName25</td><td>AddedType25</td><td>26</td><td>26</td><td>AddedUpc1</td><td>AddedDescription</td><td>AddedManufacturer</td><td>AddedModel</td><td>EMPTY</td><td>AddedImage</td><td>BadRequest</td><td>Invalid Parameters</td><td>'url' should NOT be shorter than 1 characters</td></tr><tr><td>Try to create product with image as null</td><td>AddedName27</td><td>AddedType27</td><td>28</td><td>28</td><td>AddedUpc1</td><td>AddedDescription</td><td>AddedManufacturer</td><td>AddedModel</td><td>AddedUrl</td><td>NULL</td><td>BadRequest</td><td>Invalid Parameters</td><td>'image' should be string</td></tr><tr><td>Try to create product with image as empty</td><td>AddedName28</td><td>AddedType28</td><td>29</td><td>29</td><td>AddedUpc1</td><td>AddedDescription</td><td>AddedManufacturer</td><td>AddedModel</td><td>AddedUrl</td><td>EMPTY</td><td>BadRequest</td><td>Invalid Parameters</td><td>'image' should NOT be shorter than 1 characters</td></tr></table></div>
+	
+	
+	<ul class='steps'>
+		<li test-id='24' class='node scenario Pass' status='Pass'>
+			<div class="step-name" title="()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Post a products with inavalid data</div>
+
+				<div class='category-list'>
+						<span class='category label'>@PostProducts</span>
+						<span class='category label'>@NegativeScenarios</span>
+						<span class='category label'>@GetProducts</span>
+						<span class='category label'>@Products</span>
+				</div>
+
+			<ul class='gc steps'>
+				<li test-id='25' class='gc given Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</h6>
+
+				</li>
+				<li test-id='26' class='gc when Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.products.AddProductSteps.i_create_a_product_with_name_as_type_as_price_as_shipping_as_upc_as_description_as_manufacturer_as_model_as_url_as_image_as(java.lang.String,java.lang.String,int,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I try create a product with name as 'NULL', type as 'AddedType1', price as 1, shipping as 1, upc as 'AddedUpc1',description as 'AddedDescription',manufacturer as 'AddedManufacturer', model as 'AddedModel', url as 'AddedUrl' image as 'AddedImage'</h6>
+
+				</li>
+				<li test-id='27' class='gc then Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.VerifyResponseSteps.response_should_not_be_returned_with_name_as_message_as_status_code_and_errors_as(java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should not be returned with name as 'BadRequest',message as 'Invalid Parameters', status code 'BADREQUEST' and errors as "'name' should be string"</h6>
+
+				</li>
+			</ul>
+		</li>
+		<li test-id='28' class='node scenario Pass' status='Pass'>
+			<div class="step-name" title="()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Post a products with inavalid data</div>
+
+				<div class='category-list'>
+						<span class='category label'>@PostProducts</span>
+						<span class='category label'>@NegativeScenarios</span>
+						<span class='category label'>@GetProducts</span>
+						<span class='category label'>@Products</span>
+				</div>
+
+			<ul class='gc steps'>
+				<li test-id='29' class='gc given Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</h6>
+
+				</li>
+				<li test-id='30' class='gc when Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.products.AddProductSteps.i_create_a_product_with_name_as_type_as_price_as_shipping_as_upc_as_description_as_manufacturer_as_model_as_url_as_image_as(java.lang.String,java.lang.String,int,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I try create a product with name as 'EMPTY', type as 'AddedType2', price as 2, shipping as 2, upc as 'AddedUpc1',description as 'AddedDescription',manufacturer as 'AddedManufacturer', model as 'AddedModel', url as 'AddedUrl' image as 'AddedImage'</h6>
+
+				</li>
+				<li test-id='31' class='gc then Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.VerifyResponseSteps.response_should_not_be_returned_with_name_as_message_as_status_code_and_errors_as(java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should not be returned with name as 'BadRequest',message as 'Invalid Parameters', status code 'BADREQUEST' and errors as "'name' should NOT be shorter than 1 characters"</h6>
+
+				</li>
+			</ul>
+		</li>
+		<li test-id='32' class='node scenario Pass' status='Pass'>
+			<div class="step-name" title="()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Post a products with inavalid data</div>
+
+				<div class='category-list'>
+						<span class='category label'>@PostProducts</span>
+						<span class='category label'>@NegativeScenarios</span>
+						<span class='category label'>@GetProducts</span>
+						<span class='category label'>@Products</span>
+				</div>
+
+			<ul class='gc steps'>
+				<li test-id='33' class='gc given Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</h6>
+
+				</li>
+				<li test-id='34' class='gc when Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.products.AddProductSteps.i_create_a_product_with_name_as_type_as_price_as_shipping_as_upc_as_description_as_manufacturer_as_model_as_url_as_image_as(java.lang.String,java.lang.String,int,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I try create a product with name as 'AddedName3', type as 'NULL', price as 4, shipping as 4, upc as 'AddedUpc1',description as 'AddedDescription',manufacturer as 'AddedManufacturer', model as 'AddedModel', url as 'AddedUrl' image as 'AddedImage'</h6>
+
+				</li>
+				<li test-id='35' class='gc then Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.VerifyResponseSteps.response_should_not_be_returned_with_name_as_message_as_status_code_and_errors_as(java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should not be returned with name as 'BadRequest',message as 'Invalid Parameters', status code 'BADREQUEST' and errors as "'type' should be string"</h6>
+
+				</li>
+			</ul>
+		</li>
+		<li test-id='36' class='node scenario Pass' status='Pass'>
+			<div class="step-name" title="()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Post a products with inavalid data</div>
+
+				<div class='category-list'>
+						<span class='category label'>@PostProducts</span>
+						<span class='category label'>@NegativeScenarios</span>
+						<span class='category label'>@GetProducts</span>
+						<span class='category label'>@Products</span>
+				</div>
+
+			<ul class='gc steps'>
+				<li test-id='37' class='gc given Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</h6>
+
+				</li>
+				<li test-id='38' class='gc when Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.products.AddProductSteps.i_create_a_product_with_name_as_type_as_price_as_shipping_as_upc_as_description_as_manufacturer_as_model_as_url_as_image_as(java.lang.String,java.lang.String,int,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I try create a product with name as 'AddedName4', type as 'EMPTY', price as 5, shipping as 5, upc as 'AddedUpc1',description as 'AddedDescription',manufacturer as 'AddedManufacturer', model as 'AddedModel', url as 'AddedUrl' image as 'AddedImage'</h6>
+
+				</li>
+				<li test-id='39' class='gc then Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.VerifyResponseSteps.response_should_not_be_returned_with_name_as_message_as_status_code_and_errors_as(java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should not be returned with name as 'BadRequest',message as 'Invalid Parameters', status code 'BADREQUEST' and errors as "'type' should NOT be shorter than 1 characters"</h6>
+
+				</li>
+			</ul>
+		</li>
+		<li test-id='40' class='node scenario Pass' status='Pass'>
+			<div class="step-name" title="()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Post a products with inavalid data</div>
+
+				<div class='category-list'>
+						<span class='category label'>@PostProducts</span>
+						<span class='category label'>@NegativeScenarios</span>
+						<span class='category label'>@GetProducts</span>
+						<span class='category label'>@Products</span>
+				</div>
+
+			<ul class='gc steps'>
+				<li test-id='41' class='gc given Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</h6>
+
+				</li>
+				<li test-id='42' class='gc when Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.products.AddProductSteps.i_create_a_product_with_name_as_type_as_price_as_shipping_as_upc_as_description_as_manufacturer_as_model_as_url_as_image_as(java.lang.String,java.lang.String,int,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I try create a product with name as 'AddedName12', type as 'AddedType12', price as 13, shipping as 13, upc as 'NULL',description as 'AddedDescription',manufacturer as 'AddedManufacturer', model as 'AddedModel', url as 'AddedUrl' image as 'AddedImage'</h6>
+
+				</li>
+				<li test-id='43' class='gc then Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.VerifyResponseSteps.response_should_not_be_returned_with_name_as_message_as_status_code_and_errors_as(java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should not be returned with name as 'BadRequest',message as 'Invalid Parameters', status code 'BADREQUEST' and errors as "'upc' should be string"</h6>
+
+				</li>
+			</ul>
+		</li>
+		<li test-id='44' class='node scenario Pass' status='Pass'>
+			<div class="step-name" title="()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Post a products with inavalid data</div>
+
+				<div class='category-list'>
+						<span class='category label'>@PostProducts</span>
+						<span class='category label'>@NegativeScenarios</span>
+						<span class='category label'>@GetProducts</span>
+						<span class='category label'>@Products</span>
+				</div>
+
+			<ul class='gc steps'>
+				<li test-id='45' class='gc given Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</h6>
+
+				</li>
+				<li test-id='46' class='gc when Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.products.AddProductSteps.i_create_a_product_with_name_as_type_as_price_as_shipping_as_upc_as_description_as_manufacturer_as_model_as_url_as_image_as(java.lang.String,java.lang.String,int,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I try create a product with name as 'AddedName13', type as 'AddedType13', price as 14, shipping as 14, upc as 'EMPTY',description as 'AddedDescription',manufacturer as 'AddedManufacturer', model as 'AddedModel', url as 'AddedUrl' image as 'AddedImage'</h6>
+
+				</li>
+				<li test-id='47' class='gc then Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.VerifyResponseSteps.response_should_not_be_returned_with_name_as_message_as_status_code_and_errors_as(java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should not be returned with name as 'BadRequest',message as 'Invalid Parameters', status code 'BADREQUEST' and errors as "'upc' should NOT be shorter than 1 characters"</h6>
+
+				</li>
+			</ul>
+		</li>
+		<li test-id='48' class='node scenario Pass' status='Pass'>
+			<div class="step-name" title="()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Post a products with inavalid data</div>
+
+				<div class='category-list'>
+						<span class='category label'>@PostProducts</span>
+						<span class='category label'>@NegativeScenarios</span>
+						<span class='category label'>@GetProducts</span>
+						<span class='category label'>@Products</span>
+				</div>
+
+			<ul class='gc steps'>
+				<li test-id='49' class='gc given Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</h6>
+
+				</li>
+				<li test-id='50' class='gc when Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.products.AddProductSteps.i_create_a_product_with_name_as_type_as_price_as_shipping_as_upc_as_description_as_manufacturer_as_model_as_url_as_image_as(java.lang.String,java.lang.String,int,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I try create a product with name as 'AddedName15', type as 'AddedType15', price as 16, shipping as 16, upc as 'AddedUpc1',description as 'NULL',manufacturer as 'AddedManufacturer', model as 'AddedModel', url as 'AddedUrl' image as 'AddedImage'</h6>
+
+				</li>
+				<li test-id='51' class='gc then Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.VerifyResponseSteps.response_should_not_be_returned_with_name_as_message_as_status_code_and_errors_as(java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should not be returned with name as 'BadRequest',message as 'Invalid Parameters', status code 'BADREQUEST' and errors as "'description' should be string"</h6>
+
+				</li>
+			</ul>
+		</li>
+		<li test-id='52' class='node scenario Pass' status='Pass'>
+			<div class="step-name" title="()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Post a products with inavalid data</div>
+
+				<div class='category-list'>
+						<span class='category label'>@PostProducts</span>
+						<span class='category label'>@NegativeScenarios</span>
+						<span class='category label'>@GetProducts</span>
+						<span class='category label'>@Products</span>
+				</div>
+
+			<ul class='gc steps'>
+				<li test-id='53' class='gc given Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</h6>
+
+				</li>
+				<li test-id='54' class='gc when Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.products.AddProductSteps.i_create_a_product_with_name_as_type_as_price_as_shipping_as_upc_as_description_as_manufacturer_as_model_as_url_as_image_as(java.lang.String,java.lang.String,int,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I try create a product with name as 'AddedName16', type as 'AddedType16', price as 17, shipping as 17, upc as 'AddedUpc1',description as 'EMPTY',manufacturer as 'AddedManufacturer', model as 'AddedModel', url as 'AddedUrl' image as 'AddedImage'</h6>
+
+				</li>
+				<li test-id='55' class='gc then Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.VerifyResponseSteps.response_should_not_be_returned_with_name_as_message_as_status_code_and_errors_as(java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should not be returned with name as 'BadRequest',message as 'Invalid Parameters', status code 'BADREQUEST' and errors as "'description' should NOT be shorter than 1 characters"</h6>
+
+				</li>
+			</ul>
+		</li>
+		<li test-id='56' class='node scenario Pass' status='Pass'>
+			<div class="step-name" title="()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Post a products with inavalid data</div>
+
+				<div class='category-list'>
+						<span class='category label'>@PostProducts</span>
+						<span class='category label'>@NegativeScenarios</span>
+						<span class='category label'>@GetProducts</span>
+						<span class='category label'>@Products</span>
+				</div>
+
+			<ul class='gc steps'>
+				<li test-id='57' class='gc given Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</h6>
+
+				</li>
+				<li test-id='58' class='gc when Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.products.AddProductSteps.i_create_a_product_with_name_as_type_as_price_as_shipping_as_upc_as_description_as_manufacturer_as_model_as_url_as_image_as(java.lang.String,java.lang.String,int,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I try create a product with name as 'AddedName18', type as 'AddedType18', price as 19, shipping as 19, upc as 'AddedUpc1',description as 'AddedDescription',manufacturer as 'NULL', model as 'AddedModel', url as 'AddedUrl' image as 'AddedImage'</h6>
+
+				</li>
+				<li test-id='59' class='gc then Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.VerifyResponseSteps.response_should_not_be_returned_with_name_as_message_as_status_code_and_errors_as(java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should not be returned with name as 'BadRequest',message as 'Invalid Parameters', status code 'BADREQUEST' and errors as "'manufacturer' should be string"</h6>
+
+				</li>
+			</ul>
+		</li>
+		<li test-id='60' class='node scenario Pass' status='Pass'>
+			<div class="step-name" title="()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Post a products with inavalid data</div>
+
+				<div class='category-list'>
+						<span class='category label'>@PostProducts</span>
+						<span class='category label'>@NegativeScenarios</span>
+						<span class='category label'>@GetProducts</span>
+						<span class='category label'>@Products</span>
+				</div>
+
+			<ul class='gc steps'>
+				<li test-id='61' class='gc given Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</h6>
+
+				</li>
+				<li test-id='62' class='gc when Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.products.AddProductSteps.i_create_a_product_with_name_as_type_as_price_as_shipping_as_upc_as_description_as_manufacturer_as_model_as_url_as_image_as(java.lang.String,java.lang.String,int,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I try create a product with name as 'AddedName19', type as 'AddedType19', price as 20, shipping as 20, upc as 'AddedUpc1',description as 'AddedDescription',manufacturer as 'EMPTY', model as 'AddedModel', url as 'AddedUrl' image as 'AddedImage'</h6>
+
+				</li>
+				<li test-id='63' class='gc then Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.VerifyResponseSteps.response_should_not_be_returned_with_name_as_message_as_status_code_and_errors_as(java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should not be returned with name as 'BadRequest',message as 'Invalid Parameters', status code 'BADREQUEST' and errors as "'manufacturer' should NOT be shorter than 1 characters"</h6>
+
+				</li>
+			</ul>
+		</li>
+		<li test-id='64' class='node scenario Pass' status='Pass'>
+			<div class="step-name" title="()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Post a products with inavalid data</div>
+
+				<div class='category-list'>
+						<span class='category label'>@PostProducts</span>
+						<span class='category label'>@NegativeScenarios</span>
+						<span class='category label'>@GetProducts</span>
+						<span class='category label'>@Products</span>
+				</div>
+
+			<ul class='gc steps'>
+				<li test-id='65' class='gc given Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</h6>
+
+				</li>
+				<li test-id='66' class='gc when Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.products.AddProductSteps.i_create_a_product_with_name_as_type_as_price_as_shipping_as_upc_as_description_as_manufacturer_as_model_as_url_as_image_as(java.lang.String,java.lang.String,int,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I try create a product with name as 'AddedName21', type as 'AddedType21', price as 22, shipping as 22, upc as 'AddedUpc1',description as 'AddedDescription',manufacturer as 'AddedManufacturer', model as 'NULL', url as 'AddedUrl' image as 'AddedImage'</h6>
+
+				</li>
+				<li test-id='67' class='gc then Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.VerifyResponseSteps.response_should_not_be_returned_with_name_as_message_as_status_code_and_errors_as(java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should not be returned with name as 'BadRequest',message as 'Invalid Parameters', status code 'BADREQUEST' and errors as "'model' should be string"</h6>
+
+				</li>
+			</ul>
+		</li>
+		<li test-id='68' class='node scenario Pass' status='Pass'>
+			<div class="step-name" title="()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Post a products with inavalid data</div>
+
+				<div class='category-list'>
+						<span class='category label'>@PostProducts</span>
+						<span class='category label'>@NegativeScenarios</span>
+						<span class='category label'>@GetProducts</span>
+						<span class='category label'>@Products</span>
+				</div>
+
+			<ul class='gc steps'>
+				<li test-id='69' class='gc given Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</h6>
+
+				</li>
+				<li test-id='70' class='gc when Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.products.AddProductSteps.i_create_a_product_with_name_as_type_as_price_as_shipping_as_upc_as_description_as_manufacturer_as_model_as_url_as_image_as(java.lang.String,java.lang.String,int,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I try create a product with name as 'AddedName22', type as 'AddedType22', price as 23, shipping as 23, upc as 'AddedUpc1',description as 'AddedDescription',manufacturer as 'AddedManufacturer', model as 'EMPTY', url as 'AddedUrl' image as 'AddedImage'</h6>
+
+				</li>
+				<li test-id='71' class='gc then Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.VerifyResponseSteps.response_should_not_be_returned_with_name_as_message_as_status_code_and_errors_as(java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should not be returned with name as 'BadRequest',message as 'Invalid Parameters', status code 'BADREQUEST' and errors as "'model' should NOT be shorter than 1 characters"</h6>
+
+				</li>
+			</ul>
+		</li>
+		<li test-id='72' class='node scenario Pass' status='Pass'>
+			<div class="step-name" title="()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Post a products with inavalid data</div>
+
+				<div class='category-list'>
+						<span class='category label'>@PostProducts</span>
+						<span class='category label'>@NegativeScenarios</span>
+						<span class='category label'>@GetProducts</span>
+						<span class='category label'>@Products</span>
+				</div>
+
+			<ul class='gc steps'>
+				<li test-id='73' class='gc given Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</h6>
+
+				</li>
+				<li test-id='74' class='gc when Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.products.AddProductSteps.i_create_a_product_with_name_as_type_as_price_as_shipping_as_upc_as_description_as_manufacturer_as_model_as_url_as_image_as(java.lang.String,java.lang.String,int,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I try create a product with name as 'AddedName24', type as 'AddedType24', price as 25, shipping as 25, upc as 'AddedUpc1',description as 'AddedDescription',manufacturer as 'AddedManufacturer', model as 'AddedModel', url as 'NULL' image as 'AddedImage'</h6>
+
+				</li>
+				<li test-id='75' class='gc then Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.VerifyResponseSteps.response_should_not_be_returned_with_name_as_message_as_status_code_and_errors_as(java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should not be returned with name as 'BadRequest',message as 'Invalid Parameters', status code 'BADREQUEST' and errors as "'url' should be string"</h6>
+
+				</li>
+			</ul>
+		</li>
+		<li test-id='76' class='node scenario Pass' status='Pass'>
+			<div class="step-name" title="()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Post a products with inavalid data</div>
+
+				<div class='category-list'>
+						<span class='category label'>@PostProducts</span>
+						<span class='category label'>@NegativeScenarios</span>
+						<span class='category label'>@GetProducts</span>
+						<span class='category label'>@Products</span>
+				</div>
+
+			<ul class='gc steps'>
+				<li test-id='77' class='gc given Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</h6>
+
+				</li>
+				<li test-id='78' class='gc when Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.products.AddProductSteps.i_create_a_product_with_name_as_type_as_price_as_shipping_as_upc_as_description_as_manufacturer_as_model_as_url_as_image_as(java.lang.String,java.lang.String,int,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I try create a product with name as 'AddedName25', type as 'AddedType25', price as 26, shipping as 26, upc as 'AddedUpc1',description as 'AddedDescription',manufacturer as 'AddedManufacturer', model as 'AddedModel', url as 'EMPTY' image as 'AddedImage'</h6>
+
+				</li>
+				<li test-id='79' class='gc then Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.VerifyResponseSteps.response_should_not_be_returned_with_name_as_message_as_status_code_and_errors_as(java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should not be returned with name as 'BadRequest',message as 'Invalid Parameters', status code 'BADREQUEST' and errors as "'url' should NOT be shorter than 1 characters"</h6>
+
+				</li>
+			</ul>
+		</li>
+		<li test-id='80' class='node scenario Pass' status='Pass'>
+			<div class="step-name" title="()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Post a products with inavalid data</div>
+
+				<div class='category-list'>
+						<span class='category label'>@PostProducts</span>
+						<span class='category label'>@NegativeScenarios</span>
+						<span class='category label'>@GetProducts</span>
+						<span class='category label'>@Products</span>
+				</div>
+
+			<ul class='gc steps'>
+				<li test-id='81' class='gc given Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</h6>
+
+				</li>
+				<li test-id='82' class='gc when Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.products.AddProductSteps.i_create_a_product_with_name_as_type_as_price_as_shipping_as_upc_as_description_as_manufacturer_as_model_as_url_as_image_as(java.lang.String,java.lang.String,int,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I try create a product with name as 'AddedName27', type as 'AddedType27', price as 28, shipping as 28, upc as 'AddedUpc1',description as 'AddedDescription',manufacturer as 'AddedManufacturer', model as 'AddedModel', url as 'AddedUrl' image as 'NULL'</h6>
+
+				</li>
+				<li test-id='83' class='gc then Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.VerifyResponseSteps.response_should_not_be_returned_with_name_as_message_as_status_code_and_errors_as(java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should not be returned with name as 'BadRequest',message as 'Invalid Parameters', status code 'BADREQUEST' and errors as "'image' should be string"</h6>
+
+				</li>
+			</ul>
+		</li>
+		<li test-id='84' class='node scenario Pass' status='Pass'>
+			<div class="step-name" title="()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Post a products with inavalid data</div>
+
+				<div class='category-list'>
+						<span class='category label'>@PostProducts</span>
+						<span class='category label'>@NegativeScenarios</span>
+						<span class='category label'>@GetProducts</span>
+						<span class='category label'>@Products</span>
+				</div>
+
+			<ul class='gc steps'>
+				<li test-id='85' class='gc given Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</h6>
+
+				</li>
+				<li test-id='86' class='gc when Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.products.AddProductSteps.i_create_a_product_with_name_as_type_as_price_as_shipping_as_upc_as_description_as_manufacturer_as_model_as_url_as_image_as(java.lang.String,java.lang.String,int,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I try create a product with name as 'AddedName28', type as 'AddedType28', price as 29, shipping as 29, upc as 'AddedUpc1',description as 'AddedDescription',manufacturer as 'AddedManufacturer', model as 'AddedModel', url as 'AddedUrl' image as 'EMPTY'</h6>
+
+				</li>
+				<li test-id='87' class='gc then Pass' status='Pass'>
+					<h6 class="step-name" title="demo.bestbuy.com.commonsteps.VerifyResponseSteps.response_should_not_be_returned_with_name_as_message_as_status_code_and_errors_as(java.lang.String,java.lang.String,java.lang.String,java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should not be returned with name as 'BadRequest',message as 'Invalid Parameters', status code 'BADREQUEST' and errors as "'image' should NOT be shorter than 1 characters"</h6>
+
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='88'>
+					<div class='test-heading'>
+						<span class='test-name'>GetProducts</span>
+						<span class='test-time'>Mar 30, 2023 03:08:33 PM</span>
+						<span class='test-status right pass'>Pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class="sr-filters bdd-filters">
+	<a class="btn-floating waves-effect waves-light pass green" title="pass"><i class='material-icons'>check_circle</i></a>
+	<a class="btn-floating waves-effect waves-light fail red" title="fail"><i class='material-icons'>cancel</i></a>
+	<a class="btn-floating waves-effect waves-light skip blue" title="skip"><i class='material-icons'>redo</i></a>
+	<a class="btn-floating waves-effect waves-light clear grey" title="clear"><i class='material-icons'>clear</i></a>
+</div>
+	<div class='test-desc'>  In Order to get products
+  I want to told to verify products
+  API :- GET /products</div>
+
+<div class='scenario node' test-id='89' status='pass'>
+
+	<span class='duration right label'>00 00 02.296</span>
+	<div class="bdd-test">
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Get All Products</div>
+	</div>
+	
+	
+		<div class='category-list'>
+				<span class='category label'>@PositiveScenarios</span>
+				<span class='category label'>@GetProducts</span>
+				<span class='category label'>@Products</span>
+		</div>
+	
+	<ul class='steps'>
+		<li test-id='90' class='node given Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</div>
+
+
+		</li>
+		<li test-id='91' class='node when Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.products.GetProductSteps.i_get_all_products())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I get all products</div>
+
+
+		</li>
+		<li test-id='92' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.VerifyResponseSteps.products_list_returned_with_status_code(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should be returned with status code 'OK'</div>
+
+
+		</li>
+		<li test-id='93' class='node and Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.products.GetProductSteps.verify_the_products_list_from_Db())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And Verify the products list from Db</div>
+
+
+		</li>
+	</ul>
+</div>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='94'>
+					<div class='test-heading'>
+						<span class='test-name'>Get Product via Id</span>
+						<span class='test-time'>Mar 30, 2023 03:08:35 PM</span>
+						<span class='test-status right pass'>Pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class="sr-filters bdd-filters">
+	<a class="btn-floating waves-effect waves-light pass green" title="pass"><i class='material-icons'>check_circle</i></a>
+	<a class="btn-floating waves-effect waves-light fail red" title="fail"><i class='material-icons'>cancel</i></a>
+	<a class="btn-floating waves-effect waves-light skip blue" title="skip"><i class='material-icons'>redo</i></a>
+	<a class="btn-floating waves-effect waves-light clear grey" title="clear"><i class='material-icons'>clear</i></a>
+</div>
+	<div class='test-desc'>  In Order to get products via Id
+  I want to told to verify products
+  API :- GET /products/{id}</div>
+
+<div class='scenario node' test-id='95' status='pass'>
+
+	<span class='duration right label'>00 00 00.036</span>
+	<div class="bdd-test">
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Get product via Id</div>
+	</div>
+	
+	
+		<div class='category-list'>
+				<span class='category label'>@PositiveScenarios</span>
+				<span class='category label'>@GetProducts</span>
+				<span class='category label'>@Products</span>
+		</div>
+	
+	<ul class='steps'>
+		<li test-id='96' class='node given Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</div>
+
+
+		</li>
+		<li test-id='97' class='node when Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.products.GetProductViaIdSteps.i_get_product_with_product(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I get product with product 'DuracellCopperTechBattery'</div>
+
+
+		</li>
+		<li test-id='98' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.VerifyResponseSteps.products_list_returned_with_status_code(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should be returned with status code 'OK'</div>
+
+
+		</li>
+		<li test-id='99' class='node and Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.products.GetProductViaIdSteps.verify_the_product_from_Db())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And Verify the product from Db</div>
+
+
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='100' status='pass'>
+
+	<span class='duration right label'>00 00 00.022</span>
+	<div class="bdd-test">
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Try to get product via Invalid product id.</div>
+	</div>
+	
+	
+		<div class='category-list'>
+				<span class='category label'>@NegativeScenarios</span>
+				<span class='category label'>@GetProducts</span>
+				<span class='category label'>@Products</span>
+		</div>
+	
+	<ul class='steps'>
+		<li test-id='101' class='node given Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</div>
+
+
+		</li>
+		<li test-id='102' class='node when Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.products.GetProductViaIdSteps.i_get_product_with_product(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I try get product with product 'Invalid'</div>
+
+
+		</li>
+		<li test-id='103' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.VerifyResponseSteps.product_should_be_returned_with_status_code_name_as_and_message_as(java.lang.String,java.lang.String,java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should not be returned with status code 'NOTFOUND', name as 'NotFound' and message as "No record found for id '0'"</div>
+
+
+		</li>
+	</ul>
+</div>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='104'>
+					<div class='test-heading'>
+						<span class='test-name'>GetServices</span>
+						<span class='test-time'>Mar 30, 2023 03:08:35 PM</span>
+						<span class='test-status right pass'>Pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class="sr-filters bdd-filters">
+	<a class="btn-floating waves-effect waves-light pass green" title="pass"><i class='material-icons'>check_circle</i></a>
+	<a class="btn-floating waves-effect waves-light fail red" title="fail"><i class='material-icons'>cancel</i></a>
+	<a class="btn-floating waves-effect waves-light skip blue" title="skip"><i class='material-icons'>redo</i></a>
+	<a class="btn-floating waves-effect waves-light clear grey" title="clear"><i class='material-icons'>clear</i></a>
+</div>
+	<div class='test-desc'>	In Order to get services
+	I want to told to verify services
+	API :- GET /services</div>
+
+<div class='scenario node' test-id='105' status='pass'>
+
+	<span class='duration right label'>00 00 00.051</span>
+	<div class="bdd-test">
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Get All Services</div>
+	</div>
+	
+	
+		<div class='category-list'>
+				<span class='category label'>@Services</span>
+				<span class='category label'>@PositiveScenarios</span>
+				<span class='category label'>@GetProducts</span>
+		</div>
+	
+	<ul class='steps'>
+		<li test-id='106' class='node given Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</div>
+
+
+		</li>
+		<li test-id='107' class='node when Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.services.GetServicesSteps.i_get_all_services())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I get all services</div>
+
+
+		</li>
+		<li test-id='108' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.VerifyResponseSteps.products_list_returned_with_status_code(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should be returned with status code 'OK'</div>
+
+
+		</li>
+		<li test-id='109' class='node and Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.services.GetServicesSteps.verify_the_services_list_from_Db())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And Verify the services list from Db</div>
+
+
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='110' status='pass'>
+
+	<span class='duration right label'>00 00 00.026</span>
+	<div class="bdd-test">
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Get All Services</div>
+	</div>
+	
+	
+		<div class='category-list'>
+				<span class='category label'>@Services</span>
+				<span class='category label'>@PostiveScenarios</span>
+				<span class='category label'>@GetProducts</span>
+		</div>
+	
+	<ul class='steps'>
+		<li test-id='111' class='node given Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</div>
+
+
+		</li>
+		<li test-id='112' class='node when Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.services.GetServicesViaIdSteps.i_get_service(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I get 'Geek_Squad_Services' service</div>
+
+
+		</li>
+		<li test-id='113' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.VerifyResponseSteps.products_list_returned_with_status_code(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should be returned with status code 'OK'</div>
+
+
+		</li>
+		<li test-id='114' class='node and Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.services.GetServicesViaIdSteps.verify_the_service_from_Db())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And Verify the service from Db</div>
+
+
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='115' status='pass'>
+
+	<span class='duration right label'>00 00 00.021</span>
+	<div class="bdd-test">
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Get All Services</div>
+	</div>
+	
+	
+		<div class='category-list'>
+				<span class='category label'>@NegativeScenario</span>
+				<span class='category label'>@Services</span>
+				<span class='category label'>@GetProducts</span>
+		</div>
+	
+	<ul class='steps'>
+		<li test-id='116' class='node given Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</div>
+
+
+		</li>
+		<li test-id='117' class='node when Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.services.GetServicesViaIdSteps.i_get_service(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I get 'Invalid' service</div>
+
+
+		</li>
+		<li test-id='118' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.VerifyResponseSteps.product_should_be_returned_with_status_code_name_as_and_message_as(java.lang.String,java.lang.String,java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should not be returned with status code 'NOTFOUND', name as 'NotFound' and message as "No record found for id '0'"</div>
+
+
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='119' status='pass'>
+
+	<span class='duration right label'>00 00 00.023</span>
+	<div class="bdd-test">
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Get All Services</div>
+	</div>
+	
+	
+		<div class='category-list'>
+				<span class='category label'>@NegativeScenario</span>
+				<span class='category label'>@Services</span>
+				<span class='category label'>@GetProducts</span>
+		</div>
+	
+	<ul class='steps'>
+		<li test-id='120' class='node given Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</div>
+
+
+		</li>
+		<li test-id='121' class='node when Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.services.GetServicesViaIdSteps.i_get_service(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I get 'NotExisting' service</div>
+
+
+		</li>
+		<li test-id='122' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.VerifyResponseSteps.product_should_be_returned_with_status_code_name_as_and_message_as(java.lang.String,java.lang.String,java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should not be returned with status code 'NOTFOUND', name as 'NotFound' and message as "No record found for id '9999'"</div>
+
+
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='129' status='pass'>
+
+	<span class='duration right label'>00 00 00.063</span>
+	<div class="bdd-test">
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Get Stores via valid Id</div>
+	</div>
+	
+	
+		<div class='category-list'>
+				<span class='category label'>@PositiveScenario</span>
+				<span class='category label'>@Stores</span>
+		</div>
+	
+	<ul class='steps'>
+		<li test-id='130' class='node given Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</div>
+
+
+		</li>
+		<li test-id='131' class='node when Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.stores.GetStoresViaIdSteps.i_get_stores(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I get 'MINNETONKA' stores</div>
+
+
+		</li>
+		<li test-id='132' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.VerifyResponseSteps.products_list_returned_with_status_code(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should be returned with status code 'OK'</div>
+
+
+		</li>
+		<li test-id='133' class='node and Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.stores.GetStoresViaIdSteps.verify_stores_data_from_Db())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And Verify stores data from Db.</div>
+
+
+		</li>
+	</ul>
+</div>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='123'>
+					<div class='test-heading'>
+						<span class='test-name'>GetStores</span>
+						<span class='test-time'>Mar 30, 2023 03:08:35 PM</span>
+						<span class='test-status right pass'>Pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class="sr-filters bdd-filters">
+	<a class="btn-floating waves-effect waves-light pass green" title="pass"><i class='material-icons'>check_circle</i></a>
+	<a class="btn-floating waves-effect waves-light fail red" title="fail"><i class='material-icons'>cancel</i></a>
+	<a class="btn-floating waves-effect waves-light skip blue" title="skip"><i class='material-icons'>redo</i></a>
+	<a class="btn-floating waves-effect waves-light clear grey" title="clear"><i class='material-icons'>clear</i></a>
+</div>
+	<div class='test-desc'>  In Order to get stores
+	I want to told to verify stores
+	API :- GET /stores</div>
+
+<div class='scenario node' test-id='124' status='pass'>
+
+	<span class='duration right label'>00 00 00.203</span>
+	<div class="bdd-test">
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Get all stores</div>
+	</div>
+	
+	
+		<div class='category-list'>
+				<span class='category label'>@PositiveScenarios</span>
+				<span class='category label'>@Stores</span>
+				<span class='category label'>@GetStores</span>
+		</div>
+	
+	<ul class='steps'>
+		<li test-id='125' class='node given Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.CommonSteps.i_am_a_valid_user())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am a valid user</div>
+
+
+		</li>
+		<li test-id='126' class='node when Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.stores.GetStoresSteps.i_get_all_stores())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I get all stores</div>
+
+
+		</li>
+		<li test-id='127' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.commonsteps.VerifyResponseSteps.products_list_returned_with_status_code(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then Response should be returned with status code 'OK'</div>
+
+
+		</li>
+		<li test-id='128' class='node and Pass' status='Pass'>
+			<div class="step-name" title="(demo.bestbuy.com.stores.GetStoresSteps.verify_the_stores_list_from_Db())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And Verify the stores list from Db</div>
+
+
+		</li>
+	</ul>
+</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+	
+	<!-- subview left -->
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<div id='step-filters' class="right sr-filters">
+				<a class="btn-floating waves-effect waves-light green" status="pass" alt="pass" title="pass"><i class="material-icons">check_circle</i></a>
+				<a class="btn-floating waves-effect waves-light red" status="fail" alt="fail" title="fail"><i class="material-icons">cancel</i></a>
+				<a class="btn-floating waves-effect waves-light red darken-4" status="fatal" alt="fatal" title="fatal"><i class="material-icons">cancel</i></a>
+				<a class="btn-floating waves-effect waves-light pink text-lighten-1" status="error" alt="error" title="error"><i class="material-icons">error</i></a>
+				<a class="btn-floating waves-effect waves-light orange" alt="warning" status="warning" title="warning"><i class="material-icons">warning</i></a>
+				<a class="btn-floating waves-effect waves-light teal" status="skip" alt="skip" title="skip"><i class="material-icons">redo</i></a>
+				<a class="btn-floating waves-effect waves-light grey" status="clear" alt="Clear filters" title="Clear filters"><i class="material-icons">clear</i></a>
+			</div>
+			<h5 class='test-name'></h5>
+		</div>
+	</div>
+	<!-- subview right -->
+</div>
+<!-- test view --><div id='category-view' class='view hide'>
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+				<i class='material-icons'>search</i> Search
+				</a>
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+	<div class='subview-left left'>
+		<div class='view-summary'>
+			<ul id='category-collection' class='category-collection'>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@PositiveScenario</span>
+						<span class='category-status right'>
+						<span class='label pass'>1</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span status="pass" class='label green accent-4 white-text'>Passed: 1</span>
+							
+							
+						</div>
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='129'>Get Stores via valid Id</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@GetStores</span>
+						<span class='category-status right'>
+						<span class='label pass'>1</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span status="pass" class='label green accent-4 white-text'>Passed: 1</span>
+							
+							
+						</div>
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='124'>Get all stores</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@GetProducts</span>
+						<span class='category-status right'>
+						<span class='label pass'>24</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span status="pass" class='label green accent-4 white-text'>Passed: 24</span>
+							
+							
+						</div>
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Mar 30, 2023 03:08:29 PM</td>
+										<td class='linked' test-id='18'>Post a products</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:30 PM</td>
+										<td class='linked' test-id='24'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:30 PM</td>
+										<td class='linked' test-id='28'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:30 PM</td>
+										<td class='linked' test-id='32'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:30 PM</td>
+										<td class='linked' test-id='36'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:30 PM</td>
+										<td class='linked' test-id='40'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:31 PM</td>
+										<td class='linked' test-id='44'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:31 PM</td>
+										<td class='linked' test-id='48'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:31 PM</td>
+										<td class='linked' test-id='52'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:31 PM</td>
+										<td class='linked' test-id='56'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:31 PM</td>
+										<td class='linked' test-id='60'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='64'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='68'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='72'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='76'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='80'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='84'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:33 PM</td>
+										<td class='linked' test-id='89'>Get All Products</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='95'>Get product via Id</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='100'>Try to get product via Invalid product id.</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='105'>Get All Services</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='110'>Get All Services</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='115'>Get All Services</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='119'>Get All Services</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@Stores</span>
+						<span class='category-status right'>
+						<span class='label pass'>2</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span status="pass" class='label green accent-4 white-text'>Passed: 2</span>
+							
+							
+						</div>
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='124'>Get all stores</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='129'>Get Stores via valid Id</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@GetCategories</span>
+						<span class='category-status right'>
+						<span class='label pass'>3</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span status="pass" class='label green accent-4 white-text'>Passed: 3</span>
+							
+							
+						</div>
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Mar 30, 2023 03:08:26 PM</td>
+										<td class='linked' test-id='2'>Get category via Id</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:29 PM</td>
+										<td class='linked' test-id='7'>Try to get categories via Invalid product id.</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:29 PM</td>
+										<td class='linked' test-id='12'>Get All Categories</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@PositiveScenarios</span>
+						<span class='category-status right'>
+						<span class='label pass'>7</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span status="pass" class='label green accent-4 white-text'>Passed: 7</span>
+							
+							
+						</div>
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Mar 30, 2023 03:08:26 PM</td>
+										<td class='linked' test-id='2'>Get category via Id</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:29 PM</td>
+										<td class='linked' test-id='12'>Get All Categories</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:29 PM</td>
+										<td class='linked' test-id='18'>Post a products</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:33 PM</td>
+										<td class='linked' test-id='89'>Get All Products</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='95'>Get product via Id</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='105'>Get All Services</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='124'>Get all stores</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@PostiveScenarios</span>
+						<span class='category-status right'>
+						<span class='label pass'>1</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span status="pass" class='label green accent-4 white-text'>Passed: 1</span>
+							
+							
+						</div>
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='110'>Get All Services</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@NegativeScenarios</span>
+						<span class='category-status right'>
+						<span class='label pass'>18</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span status="pass" class='label green accent-4 white-text'>Passed: 18</span>
+							
+							
+						</div>
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Mar 30, 2023 03:08:29 PM</td>
+										<td class='linked' test-id='7'>Try to get categories via Invalid product id.</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:30 PM</td>
+										<td class='linked' test-id='24'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:30 PM</td>
+										<td class='linked' test-id='28'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:30 PM</td>
+										<td class='linked' test-id='32'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:30 PM</td>
+										<td class='linked' test-id='36'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:30 PM</td>
+										<td class='linked' test-id='40'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:31 PM</td>
+										<td class='linked' test-id='44'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:31 PM</td>
+										<td class='linked' test-id='48'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:31 PM</td>
+										<td class='linked' test-id='52'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:31 PM</td>
+										<td class='linked' test-id='56'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:31 PM</td>
+										<td class='linked' test-id='60'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='64'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='68'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='72'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='76'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='80'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='84'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='100'>Try to get product via Invalid product id.</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@Products</span>
+						<span class='category-status right'>
+						<span class='label pass'>20</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span status="pass" class='label green accent-4 white-text'>Passed: 20</span>
+							
+							
+						</div>
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Mar 30, 2023 03:08:29 PM</td>
+										<td class='linked' test-id='18'>Post a products</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:30 PM</td>
+										<td class='linked' test-id='24'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:30 PM</td>
+										<td class='linked' test-id='28'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:30 PM</td>
+										<td class='linked' test-id='32'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:30 PM</td>
+										<td class='linked' test-id='36'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:30 PM</td>
+										<td class='linked' test-id='40'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:31 PM</td>
+										<td class='linked' test-id='44'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:31 PM</td>
+										<td class='linked' test-id='48'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:31 PM</td>
+										<td class='linked' test-id='52'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:31 PM</td>
+										<td class='linked' test-id='56'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:31 PM</td>
+										<td class='linked' test-id='60'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='64'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='68'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='72'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='76'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='80'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='84'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:33 PM</td>
+										<td class='linked' test-id='89'>Get All Products</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='95'>Get product via Id</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='100'>Try to get product via Invalid product id.</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@PostProducts</span>
+						<span class='category-status right'>
+						<span class='label pass'>17</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span status="pass" class='label green accent-4 white-text'>Passed: 17</span>
+							
+							
+						</div>
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Mar 30, 2023 03:08:29 PM</td>
+										<td class='linked' test-id='18'>Post a products</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:30 PM</td>
+										<td class='linked' test-id='24'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:30 PM</td>
+										<td class='linked' test-id='28'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:30 PM</td>
+										<td class='linked' test-id='32'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:30 PM</td>
+										<td class='linked' test-id='36'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:30 PM</td>
+										<td class='linked' test-id='40'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:31 PM</td>
+										<td class='linked' test-id='44'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:31 PM</td>
+										<td class='linked' test-id='48'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:31 PM</td>
+										<td class='linked' test-id='52'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:31 PM</td>
+										<td class='linked' test-id='56'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:31 PM</td>
+										<td class='linked' test-id='60'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='64'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='68'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='72'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='76'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='80'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:32 PM</td>
+										<td class='linked' test-id='84'>Post a products with inavalid data</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@Categories</span>
+						<span class='category-status right'>
+						<span class='label pass'>3</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span status="pass" class='label green accent-4 white-text'>Passed: 3</span>
+							
+							
+						</div>
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Mar 30, 2023 03:08:26 PM</td>
+										<td class='linked' test-id='2'>Get category via Id</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:29 PM</td>
+										<td class='linked' test-id='7'>Try to get categories via Invalid product id.</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:29 PM</td>
+										<td class='linked' test-id='12'>Get All Categories</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@Services</span>
+						<span class='category-status right'>
+						<span class='label pass'>4</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span status="pass" class='label green accent-4 white-text'>Passed: 4</span>
+							
+							
+						</div>
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='105'>Get All Services</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='110'>Get All Services</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='115'>Get All Services</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='119'>Get All Services</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@NegativeScenario</span>
+						<span class='category-status right'>
+						<span class='label pass'>2</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span status="pass" class='label green accent-4 white-text'>Passed: 2</span>
+							
+							
+						</div>
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='115'>Get All Services</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Mar 30, 2023 03:08:35 PM</td>
+										<td class='linked' test-id='119'>Get All Services</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='category-name'></h5>
+		</div>
+	</div>
+</div>
+<!-- category view --><div id='dashboard-view' class='view hide'>
+	<div class='card-panel transparent np-v'>
+		<h5>Dashboard</h5>
+
+		<div class='row'>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Features
+					<div class='panel-lead'>7</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Scenarios
+					<div class='panel-lead'>29</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Steps
+					<div class='panel-lead'>96</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Start
+					<div class='panel-lead'>Mar 30, 2023 03:08:25 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+			 		End
+			 		<div class='panel-lead'>Mar 30, 2023 03:08:36 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Time Taken
+					<div class='panel-lead'>00 00 11.016</div>
+				</div>
+			</div>
+			<div class='col s4'>
+				<div class='card-panel dashboard-environment'>
+					<span class='right label cyan white-text'>Environment</span><p>&nbsp;</p>
+					
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Value</th>
+						</tr>
+							<tr>
+								<td>os</td>
+								<td>windows</td>
+							</tr>
+					</table>
+				</div>
+			</div>
+			<div class='col s6'>
+				<div class='card-panel dashboard-categories'>
+					<span class='right label cyan white-text'>Categories</span><p>&nbsp;</p>
+					
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Passed</th>
+							<th>Failed</th>
+							<th>Skipped</th>
+							<th>Passed %</th>
+						</tr>
+						<tr>
+							<td>@PositiveScenario</td>
+							<td>1</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>@GetStores</td>
+							<td>1</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>@GetProducts</td>
+							<td>24</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>@Stores</td>
+							<td>2</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>@GetCategories</td>
+							<td>3</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>@PositiveScenarios</td>
+							<td>7</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>@PostiveScenarios</td>
+							<td>1</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>@NegativeScenarios</td>
+							<td>18</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>@Products</td>
+							<td>20</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>@PostProducts</td>
+							<td>17</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>@Categories</td>
+							<td>3</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>@Services</td>
+							<td>4</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>@NegativeScenario</td>
+							<td>2</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- dashboard view -->
+		</div>
+		<!-- container -->
+		<script>
+			var statusGroup = {
+                parentCount: 7,
+				passParent: 7,
+				failParent: 0,
+				fatalParent: 0,
+				errorParent: 0,
+				warningParent: 0,
+				skipParent: 0,
+				childCount: 29,
+				passChild: 29,
+				failChild: 0,
+				fatalChild: 0,
+				errorChild: 0,
+				warningChild: 0,
+				skipChild: 0,
+				infoChild: 0,
+				grandChildCount: 96,
+				passGrandChild: 96,
+				failGrandChild: 0,
+				fatalGrandChild: 0,
+				errorGrandChild: 0,
+				warningGrandChild: 0,
+				skipGrandChild: 0,
+				infoGrandChild: 0,
+			};
+			</script>
+		
+		<script>
+			var timeline = {
+			        "Get Categories Via ID":2.77,"GetCategories":0.54,"PostProducts":3.279,"GetProducts":2.296,"Get Product via Id":0.065,"GetServices":0.434,"GetStores":0.203
+			};
+		</script>
+		
+		  <script src='http://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@ff53917fbbdb5ef820abbbe4d199a6942dc771ff/v3html/js/extent.js' type='text/javascript'></script>
+		
+		
+		<script type='text/javascript'>
+				
+		</script> 
+
+	</body>
+</html>

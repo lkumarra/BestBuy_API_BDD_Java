@@ -1,13 +1,14 @@
 package demo.bestbuy.com.products;
 import java.text.DateFormat;
 import java.util.Date;
+
+import demo.bestbuy.com.helpers.restassuredhelper.RestAssuredHelper;
 import lombok.extern.slf4j.Slf4j;
 import demo.bestbuy.com.helpers.apihelper.*;
 import demo.bestbuy.com.helpers.interfaces.IResponseValidator;
 import demo.bestbuy.com.helpers.products.ProductDBHelper;
 import demo.bestbuy.com.modals.products.PostProductModal.PostProduct;
 import demo.bestbuy.com.modals.products.ProductModal.GetProductDatum;
-import static demo.bestbuy.com.helpers.apihelper.InstanceCreator.*;
 import demo.bestbuy.com.baseapi.BaseAPI;
 import demo.bestbuy.com.wrapper.ResponseModalWrapper;
 
@@ -19,8 +20,12 @@ public final class AddProducts extends BaseAPI {
 	private GetProductDatum actual;
 	private GetProductDatum expected;
 
-	public AddProducts(IResponseValidator responseValidator) {
+	private AddProducts(IResponseValidator responseValidator) {
 		super("/products", responseValidator);
+	}
+
+	public static AddProducts newAddProducts(IResponseValidator responseValidator){
+		return new AddProducts(responseValidator);
 	}
 
 	public void executePostProductAPI(String name, String type, int price, String upc, int shipping, String description,
@@ -36,11 +41,11 @@ public final class AddProducts extends BaseAPI {
 		postProduct.setModel(model);
 		postProduct.setUrl(url);
 		postProduct.setImage(image);
-		String serializedObject = getRestAssuredHelperInstace().serializedObject(postProduct);
-		responseWrapper = getRestAssuredHelperInstace().performPostRequest(endPoint, serializedObject);
+		String serializedObject = RestAssuredHelper.newRestAssuredHelper().serializedObject(postProduct);
+		responseWrapper = RestAssuredHelper.newRestAssuredHelper().performPostRequest(endPoint, serializedObject);
 		log.warn("Response for endpoint : {} with request : {} with method : {} is : {} ", endPoint,
 				serializedObject, "POST", responseWrapper.getResponse());
-		getResponseValidatorInstace(responseValidator).setResponseWrapper(responseWrapper);
+		responseValidator.setResponseWrapper(responseWrapper);
 		executionTime = DateFormat.getDateInstance().format(new Date());
 	}
 
@@ -61,8 +66,9 @@ public final class AddProducts extends BaseAPI {
 			expected.setImage(postProduct.getImage());
 			expected.setCreatedAt(executionTime);
 			expected.setUpdatedAt(executionTime);
-			actual = getRestAssuredHelperInstace().getMappedResponse(responseWrapper.getResponse(),
+			actual = RestAssuredHelper.newRestAssuredHelper().getMappedResponse(responseWrapper.getResponse(),
 					GetProductDatum.class);
+			assert actual != null;
 			actual.setCreatedAt(StringHelper.getParsedDate(actual.getCreatedAt()));
 			actual.setUpdatedAt(StringHelper.getParsedDate(actual.getUpdatedAt()));
 			expected.setId(actual.getId());

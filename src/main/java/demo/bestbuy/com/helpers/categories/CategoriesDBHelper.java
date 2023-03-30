@@ -23,7 +23,7 @@ import demo.bestbuy.com.modals.categories.CategoriesModal.GetCategorySubCategory
  */
 public final class CategoriesDBHelper {
 
-	private static String scriptPath = System.getProperty("user.dir") + "/src/main/resources/DBScripts/Categories/";
+	private static final String scriptPath = System.getProperty("user.dir") + "/src/main/resources/DBScripts/Categories/";
 
 	/**
 	 * Fetch the categories list from DB.

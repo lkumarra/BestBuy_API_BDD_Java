@@ -1,12 +1,8 @@
 package demo.bestbuy.com.wrapper;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
-@EqualsAndHashCode
+@Data
 public final class ResponseModalWrapper {
 
 	private String name;

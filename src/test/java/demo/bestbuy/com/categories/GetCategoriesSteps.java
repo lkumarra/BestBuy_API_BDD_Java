@@ -1,8 +1,6 @@
 package demo.bestbuy.com.categories;
 
-
 import demo.bestbuy.com.baseapi.BaseAPI;
-import static demo.bestbuy.com.helpers.apihelper.InstanceCreator.*;
 import demo.bestbuy.com.helpers.responsevalidator.ResponseValidator;
 import demo.bestbuy.com.helpers.scenariocontext.ScenarioContext;
 import io.cucumber.java.en.Then;
@@ -17,10 +15,10 @@ import io.cucumber.java.en.When;
  */
 public class GetCategoriesSteps {
 
-	private GetCategories getCategories;
+	private final GetCategories getCategories;
 
 	public GetCategoriesSteps(ResponseValidator responseValidator, ScenarioContext<BaseAPI> context) {
-		getCategories = getCategoriesInstance(responseValidator);
+		getCategories = GetCategories.newGetCategories(responseValidator);
 		context.setContext(BaseAPI.class, getCategories);
 	}
 

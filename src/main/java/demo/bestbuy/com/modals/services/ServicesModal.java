@@ -2,15 +2,11 @@ package demo.bestbuy.com.modals.services;
 
 import java.util.List;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 public final class ServicesModal {
 
-	@Getter
-	@Setter
-	@EqualsAndHashCode
+	@Data
 	public static class GetServicesModal {
 		private int total;
 		private int limit;
@@ -18,9 +14,7 @@ public final class ServicesModal {
 		private List<Datum> data;
 	}
 
-	@Getter
-	@Setter
-	@EqualsAndHashCode
+	@Data
 	public static class Datum {
 		private int id;
 		private String name;

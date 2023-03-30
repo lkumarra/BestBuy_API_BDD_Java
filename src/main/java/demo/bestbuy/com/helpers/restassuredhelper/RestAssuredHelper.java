@@ -12,6 +12,7 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * This class contains the method related to GET, POST, PUT and Delete request.
@@ -20,7 +21,14 @@ import io.restassured.specification.RequestSpecification;
  *
  * @Date 2 July 2021
  */
+@Slf4j
 public final class RestAssuredHelper {
+
+	private RestAssuredHelper(){};
+
+	public static RestAssuredHelper newRestAssuredHelper(){
+		return new RestAssuredHelper();
+	}
 
 	/**
 	 * Create a Request Specifaction
@@ -29,9 +37,8 @@ public final class RestAssuredHelper {
 	 * @author Lavendra rajput
 	 */
 	private RequestSpecification createRequestSpecification() {
-		RequestSpecification requestSpecification = new RequestSpecBuilder().setBaseUri(BDDConstants.getBaseUri())
+		return new RequestSpecBuilder().setBaseUri(BDDConstants.getBaseUri())
 				.setContentType(ContentType.JSON).build();
-		return requestSpecification;
 	}
 
 	/**
@@ -42,7 +49,16 @@ public final class RestAssuredHelper {
 	 * @author Lavendra rajput
 	 */
 	public ResponseWrapper performGetRequest(String endPoint) {
-		Response response = given().spec(createRequestSpecification()).get(endPoint);
+		Response response = given()
+				.log()
+				.all()
+				.spec(createRequestSpecification())
+				.get(endPoint)
+				.then()
+				.log()
+				.all()
+				.extract()
+				.response();
 		return SetResponseWrapper(response);
 	}
 
@@ -55,7 +71,15 @@ public final class RestAssuredHelper {
 	 * @author Lavendra rajput
 	 */
 	public ResponseWrapper performPostRequest(String endpoint, String content) {
-		Response response = given().spec(createRequestSpecification()).body(content).post(endpoint);
+		Response response = given()
+				.log()
+				.all().spec(createRequestSpecification())
+				.body(content)
+				.post(endpoint).then()
+				.log()
+				.all()
+				.extract()
+				.response();
 		return SetResponseWrapper(response);
 	}
 

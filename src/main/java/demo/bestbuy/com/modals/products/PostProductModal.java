@@ -1,5 +1,6 @@
 package demo.bestbuy.com.modals.products;
 
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -7,9 +8,7 @@ import lombok.Setter;
 public final class PostProductModal {
 	
 
-	@Getter
-	@Setter
-	@EqualsAndHashCode
+	@Data
 	public static class PostProduct {
 		private String name;
 		private String type;

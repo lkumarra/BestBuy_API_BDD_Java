@@ -1,12 +1,9 @@
 package demo.bestbuy.com.wrapper;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public final class ResponseWrapper {
-
 	private String response;
 	private int statusCode;
 }

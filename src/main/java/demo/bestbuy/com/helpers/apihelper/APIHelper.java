@@ -11,7 +11,6 @@ import java.io.IOException;
  */
 public final class APIHelper {
 
-	private static ProcessBuilder processBuilder = null;
 	private static Process process = null;
 
 	/**
@@ -20,7 +19,7 @@ public final class APIHelper {
 	 * @author Lavendra rajput
 	 */
 	public static void startApiServer() {
-		processBuilder = new ProcessBuilder("cmd.exe", "/c",
+		ProcessBuilder processBuilder = new ProcessBuilder("cmd.exe", "/c",
 				"E: && cd E:\\NodeJsTestingProjects\\BestBuy API\\api-playground && npm start");
 		processBuilder.redirectErrorStream(true);
 		try {

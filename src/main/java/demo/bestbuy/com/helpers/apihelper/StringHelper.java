@@ -7,7 +7,7 @@ import java.util.Date;
 
 public final class StringHelper {
 
-	private String _stringToReplace;
+	private final String _stringToReplace;
 
 	public StringHelper(String stringToReplace) {
 		_stringToReplace = stringToReplace;

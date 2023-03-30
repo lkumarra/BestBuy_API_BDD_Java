@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public final class AssertHelper {
 
 	public static void AssertFail(Object actual, Object expected) {
-		Assert.fail("Actal response is :- " + "\n" + serializeObject(actual) + "\n" + " But expected is :- " + "\n"
+		Assert.fail("Actual response is :- " + "\n" + serializeObject(actual) + "\n" + " But expected is :- " + "\n"
 				+ serializeObject(expected));
 	}
 

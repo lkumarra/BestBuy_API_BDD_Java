@@ -10,10 +10,10 @@ import io.cucumber.java.en.When;
 
 public final class GetStoresViaIdSteps {
 	
-	private GetStoresViaId getStoreViaId;
+	private final GetStoresViaId getStoreViaId;
 	
 	public GetStoresViaIdSteps(ResponseValidator responseValidator, ScenarioContext<BaseAPI> scenarioContext) {
-		getStoreViaId = new GetStoresViaId(responseValidator);
+		getStoreViaId = GetStoresViaId.newGetStoresViaId(responseValidator);
 		scenarioContext.setContext(BaseAPI.class, getStoreViaId);
 	}
 

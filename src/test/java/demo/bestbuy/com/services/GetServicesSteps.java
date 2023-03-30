@@ -1,7 +1,6 @@
 package demo.bestbuy.com.services;
 
 import demo.bestbuy.com.baseapi.BaseAPI;
-import demo.bestbuy.com.helpers.apihelper.InstanceCreator;
 import demo.bestbuy.com.helpers.responsevalidator.ResponseValidator;
 import demo.bestbuy.com.helpers.scenariocontext.ScenarioContext;
 import io.cucumber.java.en.Then;
@@ -9,10 +8,10 @@ import io.cucumber.java.en.When;
 
 public final class GetServicesSteps {
 	
-	private GetServices getServices;
+	private final GetServices getServices;
 	
 	public GetServicesSteps(ResponseValidator responseValidator, ScenarioContext<BaseAPI> scenarioContext) {
-		getServices = InstanceCreator.getSevicesInstance(responseValidator);
+		getServices = GetServices.newGetServices(responseValidator);
 		scenarioContext.setContext(BaseAPI.class, getServices);
 	}
 	@When("I get all services")

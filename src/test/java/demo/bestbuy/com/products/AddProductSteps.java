@@ -1,7 +1,6 @@
 package demo.bestbuy.com.products;
 
 import demo.bestbuy.com.baseapi.BaseAPI;
-import demo.bestbuy.com.helpers.apihelper.InstanceCreator;
 import demo.bestbuy.com.helpers.apihelper.StringHelper;
 import demo.bestbuy.com.helpers.responsevalidator.ResponseValidator;
 import demo.bestbuy.com.helpers.scenariocontext.ScenarioContext;
@@ -10,10 +9,10 @@ import io.cucumber.java.en.When;
 
 public final class AddProductSteps {
 	
-	private AddProducts addProducts;
+	private final AddProducts addProducts;
 	
 	public AddProductSteps(ResponseValidator responseValidator, ScenarioContext<BaseAPI> scenarioContext) {
-		addProducts = InstanceCreator.getAddProductsInstance(responseValidator);
+		addProducts = AddProducts.newAddProducts(responseValidator);
 		scenarioContext.setContext(BaseAPI.class, addProducts);
 	}
 

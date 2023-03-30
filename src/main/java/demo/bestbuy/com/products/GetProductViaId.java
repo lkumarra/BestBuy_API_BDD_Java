@@ -1,12 +1,12 @@
 package demo.bestbuy.com.products;
 
 
+import demo.bestbuy.com.helpers.restassuredhelper.RestAssuredHelper;
 import lombok.extern.slf4j.Slf4j;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import demo.bestbuy.com.baseapi.BaseAPI;
 import demo.bestbuy.com.helpers.apihelper.AssertHelper;
-import demo.bestbuy.com.helpers.apihelper.InstanceCreator;
 import demo.bestbuy.com.helpers.interfaces.IResponseValidator;
 import demo.bestbuy.com.helpers.products.ProductDBHelper;
 import demo.bestbuy.com.modals.products.ProductModal.GetProductDatum;
@@ -24,8 +24,12 @@ public final class GetProductViaId extends BaseAPI {
 
 	private int id;
 
-	public GetProductViaId(IResponseValidator responseValidator) {
+	private GetProductViaId(IResponseValidator responseValidator) {
 		super("/products/%s", responseValidator);
+	}
+
+	public static GetProductViaId newGetProductsViaId(IResponseValidator responseValidator){
+		return new GetProductViaId(responseValidator);
 	}
 
 	/**
@@ -33,12 +37,12 @@ public final class GetProductViaId extends BaseAPI {
 	 * 
 	 * @param id : Id to get product
 	 */
-	protected void executeGetProductViaIdAPI(int id) {
+	public void executeGetProductViaIdAPI(int id) {
 		this.id = id;
-		responseWrapper = InstanceCreator.getRestAssuredHelperInstace().performGetRequest(String.format(endPoint, id));
+		responseWrapper = RestAssuredHelper.newRestAssuredHelper().performGetRequest(String.format(endPoint, id));
 		log.warn("Response for endpoint : {} with metod : {} is : {} ", String.format(endPoint, id), "GET",
 				responseWrapper.getResponse());
-		InstanceCreator.getResponseValidatorInstace(responseValidator).setResponseWrapper(responseWrapper);
+		responseValidator.setResponseWrapper(responseWrapper);
 	}
 
 	/**
@@ -47,14 +51,14 @@ public final class GetProductViaId extends BaseAPI {
 	 * @throws JsonMappingException
 	 * @throws JsonProcessingException
 	 */
-	protected void verifyProductListFromDb() {
-		GetProductDatum actualResponse = InstanceCreator.getRestAssuredHelperInstace()
+	public void verifyProductListFromDb() {
+		GetProductDatum actualResponse = RestAssuredHelper.newRestAssuredHelper()
 				.getMappedResponse(responseWrapper.getResponse(), GetProductDatum.class);
 		log.warn("Response from API is : {}",
-				InstanceCreator.getRestAssuredHelperInstace().serializedObject(actualResponse));
+				RestAssuredHelper.newRestAssuredHelper().serializedObject(actualResponse));
 		GetProductDatum expectedResponse = ProductDBHelper.getProductViaId(id);
 		log.warn("Data from Db is : {}",
-				InstanceCreator.getRestAssuredHelperInstace().serializedObject(expectedResponse));
+				RestAssuredHelper.newRestAssuredHelper().serializedObject(expectedResponse));
 		if (!actualResponse.equals(expectedResponse)) {
 			AssertHelper.AssertFail(actualResponse, expectedResponse);
 		}

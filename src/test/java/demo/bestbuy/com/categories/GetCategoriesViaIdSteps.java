@@ -3,7 +3,6 @@ package demo.bestbuy.com.categories;
 import demo.bestbuy.com.baseapi.BaseAPI;
 import demo.bestbuy.com.data.categories.CategoriesData;
 import demo.bestbuy.com.data.categories.CategoriesData.CategoriesDataEnum;
-import demo.bestbuy.com.helpers.apihelper.InstanceCreator;
 import demo.bestbuy.com.helpers.responsevalidator.ResponseValidator;
 import demo.bestbuy.com.helpers.scenariocontext.ScenarioContext;
 import io.cucumber.java.en.Then;
@@ -11,10 +10,10 @@ import io.cucumber.java.en.When;
 
 public final class GetCategoriesViaIdSteps {
 
-	private GetCategoriesViaId getCategoriesViaId;
+	private final GetCategoriesViaId getCategoriesViaId;
 
 	public GetCategoriesViaIdSteps(ResponseValidator responseValidator, ScenarioContext<BaseAPI> scenarioContext) {
-		getCategoriesViaId = InstanceCreator.getCategoriesViaIdInstance(responseValidator);
+		getCategoriesViaId = GetCategoriesViaId.newGetCategoriesViaId(responseValidator);
 		scenarioContext.setContext(BaseAPI.class, getCategoriesViaId);
 	}
 

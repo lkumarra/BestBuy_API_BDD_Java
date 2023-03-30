@@ -21,7 +21,7 @@ import demo.bestbuy.com.modals.products.ProductModal.GetProductDatum;
  */
 public final class ProductDBHelper {
 
-	private static String scriptPath = System.getProperty("user.dir") + "/src/main/resources/DBScripts/Products/";
+	private static final String scriptPath = System.getProperty("user.dir") + "/src/main/resources/DBScripts/Products/";
 
 	/**
 	 * Fetch the product list fromn DB.
