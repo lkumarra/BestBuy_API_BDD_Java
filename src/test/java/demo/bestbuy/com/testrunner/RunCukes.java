@@ -7,10 +7,19 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		monochrome = true,
-		features = {"classpath:features/categories","classpath:features/products","classpath:features/services"},
-		glue = {"demo.bestbuy.com.categories","demo.bestbuy.com.commonsteps","demo.bestbuy.com.hooks","demo.bestbuy.com.products","demo.bestbuy.com.services"}
-		)
+        monochrome = true,
+        features = {"classpath:features/categories",
+                "classpath:features/products",
+                "classpath:features/services",
+                "classpath:features/stores"},
+        glue = {"demo.bestbuy.com.categories",
+                "demo.bestbuy.com.commonsteps",
+                "demo.bestbuy.com.hooks",
+                "demo.bestbuy.com.products",
+                "demo.bestbuy.com.services",
+                "demo.bestbuy.com.stores"},
+        plugin = {"com.epam.reportportal.cucumber.ScenarioReporter", "pretty"}
+)
 public class RunCukes {
 
 }

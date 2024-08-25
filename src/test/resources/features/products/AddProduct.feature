@@ -12,7 +12,7 @@ Feature: PostProducts
     And Verify product created in Db.
 
   @GetProducts @NegativeScenarios
-  Scenario Outline: Post a products with inavalid data
+  Scenario Outline: Post a products with invalid data
     Given I am a valid user
     When I try create a product with name as '<Name>', type as '<type>', price as <price>, shipping as <shipping>, upc as '<upc>',description as '<description>',manufacturer as '<manufacturer>', model as '<model>', url as '<url>' image as '<image>'
     Then Response should not be returned with name as '<errorName>',message as '<message>', status code 'BADREQUEST' and errors as "<errors>"

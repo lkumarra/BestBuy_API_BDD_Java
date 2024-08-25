@@ -11,36 +11,32 @@ import demo.bestbuy.com.modals.categories.CategoriesModal.GetCategoryDatum;
 @Slf4j
 public final class GetCategoriesViaId extends BaseAPI {
 
-	private String categoryId;
+    private String categoryId;
 
-	private GetCategoriesViaId(IResponseValidator responseValidator) {
-		super("/categories/%s", responseValidator);
-	}
+    private GetCategoriesViaId(IResponseValidator responseValidator) {
+        super("/categories/%s", responseValidator);
+    }
 
-	public static GetCategoriesViaId newGetCategoriesViaId(IResponseValidator responseValidator){
-		return  new GetCategoriesViaId(responseValidator);
-	}
+    public static GetCategoriesViaId newGetCategoriesViaId(IResponseValidator responseValidator) {
+        return new GetCategoriesViaId(responseValidator);
+    }
 
-	protected void executeGetCategoriesViaIdAPI(String categoryId) {
-		this.categoryId = categoryId;
-		responseWrapper = RestAssuredHelper.newRestAssuredHelper()
-				.performGetRequest(String.format(endPoint, categoryId));
-		log.warn("Response for end point : {} with method : {} is : {}", String.format(endPoint, categoryId), "GET",
-				responseWrapper.getResponse());
-		responseValidator.setResponseWrapper(responseWrapper);
-	}
+    void executeGetCategoriesViaIdAPI(String categoryId) {
+        this.categoryId = categoryId;
+        responseWrapper = RestAssuredHelper.newRestAssuredHelper().performGetRequest(String.format(endPoint, categoryId));
+        log.warn("Response for end point : {} with method : {} is : {}", String.format(endPoint, categoryId), "GET", responseWrapper.getResponse());
+        responseValidator.setResponseWrapper(responseWrapper);
+    }
 
-	protected void verifyGetCategoriesViaIdFromDB() {
-		GetCategoryDatum actualResponse = RestAssuredHelper.newRestAssuredHelper()
-				.getMappedResponse(responseWrapper.getResponse(), GetCategoryDatum.class);
-		log.warn("Response from API is : {}",
-				RestAssuredHelper.newRestAssuredHelper().serializedObject(actualResponse));
-		GetCategoryDatum expectedResponse = CategoriesDBHelper.getCategoriesViaId(categoryId);
-		log.warn("Data from Db is : {}",
-				RestAssuredHelper.newRestAssuredHelper().serializedObject(expectedResponse));
-		if (!actualResponse.equals(expectedResponse)) {
-			AssertHelper.AssertFail(actualResponse, expectedResponse);
-		}
-	}
+    void verifyGetCategoriesViaIdFromDB() {
+        GetCategoryDatum actualResponse = RestAssuredHelper.newRestAssuredHelper().getMappedResponse(responseWrapper.getResponse(), GetCategoryDatum.class);
+        log.warn("Response from API is : {}", RestAssuredHelper.newRestAssuredHelper().serializedObject(actualResponse));
+        GetCategoryDatum expectedResponse = CategoriesDBHelper.getCategoriesViaId(categoryId);
+        log.warn("Data from Db is : {}", RestAssuredHelper.newRestAssuredHelper().serializedObject(expectedResponse));
+        assert actualResponse != null;
+        if (!actualResponse.equals(expectedResponse)) {
+            AssertHelper.AssertFail(actualResponse, expectedResponse);
+        }
+    }
 
 }

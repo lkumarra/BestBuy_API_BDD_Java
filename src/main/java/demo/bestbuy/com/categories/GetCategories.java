@@ -21,35 +21,31 @@ public final class GetCategories extends BaseAPI {
         super("/categories", responseValidator);
     }
 
-    public static GetCategories newGetCategories(IResponseValidator responseValidator){
+    public static GetCategories newGetCategories(IResponseValidator responseValidator) {
         return new GetCategories(responseValidator);
     }
 
     /**
      * Execute Get /categories API.
      */
-    protected void executeGetCategoriesAPI() {
+    void executeGetCategoriesAPI() {
         responseWrapper = RestAssuredHelper.newRestAssuredHelper().performGetRequest(endPoint);
-        log.warn("Response for end point : {} with method : {} is : {}", endPoint, "GET",
-                responseWrapper.getResponse());
+        log.warn("Response for end point : {} with method : {} is : {}", endPoint, "GET", responseWrapper.getResponse());
         responseValidator.setResponseWrapper(responseWrapper);
     }
 
     /**
      * Verify the categrories list returned in response from DB.
      */
-    protected void verifyCategoriesFromDB() {
-        GetCategoryModal actualResponse = RestAssuredHelper.newRestAssuredHelper()
-                .getMappedResponse(responseWrapper.getResponse(), GetCategoryModal.class);
-        log.warn("Response from API is : {}",
-                RestAssuredHelper.newRestAssuredHelper().serializedObject(actualResponse));
+    void verifyCategoriesFromDB() {
+        GetCategoryModal actualResponse = RestAssuredHelper.newRestAssuredHelper().getMappedResponse(responseWrapper.getResponse(), GetCategoryModal.class);
+        log.warn("Response from API is : {}", RestAssuredHelper.newRestAssuredHelper().serializedObject(actualResponse));
         GetCategoryModal expectedResponse = new GetCategoryModal();
         expectedResponse.setData(CategoriesDBHelper.getCategoriesList());
         expectedResponse.setTotal(CategoriesDBHelper.getTotalCategoryCount());
         expectedResponse.setLimit(10);
         expectedResponse.setSkip(0);
-        log.warn("Data from Db is : {}",
-                RestAssuredHelper.newRestAssuredHelper().serializedObject(expectedResponse));
+        log.warn("Data from Db is : {}", RestAssuredHelper.newRestAssuredHelper().serializedObject(expectedResponse));
         if (!expectedResponse.equals(actualResponse)) {
             AssertHelper.AssertFail(actualResponse, expectedResponse);
         }

@@ -12,7 +12,7 @@ Feature: GetServices
     And Verify stores data from Db.
 
   @Stores @NegativeScenario
-  Scenario Outline: 
+  Scenario Outline: Get Stores via invalid Id
     Given I am a valid user
     When I try to get '<stores>' stores
     Then Response should not be returned with status code '<statusCode>', name as '<name>' and message as "<message>"

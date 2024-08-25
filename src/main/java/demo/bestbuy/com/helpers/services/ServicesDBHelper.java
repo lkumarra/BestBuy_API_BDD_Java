@@ -1,55 +1,83 @@
 package demo.bestbuy.com.helpers.services;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import demo.bestbuy.com.data.dbKeys.DBkeys.ProductTableKeys;
 import demo.bestbuy.com.data.dbKeys.DBkeys.ServicesTableKeys;
 import demo.bestbuy.com.helpers.apihelper.StringHelper;
 import demo.bestbuy.com.helpers.dbhelpers.DBHelpers;
 import demo.bestbuy.com.modals.services.ServicesModal.Datum;
+import lombok.extern.slf4j.Slf4j;
 
-
+@Slf4j
 public final class ServicesDBHelper {
 
-	private static String scriptPath = System.getProperty("user.dir") + "/src/main/resources/DBScripts/Services/";
+    private static final String scriptPath = System.getProperty("user.dir") + "/src/main/resources/DBScripts/Services/";
 
-	public static List<Datum> getServicesFromDB() {
-		String script = DBHelpers.getDBScript(scriptPath + "Script.GetServices.sql");
-		List<HashMap<String, String>> dataTable = DBHelpers.executeScript(script);
-		List<Datum> servicesList = new ArrayList<Datum>();
-		dataTable.forEach(x -> {
-			Datum services = new Datum();
-			services.setId(Integer.parseInt(x.get(ServicesTableKeys.ID)));
-			services.setName(x.get(ServicesTableKeys.NAME));
-			services.setCreatedAt(new StringHelper(x.get(ProductTableKeys.CREATEDAT)).getModifiedDateString());
-			services.setUpdatedAt(new StringHelper(x.get(ProductTableKeys.UPDATEDAT)).getModifiedDateString());
-			servicesList.add(services);
-		});
-		return servicesList;
-	}
+    private static void logProcessingErrorMessage(String message) {
+        log.error("Error processing service data: {}", message);
+    }
 
-	public static int getTotalServices() {
-		String script = DBHelpers.getDBScript(scriptPath + "Script.GetTotalServices.sql");
-		List<HashMap<String, String>> dataTable = DBHelpers.executeScript(script);
-		return dataTable.size();
-	}
+    public static List<Datum> getServicesFromDB() {
+        // Load the SQL script
+        String script = DBHelpers.getDBScript(scriptPath + "Script.GetServices.sql");
 
-	public static Datum getServicesFromDB(int id) {
-		String script = DBHelpers.getDBScript(scriptPath + "Script.GetServicesViaId.sql");
-		List<Integer> param = new ArrayList<Integer>();
-		param.add(id);
-		List<HashMap<String, String>> dataTable = DBHelpers.executeScript(script, param);
-		List<Datum> servicesList = new ArrayList<Datum>();
-		dataTable.forEach(x -> {
-			Datum services = new Datum();
-			services.setId(Integer.parseInt(x.get(ServicesTableKeys.ID)));
-			services.setName(x.get(ServicesTableKeys.NAME));
-			services.setCreatedAt(new StringHelper(x.get(ProductTableKeys.CREATEDAT)).getModifiedDateString());
-			services.setUpdatedAt(new StringHelper(x.get(ProductTableKeys.UPDATEDAT)).getModifiedDateString());
-			servicesList.add(services);
-		});
-		return servicesList.get(0);
-	}
+        // Execute the script and retrieve the data table
+        List<HashMap<String, String>> dataTable = DBHelpers.executeScript(script);
+
+
+        // Convert the result set to a list of Datum objects using streams
+        return dataTable.stream().map(row -> {
+            Datum service = new Datum();
+            try {
+                service.setId(Integer.parseInt(row.get(ServicesTableKeys.ID)));
+                service.setName(row.get(ServicesTableKeys.NAME));
+                service.setCreatedAt(formatDateString(row.get(ProductTableKeys.CREATEDAT)));
+                service.setUpdatedAt(formatDateString(row.get(ProductTableKeys.UPDATEDAT)));
+            } catch (Exception e) {
+                // Handle potential errors such as parsing issues or null values
+                logProcessingErrorMessage(e.getMessage());
+            }
+            return service;
+        }).collect(Collectors.toList());
+    }
+
+    public static int getTotalServices() {
+        String script = DBHelpers.getDBScript(scriptPath + "Script.GetTotalServices.sql");
+        List<HashMap<String, String>> dataTable = DBHelpers.executeScript(script);
+        return dataTable.size();
+    }
+
+    public static Datum getServicesFromDB(int id) {
+        // Load the SQL script
+        String script = DBHelpers.getDBScript(scriptPath + "Script.GetServicesViaId.sql");
+
+        // Execute the script with the ID as a parameter
+        List<HashMap<String, String>> dataTable = DBHelpers.executeScript(script, Collections.singletonList(id));
+
+        // Convert the result set to a Datum object if available
+        return dataTable.stream().findFirst().map(row -> {
+            Datum service = new Datum();
+            try {
+                service.setId(Integer.parseInt(row.get(ServicesTableKeys.ID)));
+                service.setName(row.get(ServicesTableKeys.NAME));
+                service.setCreatedAt(formatDateString(row.get(ProductTableKeys.CREATEDAT)));
+                service.setUpdatedAt(formatDateString(row.get(ProductTableKeys.UPDATEDAT)));
+            } catch (Exception e) {
+                // Handle potential errors such as parsing issues or null values
+                logProcessingErrorMessage(e.getMessage());
+            }
+            return service;
+        }).orElse(new Datum()); // Return null if no data is found
+    }
+
+
+    private static String formatDateString(String dateString) {
+        return dateString != null ? new StringHelper(dateString).getModifiedDateString() : null;
+    }
+
 }
