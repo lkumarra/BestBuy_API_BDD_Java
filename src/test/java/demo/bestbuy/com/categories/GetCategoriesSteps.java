@@ -1,6 +1,7 @@
 package demo.bestbuy.com.categories;
 
-import demo.bestbuy.com.baseapi.BaseAPI;
+import demo.bestbuy.com.apis.baseapi.BaseAPI;
+import demo.bestbuy.com.apis.categories.GetCategories;
 import demo.bestbuy.com.helpers.responsevalidator.ResponseValidator;
 import demo.bestbuy.com.helpers.scenariocontext.ScenarioContext;
 import io.cucumber.java.en.Then;

@@ -1,6 +1,7 @@
 package demo.bestbuy.com.products;
 
-import demo.bestbuy.com.baseapi.BaseAPI;
+import demo.bestbuy.com.apis.baseapi.BaseAPI;
+import demo.bestbuy.com.apis.products.AddProducts;
 import demo.bestbuy.com.helpers.apihelper.StringHelper;
 import demo.bestbuy.com.helpers.responsevalidator.ResponseValidator;
 import demo.bestbuy.com.helpers.scenariocontext.ScenarioContext;

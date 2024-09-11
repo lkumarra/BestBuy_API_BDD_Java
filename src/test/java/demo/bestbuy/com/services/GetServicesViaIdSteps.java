@@ -1,8 +1,9 @@
 package demo.bestbuy.com.services;
 
-import demo.bestbuy.com.baseapi.BaseAPI;
-import demo.bestbuy.com.data.services.ServicesData;
-import demo.bestbuy.com.data.services.ServicesData.ServicesDataEnum;
+import demo.bestbuy.com.apis.baseapi.BaseAPI;
+import demo.bestbuy.com.apis.services.GetServicesViaId;
+import demo.bestbuy.com.data.apidata.services.ServicesData;
+import demo.bestbuy.com.data.apidata.services.ServicesData.ServicesDataEnum;
 import demo.bestbuy.com.helpers.responsevalidator.ResponseValidator;
 import demo.bestbuy.com.helpers.scenariocontext.ScenarioContext;
 import io.cucumber.java.en.Then;

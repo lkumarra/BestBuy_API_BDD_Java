@@ -1,6 +1,7 @@
 package demo.bestbuy.com.stores;
 
-import demo.bestbuy.com.baseapi.BaseAPI;
+import demo.bestbuy.com.apis.baseapi.BaseAPI;
+import demo.bestbuy.com.apis.stores.GetStores;
 import demo.bestbuy.com.helpers.responsevalidator.ResponseValidator;
 import demo.bestbuy.com.helpers.scenariocontext.ScenarioContext;
 import io.cucumber.java.en.Then;
